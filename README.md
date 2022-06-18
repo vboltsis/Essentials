@@ -12,3 +12,10 @@
 </div>
 
 This is a solution that contains some essential knowledge on some Design Patterns and on .NET and some of its libraries.
+
+# Sources
+-S.O.L.I.D.
+<ul>
+  <li>https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898</li>
+  <li>https://www.freecodecamp.org/news/solid-principles-single-responsibility-principle-explained</li>
+ </ul>
