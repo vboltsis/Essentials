@@ -16,9 +16,11 @@ public record DependencyInversion
 
 public record Post
 {
+    private readonly Ilogger _logger;
+
     public Post(Ilogger logger)
     {
-        
+        _logger = logger;
     }
 }
 
