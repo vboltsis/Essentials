@@ -9,7 +9,6 @@ public record DependencyInversion
     public static void Example()
     {
         var post = new Post(new LogToDB());
-
         var secondPost = new Post(new LogToFile());
     }
 }
@@ -34,7 +33,7 @@ public class LogToDB : Ilogger
     public void LogError() { }// --> logs to db
 }
 
-class LogToFile : Ilogger
+public class LogToFile : Ilogger
 {
     public void LogError() { } //--> logs to File
 }
