@@ -181,9 +181,67 @@ When an app runs, the CLR takes the assembly and uses a just-in-time compiler (J
 to turn it into machine code that can execute on the specific architecture of the computer it is running on.
  */
 
+/* 8. Compiled vs Interpreted Languages
+Compiled languages are converted directly into machine code that the processor can execute.
+As a result, they tend to be faster and more efficient to execute than interpreted languages.
+They also give the developer more control over hardware aspects, like memory management and CPU usage.
+
+Compiled languages need a “build” step – they need to be manually compiled first.
+You need to “rebuild” the program every time you need to make a change.
+In our hummus example, the entire translation is written before it gets to you.
+If the original author decides that he wants to use a different kind of olive oil,
+the entire recipe would need to be translated again and resent to you.
+
+Examples of pure compiled languages are C, C++, Erlang, Haskell, Rust, and Go.
+------------------------------------------------------------------------------------
+Interpreters run through a program line by line and execute each command.
+Here, if the author decides he wants to use a different kind of olive oil,
+he could scratch the old one out and add the new one.
+Your translator friend can then convey that change to you as it happens.
+
+Examples of common interpreted languages are PHP, Ruby, Python, and JavaScript.
+ */
+
+/* 9. out vs ref keyword
+out allows methods to return more than one thing. This is useful when you want to return a value and a reference to a variable.
+ref allows methods to return a reference to a variable. This is useful when you want to return a reference to a variable.
+ */
+
+/* 10. const vs readonly
+const are used to declare variables that are immutable.
+This means that the value of the variable cannot change after it is initialized.
+readonly are used to declare variables that are read-only.
+The difference is that const is initialized at compile time while readonly is initialized at runtime
+ */
+
 /*11. What is an idempotent operation
  No matter how many times you call the operation, the result will be the same.
 */
+
+/* 12. Interface vs Abstract Class
+Interfaces have multiple inheritance - a class can implement multiple interfaces.
+Abstract classes cannot
+
+An abstract class can contain non abstract methods.
+Since C# 8.0 Interfaces can contain concrete methods. Note that classes that implement that interface, do not inherit
+the implemented methods. Diamond inheritance is resolve explicitly in the class.
+
+In an abstract class we can have ctors while in interfaces we cannot
+
+Since C# 8.0, interfaces permit access modifiers.
+*/
+
+/* 13. What is the Main Thread 
+C# provides built-in support for multithreaded programming.
+A multi-threaded program contains two or more parts that can run concurrently.
+Each part of such a program is called a thread and each thread defines a separate path of execution.
+
+When a C# program starts up, one thread begins running immediately. This is called the main thread of our program.
+ */
+
+/* 14. What is the repository pattern
+
+ */
 
 /*15. Is the repository pattern useful when using entity framework?
 https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/
