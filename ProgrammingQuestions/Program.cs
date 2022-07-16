@@ -246,3 +246,15 @@ When a C# program starts up, one thread begins running immediately. This is call
 /*15. Is the repository pattern useful when using entity framework?
 https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/
 */
+
+/* 16. What is IDisposable and when to use it
+The primary use of this interface is to release unmanaged resources.
+The garbage collector automatically releases the memory allocated to a managed object when that object is no longer used.
+However, it is not possible to predict when garbage collection will occur.
+Furthermore, the garbage collector has no knowledge of unmanaged resources such as window handles, or open files and streams.
+
+Use the Dispose method of this interface to explicitly release unmanaged resources in conjunction with the garbage collector.
+The consumer of an object can call this method when the object is no longer needed.
+ */
+
+Console.WriteLine("Hello Learner! I hope this solution helps you become better!");
