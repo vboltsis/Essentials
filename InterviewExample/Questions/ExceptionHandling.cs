@@ -1,8 +1,8 @@
 ﻿namespace InterviewExample;
 
-internal class ExceptionHandling
+public class ExceptionHandling
 {
-    internal static void Method2()
+    public static void Method2()
     {
         try
         {
@@ -15,7 +15,7 @@ internal class ExceptionHandling
         }
     }
 
-    internal static void Method1()
+    public static void Method1()
     {
         try
         {

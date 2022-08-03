@@ -11,11 +11,11 @@
 
 namespace InterviewExample;
 
-internal class CheckIfSumPairExists
+public class CheckIfSumPairExists
 {
     //Time Complexity: O(n). 
     //As the whole array is needed to be traversed only once.
-    internal static bool PairExists(int[] intArray, int sum)
+    public static bool PairExists(int[] intArray, int sum)
     {
         var numberSet = new HashSet<int>();
         for (int i = 0; i < intArray.Length; ++i)

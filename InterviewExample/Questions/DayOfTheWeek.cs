@@ -1,7 +1,7 @@
 ﻿namespace InterviewExample;
 
 //Given current day as day of the week and an integer K, the task is to find the day of the week after K days.
-internal class DayOfTheWeek
+public class DayOfTheWeek
 {
     internal static string GetDayOfTheWeek(string day, int numOfDays)
     {

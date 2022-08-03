@@ -1,6 +1,6 @@
 ﻿namespace InterviewExample;
 
-internal class Fibonacci
+public class Fibonacci
 {
     //fibonacci recursion
     public static int FibonacciRecursion(int n)
