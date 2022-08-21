@@ -257,4 +257,13 @@ Use the Dispose method of this interface to explicitly release unmanaged resourc
 The consumer of an object can call this method when the object is no longer needed.
  */
 
+/* 17. Differences between Func - Action - Predicate 
+Action is a delegate (pointer) to a method, that takes zero, one or more input parameters, but does not return anything.
+
+Func is a delegate (pointer) to a method, that takes zero, one or more input parameters, and returns a value (or reference).
+
+Predicate is a special kind of Func often used for comparisons (takes a generic parameter and returns bool). 
+
+ */
+
 Console.WriteLine("Hello Learner! I hope this solution helps you become better!");
