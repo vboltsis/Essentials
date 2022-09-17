@@ -6,6 +6,7 @@ using BenchmarkDotNet.Running;
  */
 
 //BenchmarkRunner.Run<Enumerables>();
+BenchmarkRunner.Run<EnumerablesClassVsStruct>();
 
 
 /*
