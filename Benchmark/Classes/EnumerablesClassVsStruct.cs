@@ -5,13 +5,24 @@ using System.Collections.ObjectModel;
 
 namespace Benchmark;
 
-internal struct Coordinates
-{
-    public decimal X { get; set; }
-    public decimal Y { get; set; }
-}
+/*
+|             Method |        Mean |     Error |    StdDev |  Ratio | RatioSD |   Gen0 |   Gen1 | Allocated | Alloc Ratio |
+|------------------- |------------:|----------:|----------:|-------:|--------:|-------:|-------:|----------:|------------:|
+|       ArrayPooling |    28.39 ns |  0.166 ns |  0.155 ns |   1.00 |    0.00 |      - |      - |         - |          NA |
+|       GetFixedList |    32.84 ns |  0.520 ns |  0.487 ns |   1.16 |    0.02 | 0.0449 | 0.0001 |     376 B |          NA |
+|            GetList |    78.58 ns |  1.618 ns |  1.589 ns |   2.77 |    0.06 | 0.1194 | 0.0005 |    1000 B |          NA |
+|           GetArray |    24.50 ns |  0.548 ns |  0.652 ns |   0.87 |    0.02 | 0.0411 | 0.0000 |     344 B |          NA |
+|      GetStackArray |    13.78 ns |  0.085 ns |  0.079 ns |   0.49 |    0.00 |      - |      - |         - |          NA |
+|             GetSet | 7,106.30 ns | 60.167 ns | 56.280 ns | 250.34 |    2.87 | 1.2970 | 0.0076 |   10888 B |          NA |
+|       GetArrayList |   104.79 ns |  0.415 ns |  0.368 ns |   3.69 |    0.02 | 0.0966 | 0.0004 |     808 B |          NA |
+|  GetFixedArrayList |    80.53 ns |  0.274 ns |  0.229 ns |   2.84 |    0.02 | 0.0736 | 0.0002 |     616 B |          NA |
+|      GetCollection |   127.30 ns |  1.159 ns |  1.084 ns |   4.48 |    0.04 | 0.1223 | 0.0005 |    1024 B |          NA |
+|      GetDictionary |   170.05 ns |  0.454 ns |  0.425 ns |   5.99 |    0.04 | 0.1960 | 0.0014 |    1640 B |          NA |
+| GetFixedDictionary |    92.15 ns |  1.898 ns |  2.783 ns |   3.30 |    0.12 | 0.0842 | 0.0004 |     704 B |          NA |
+ */
 
-internal class EnumerablesClassVsStruct
+[MemoryDiagnoser]
+public class EnumerablesClassVsStruct
 {
     readonly static ArrayPool<Coordinates> _intPool = ArrayPool<Coordinates>.Create(1000, 5);
     const int number = 10;
@@ -71,7 +82,6 @@ internal class EnumerablesClassVsStruct
     };
 
     [Benchmark(Baseline = true)]
-        
     public void ArrayPooling()
     {
         var rentedArray = _intPool.Rent(number);
@@ -191,4 +201,9 @@ internal class EnumerablesClassVsStruct
         }
         return dict;
     }
+}
+public struct Coordinates
+{
+    public decimal X { get; set; }
+    public decimal Y { get; set; }
 }

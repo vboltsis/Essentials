@@ -266,4 +266,14 @@ Predicate is a special kind of Func often used for comparisons (takes a generic 
 
  */
 
+/* 18. What is the difference between Span<T> and Memory<T>
+ 
+
+ 
+ */
+
+//Cool links
+//https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
+//https://github.com/Maoni0/mem-doc/blob/master/doc/.NETMemoryPerformanceAnalysis.md
+//https://www.youtube.com/watch?v=Z8M2BTscoD4
 Console.WriteLine("Hello Learner! I hope this solution helps you become better!");
