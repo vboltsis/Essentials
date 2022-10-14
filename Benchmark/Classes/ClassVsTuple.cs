@@ -3,7 +3,7 @@
 namespace Benchmark.Classes;
 
 /*
- |             Method |     Mean |    Error |   StdDev |   Gen0 | Allocated |
+|             Method |     Mean |    Error |   StdDev |   Gen0 | Allocated |
 |------------------- |---------:|---------:|---------:|-------:|----------:|
 | GetPersonAddresses | 16.37 ns | 0.124 ns | 0.116 ns | 0.0162 |     136 B |
 |           GetTuple | 27.83 ns | 0.094 ns | 0.078 ns | 0.0162 |     136 B |
