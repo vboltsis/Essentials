@@ -1,6 +1,6 @@
 ﻿using AllDotNetInterfaces;
 
-//1. IComparable Interface example
+//1. IComparable Example
 //var person1 = new Person
 //{
 //    Id = 1,
@@ -26,3 +26,35 @@
 //Array.Sort(people);
 //Console.WriteLine(people[0]);
 
+//2. IEquatable Example
+//var customer = new Customer
+//{
+//    Id = 1,
+//    Name = "Test"
+//};
+
+//var customer2 = new Customer
+//{
+//    Id = 1,
+//    Name = "Test"
+//};
+
+//Console.WriteLine("CUSTOMERS");
+//Console.WriteLine(customer == customer2);
+//Console.WriteLine(customer.Equals(customer2));
+
+//var student = new Student
+//{
+//    Id = 1,
+//    Name = "Test"
+//};
+
+//var student2 = new Student
+//{
+//    Id = 1,
+//    Name = "Test"
+//};
+
+//Console.WriteLine("STUDENTS");
+//Console.WriteLine(student == student2);
+//Console.WriteLine(student.Equals(student2));
