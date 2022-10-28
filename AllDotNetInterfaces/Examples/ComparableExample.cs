@@ -1,6 +1,7 @@
 ﻿namespace AllDotNetInterfaces;
 
-public record Person : IComparable
+//IComparable imposes a total ordering on the objects being compared.
+public class Person : IComparable
 {
     public int Id { get; set; }
     public string Name { get; set; }
