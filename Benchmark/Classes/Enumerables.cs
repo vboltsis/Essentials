@@ -174,3 +174,17 @@ public class Enumerables
         return dict;
     }
 }
+
+/*
+ 
+ public static class ToListExtension {
+
+    public static List<T> ToList<T>(this IEnumerable<T> source, int capacity) 
+    {
+        var res = new List<T>(capacity);
+        res.AddRange(source);
+        return res;
+    }
+
+}
+ */
