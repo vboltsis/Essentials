@@ -9,19 +9,6 @@ using BenchmarkDotNet.Running;
 //BenchmarkRunner.Run<Enumerables>();
 //BenchmarkRunner.Run<EnumerablesClassVsStruct>();
 //BenchmarkRunner.Run<SpanVsSubstring>();
-BenchmarkRunner.Run<ClassVsTuple>();
+//BenchmarkRunner.Run<ClassVsTuple>();
+//BenchmarkRunner.Run<TaskVsValueTask>();
 
-
-/*
- 
- public static class ToListExtension {
-
-    public static List<T> ToList<T>(this IEnumerable<T> source, int capacity) 
-    {
-        var res = new List<T>(capacity);
-        res.AddRange(source);
-        return res;
-    }
-
-}
- */
