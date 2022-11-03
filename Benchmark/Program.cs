@@ -11,4 +11,6 @@ using BenchmarkDotNet.Running;
 //BenchmarkRunner.Run<SpanVsSubstring>();
 //BenchmarkRunner.Run<ClassVsTuple>();
 //BenchmarkRunner.Run<TaskVsValueTask>();
+//BenchmarkRunner.Run<CachedTaskBenchmark>();
+BenchmarkRunner.Run<StringVsStringBuilder>();
 
