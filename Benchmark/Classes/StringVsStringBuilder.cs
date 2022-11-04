@@ -109,7 +109,7 @@ public class FileError
 
     public FileErrorMetadata FileErrorMetadata { get; set; }
 
-    public FileError Clone() => new FileError()
+    public FileError Clone() => new()
     {
         FileErrorMetadata = FileErrorMetadata?.Clone(),
         Code = Code
@@ -144,7 +144,7 @@ public class FileErrorMetadata
     public decimal? Number { get; set; }
 
     public FileErrorMetadata Clone() =>
-        new FileErrorMetadata()
+        new()
         {
             RandomId = RandomId,
             Error = Error,
