@@ -17,26 +17,44 @@ public class ReadDictionary
         }
     }
 
+    //[Benchmark]
+    //public string ReadWithLock()
+    //{
+    //    var randomKey = new Random().Next(1, 10_001);
+    //    _slimLock.EnterReadLock();
+    //    try
+    //    {
+    //        return _dictionary[randomKey];
+    //    }
+    //    finally
+    //    {
+    //        _slimLock.ExitReadLock();
+    //    }
+    //}
+
     [Benchmark]
-    public string ReadWithLock()
+    public string ReadWithTryGet()
     {
         var randomKey = new Random().Next(1, 10_001);
-        _slimLock.EnterReadLock();
-        try
+
+        if (_dictionary.TryGetValue(randomKey, out var value))
         {
-            return _dictionary[randomKey];
+            return value;
         }
-        finally
-        {
-            _slimLock.ExitReadLock();
-        }
+
+        return string.Empty;
     }
 
     [Benchmark]
-    public string Read()
+    public string ReadWithContains()
     {
         var randomKey = new Random().Next(1, 10_001);
-        return _dictionary[randomKey];
+        if (_dictionary.ContainsKey(randomKey))
+        {
+            return _dictionary[randomKey];
+        }
+
+        return string.Empty;
     }
 
     //[Benchmark]
