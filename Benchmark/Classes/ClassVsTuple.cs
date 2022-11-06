@@ -1,14 +1,19 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 
 namespace Benchmark.Classes;
 
 /*
-|             Method |     Mean |    Error |   StdDev |   Gen0 | Allocated |
-|------------------- |---------:|---------:|---------:|-------:|----------:|
-| GetPersonAddresses | 16.37 ns | 0.124 ns | 0.116 ns | 0.0162 |     136 B |
-|           GetTuple | 27.83 ns | 0.094 ns | 0.078 ns | 0.0162 |     136 B |
+|             Method |      Job |  Runtime |     Mean |    Error |   StdDev |   Gen0 | Allocated |
+|------------------- |--------- |--------- |---------:|---------:|---------:|-------:|----------:|
+| GetPersonAddresses | .NET 6.0 | .NET 6.0 | 17.10 ns | 0.394 ns | 0.368 ns | 0.0162 |     136 B |
+|           GetTuple | .NET 6.0 | .NET 6.0 | 16.73 ns | 0.212 ns | 0.198 ns | 0.0162 |     136 B |
+| GetPersonAddresses | .NET 7.0 | .NET 7.0 | 16.45 ns | 0.260 ns | 0.243 ns | 0.0162 |     136 B |
+|           GetTuple | .NET 7.0 | .NET 7.0 | 16.10 ns | 0.202 ns | 0.189 ns | 0.0162 |     136 B |
  */
 
+[SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
 [MemoryDiagnoser]
 public class ClassVsTuple
 {
@@ -35,7 +40,7 @@ public class ClassVsTuple
         };
     }
 
-    [Benchmark]
+    [Benchmark(Baseline = true)]
     public Tuple<Person, Address>[] GetTuple()
     {
         return new Tuple<Person, Address>[]
