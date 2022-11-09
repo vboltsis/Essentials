@@ -14,5 +14,5 @@ using System.Numerics;
 //BenchmarkRunner.Run<TaskVsValueTask>();
 //BenchmarkRunner.Run<CachedTaskBenchmark>();
 //BenchmarkRunner.Run<StringVsStringBuilder>();
-BenchmarkRunner.Run<Vectors>();
+//BenchmarkRunner.Run<VectorsSum>();
 
