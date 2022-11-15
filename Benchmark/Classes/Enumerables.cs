@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 namespace Benchmark;
 
 /*
- |             Method | Number |          Mean |       Error |      StdDev | Ratio | RatioSD |   Gen0 |   Gen1 | Allocated | Alloc Ratio |
+|             Method | Number |          Mean |       Error |      StdDev | Ratio | RatioSD |   Gen0 |   Gen1 | Allocated | Alloc Ratio |
 |------------------- |------- |--------------:|------------:|------------:|------:|--------:|-------:|-------:|----------:|------------:|
 |       ArrayPooling |     10 |     18.734 ns |   0.2179 ns |   0.2039 ns |  1.00 |    0.00 |      - |      - |         - |          NA |
 |       GetFixedList |     10 |     22.402 ns |   0.2626 ns |   0.2328 ns |  1.20 |    0.02 | 0.0115 |      - |      96 B |          NA |
