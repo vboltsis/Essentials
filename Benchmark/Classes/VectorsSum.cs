@@ -25,7 +25,7 @@ namespace Benchmark.Classes;
  */
 
 [MemoryDiagnoser]
-public class Vectors
+public class VectorsSum
 {
     [Params(10, 100, 1000, 10000)]
     public int N;
