@@ -24,7 +24,7 @@
 
 //var people = new Person[] { person1, person2, person3 };
 //Array.Sort(people);
-//Console.WriteLine(people[0]);
+//Console.WriteLine(people[0].Name);
 
 //2. IEquatable Example
 //var customer = new Customer

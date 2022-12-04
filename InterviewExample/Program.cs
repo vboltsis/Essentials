@@ -1,4 +1,6 @@
-﻿using InterviewExample;
+﻿using System;
+using InterviewExample;
+using InterviewExample.Questions;
 
 /*
 UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
@@ -50,3 +52,9 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 //OCCURENCES OF LETTERS
 
 //OccurencesOfLetters.GetOccurences("Banana");
+
+//----------------------------------------------------------------------------
+
+//COLLAZT CONJECTURE
+var steps = CollatzConjecture.GetSteps(23443333456783233);
+Console.WriteLine(steps);

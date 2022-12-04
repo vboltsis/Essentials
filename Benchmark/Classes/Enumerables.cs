@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Exporters.Csv;
 using System.Buffers;
 using System.Collections;
 using System.Collections.ObjectModel;
@@ -6,7 +7,7 @@ using System.Collections.ObjectModel;
 namespace Benchmark;
 
 /*
- |             Method | Number |          Mean |       Error |      StdDev | Ratio | RatioSD |   Gen0 |   Gen1 | Allocated | Alloc Ratio |
+|             Method | Number |          Mean |       Error |      StdDev | Ratio | RatioSD |   Gen0 |   Gen1 | Allocated | Alloc Ratio |
 |------------------- |------- |--------------:|------------:|------------:|------:|--------:|-------:|-------:|----------:|------------:|
 |       ArrayPooling |     10 |     18.734 ns |   0.2179 ns |   0.2039 ns |  1.00 |    0.00 |      - |      - |         - |          NA |
 |       GetFixedList |     10 |     22.402 ns |   0.2626 ns |   0.2328 ns |  1.20 |    0.02 | 0.0115 |      - |      96 B |          NA |
@@ -45,6 +46,7 @@ namespace Benchmark;
 | GetFixedDictionary |   1000 |  6,311.543 ns |  83.8649 ns |  78.4472 ns | 20.94 |    0.22 | 2.6398 | 0.3738 |   22192 B |          NA |
  */
 
+[CsvExporter(separator: CsvSeparator.Semicolon)]
 [MemoryDiagnoser]
 public class Enumerables
 {
