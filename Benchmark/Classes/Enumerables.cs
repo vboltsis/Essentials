@@ -1,4 +1,6 @@
-﻿using System.Buffers;
+﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Exporters.Csv;
+using System.Buffers;
 using System.Collections;
 using System.Collections.ObjectModel;
 
@@ -44,6 +46,7 @@ namespace Benchmark;
 | GetFixedDictionary |   1000 |  6,311.543 ns |  83.8649 ns |  78.4472 ns | 20.94 |    0.22 | 2.6398 | 0.3738 |   22192 B |          NA |
  */
 
+[CsvExporter(separator: CsvSeparator.Semicolon)]
 [MemoryDiagnoser]
 public class Enumerables
 {
