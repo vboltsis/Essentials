@@ -1,5 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-using System.Text;
+﻿using System.Text;
 
 namespace Benchmark.Classes;
 /*
@@ -19,13 +18,13 @@ namespace Benchmark.Classes;
 public class StringVsStringBuilder
 {
     [Params(1, 10, 100)]
-    public int N;
+    public int _number;
     private List<FileManager> _files { get; set; }
 
     [GlobalSetup]
     public void GlobalSetup()
     {
-        _files = GetFileManagers(N);
+        _files = GetFileManagers(_number);
     }
 
     [Benchmark(Baseline = true)]

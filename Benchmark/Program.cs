@@ -16,6 +16,8 @@ using System.Numerics;
 //BenchmarkRunner.Run<CachedTaskBenchmark>();
 //BenchmarkRunner.Run<StringVsStringBuilder>();
 //BenchmarkRunner.Run<VectorsSum>();
+//BenchmarkRunner.Run<InitialCapacityClass>();
+BenchmarkRunner.Run<CheckIfNumberIsOdd>();
 
 //var dto1 = new RoleDto { Id = 1 };
 //var dto2 = new RoleDto { Id = 1 };

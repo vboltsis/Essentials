@@ -42,6 +42,7 @@ public class BitWiseOperations
     }
 }
 
+[Flags]
 public enum Fruits : long
 {
     None = 1 << 0,
