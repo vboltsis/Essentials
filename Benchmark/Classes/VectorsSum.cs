@@ -1,6 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-using System.Diagnostics.Contracts;
-using System.Numerics;
+﻿using System.Numerics;
 
 namespace Benchmark.Classes;
 
