@@ -19,6 +19,8 @@ using System.Numerics;
 //BenchmarkRunner.Run<VectorsSum>();
 //BenchmarkRunner.Run<InitialCapacityClass>();
 //BenchmarkRunner.Run<CheckIfNumberIsOdd>();
+//BenchmarkRunner.Run<IndexOfVsContains>();
+//BenchmarkRunner.Run<CheckIfNumberIsOdd>();
 //BenchmarkRunner.Run<StringConverter>();
 BenchmarkRunner.Run<Orderer>();
 
