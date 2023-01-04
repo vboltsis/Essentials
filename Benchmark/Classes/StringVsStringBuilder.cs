@@ -52,7 +52,7 @@ public class StringVsStringBuilder
         {
             builder.Append(file.Id);
             builder.Append(separator);
-            if (file.FileError.FileErrorMetadata?.FileAmount.HasValue == true)
+            if (file.FileError?.FileErrorMetadata?.FileAmount.HasValue == true)
             {
                 builder.Append(file.FileError.FileErrorMetadata.FileAmount.Value);
             }
@@ -108,12 +108,6 @@ public class FileError
 
     public FileErrorMetadata FileErrorMetadata { get; set; }
 
-    public FileError Clone() => new()
-    {
-        FileErrorMetadata = FileErrorMetadata?.Clone(),
-        Code = Code
-    };
-
     public override string ToString() =>
         Code +
         (FileErrorMetadata != null
@@ -141,15 +135,4 @@ public class FileErrorMetadata
     public string EventName { get; set; }
 
     public decimal? Number { get; set; }
-
-    public FileErrorMetadata Clone() =>
-        new()
-        {
-            RandomId = RandomId,
-            Error = Error,
-            EventName = EventName,
-            FileAmount = FileAmount,
-            MinimumAllowedFiles = MinimumAllowedFiles,
-            Number = Number
-        };
 }

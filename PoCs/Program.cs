@@ -1,7 +1,17 @@
 ﻿using System;
 using PoCs.BitWise;
+using PoCs.Diffing;
 
-BitWiseOperations.TestFruits();
+var test = new MyClass
+{
+    MyProperty = "test"
+};
+
+
+test.MyProperty = "test2";
+
+Console.WriteLine();
+//BitWiseOperations.TestFruits();
 
 //var list = new List<string>(2);
 //list.Add("Takis");
