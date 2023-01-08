@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmark", "Benchmark\Benc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{F1EC717F-E779-4098-BE38-3424C507EA21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoCs", "PoCs\PoCs.csproj", "{40258EF4-3E95-4FEA-81F0-00A7A77722A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoCs", "PoCs\PoCs.csproj", "{40258EF4-3E95-4FEA-81F0-00A7A77722A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Types", "Types\Types.csproj", "{379E1E63-A542-4A31-94F1-E83DA01F6648}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{40258EF4-3E95-4FEA-81F0-00A7A77722A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40258EF4-3E95-4FEA-81F0-00A7A77722A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40258EF4-3E95-4FEA-81F0-00A7A77722A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{379E1E63-A542-4A31-94F1-E83DA01F6648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379E1E63-A542-4A31-94F1-E83DA01F6648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379E1E63-A542-4A31-94F1-E83DA01F6648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379E1E63-A542-4A31-94F1-E83DA01F6648}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

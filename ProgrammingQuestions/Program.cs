@@ -5,7 +5,7 @@ It creates stateless APIs'. The receiver does not retain session state from prev
 The term REST was introduced and defined in 2000 by Roy Fielding in his doctoral dissertation.
 */
 
-/*2. Class vs Struct
+/*2. Class vs Struct vs Interface
 A class is a blueprint for an object.
 To create a struct the following characteristics should apply
 
@@ -17,6 +17,12 @@ Instances of the type are large (greater than 16/20/24 bytes) and are not passed
 It is immutable.
 
 It will not have to be boxed frequently.
+
+An interface is a set of related methods/properties that a class or struct can implement.
+An interface defines the signature of the methods, but not their implementation.
+This allows you to create a common set of behaviors that can be shared by multiple classes or structs.
+
+for some odd interface cases you can find more on: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/explicit-interface-implementation
  */
 
 /*3. Differences between stack and heap memory allocations
