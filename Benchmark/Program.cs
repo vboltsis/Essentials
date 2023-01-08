@@ -9,6 +9,9 @@ using System.Numerics;
  TO USE THIS PROJECT, YOU MUST RUN IT IN RELEASE MODE 
  */
 
+//RUN MULTIPLE BENCHMARKS
+//BenchmarkRunner.Run(new Type[] { typeof(Orderer), typeof(VectorsSum) });
+
 //BenchmarkRunner.Run<Enumerables>();
 //BenchmarkRunner.Run<EnumerablesClassVsStruct>();
 //BenchmarkRunner.Run<SpanVsSubstring>();
@@ -22,7 +25,8 @@ using System.Numerics;
 //BenchmarkRunner.Run<IndexOfVsContains>();
 //BenchmarkRunner.Run<CheckIfNumberIsOdd>();
 //BenchmarkRunner.Run<StringConverter>();
-BenchmarkRunner.Run<Orderer>();
+//BenchmarkRunner.Run<Orderer>();
+
 
 //var dto1 = new RoleDto { Id = 1 };
 //var dto2 = new RoleDto { Id = 1 };

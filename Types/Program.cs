@@ -54,8 +54,4 @@ float distance = 3.9f;
 long population = 8000000000;
 long scandals = 999999999;
 
-var list = new[] { "test", "rest" };
-
-var results = list.Where(x => string.Equals(x, "TEST", StringComparison.OrdinalIgnoreCase)).ToList();
-
 Console.WriteLine();

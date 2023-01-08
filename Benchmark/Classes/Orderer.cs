@@ -53,6 +53,69 @@ public class Orderer
         },
         new SelectionWithScore
         {
+            Home = 3,
+            Away = 0,
+            Selection = new Selection
+            {
+                Name = "3-0",
+            }
+        },
+        new SelectionWithScore
+        {
+            Home = 0,
+            Away = 3,
+            Selection = new Selection
+            {
+                Name = "0-3",
+            }
+        },
+        new SelectionWithScore
+        {
+            Home = 1,
+            Away = 3,
+            Selection = new Selection
+            {
+                Name = "1-3",
+            }
+        },
+        new SelectionWithScore
+        {
+            Home = 2,
+            Away = 3,
+            Selection = new Selection
+            {
+                Name = "2-3",
+            }
+        }, 
+        new SelectionWithScore
+        {
+            Home = 3,
+            Away = 3,
+            Selection = new Selection
+            {
+                Name = "3-3",
+            }
+        },
+        new SelectionWithScore
+        {
+            Home = 3,
+            Away = 2,
+            Selection = new Selection
+            {
+                Name = "3-2",
+            }
+        },
+        new SelectionWithScore
+        {
+            Home = 3,
+            Away = 1,
+            Selection = new Selection
+            {
+                Name = "3-1",
+            }
+        },
+        new SelectionWithScore
+        {
             Home = 2,
             Away = 0,
             Selection = new Selection
