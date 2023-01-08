@@ -149,17 +149,6 @@ public class Orderer
         return orderedSelections;
     }
 
-    //[Benchmark]
-    //public List<Selection> GetSelectionsWithOneOrder()
-    //{
-    //    return _selections
-    //        .OrderBy(s => s.Away > s.Home)
-    //        .ThenBy(s => s.Home == s.Away)
-    //        .ThenBy(s => s.Home > s.Away)
-    //        .Select(s => s.Selection)
-    //        .ToList();
-    //}
-    
     [Benchmark]
     public List<Selection> GetSelectionsWithOneTupleOrder()
     {
@@ -168,6 +157,30 @@ public class Orderer
                 : s.Away == s.Home ? (100 + s.Home * 10 + s.Away, s.Selection)
                 : (200 + s.Away * 10 + s.Home, s.Selection))
             .OrderBy(s => s.Item1)
+            .Select(s => s.Selection)
+            .ToList();
+    } 
+    
+    [Benchmark]
+    public List<Selection> GetSelectionsWithOneClassOrder()
+    {
+        return _selections
+            .Select(s => s.Away < s.Home ? new SelectionResultClass { Key = s.Home * 10 + s.Away, Selection = s.Selection }
+                : s.Away == s.Home ? new SelectionResultClass { Key = 100 + s.Home * 10 + s.Away, Selection = s.Selection }
+                : new SelectionResultClass { Key = 200 + s.Away * 10 + s.Home, Selection = s.Selection })
+            .OrderBy(s => s.Key)
+            .Select(s => s.Selection)
+            .ToList();
+    } 
+    
+    [Benchmark]
+    public List<Selection> GetSelectionsWithOneStructOrder()
+    {
+        return _selections
+            .Select(s => s.Away < s.Home ? new SelectionResultStruct { Key = s.Home * 10 + s.Away, Selection = s.Selection }
+                : s.Away == s.Home ? new SelectionResultStruct { Key = 100 + s.Home * 10 + s.Away, Selection = s.Selection }
+                : new SelectionResultStruct { Key = 200 + s.Away * 10 + s.Home, Selection = s.Selection })
+            .OrderBy(s => s.Key)
             .Select(s => s.Selection)
             .ToList();
     }
@@ -183,4 +196,16 @@ public class SelectionWithScore
 public class Selection
 {
     public string Name { get; set; }
+}
+
+class SelectionResultClass
+{
+    public int Key { get; set; }
+    public Selection Selection { get; set; }
+}
+
+struct SelectionResultStruct
+{
+    public int Key { get; set; }
+    public Selection Selection { get; set; }
 }

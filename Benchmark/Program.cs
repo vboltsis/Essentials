@@ -25,7 +25,7 @@ using System.Numerics;
 //BenchmarkRunner.Run<IndexOfVsContains>();
 //BenchmarkRunner.Run<CheckIfNumberIsOdd>();
 //BenchmarkRunner.Run<StringConverter>();
-//BenchmarkRunner.Run<Orderer>();
+BenchmarkRunner.Run<Orderer>();
 
 
 //var dto1 = new RoleDto { Id = 1 };
