@@ -61,7 +61,7 @@ public class SetterLoggerGenerator : ISourceGenerator
                     setter.AccessorList.WithAccessors(
                         SyntaxFactory.List(new[] { newAccessor })));
 
-                context..AddCompilationUnit(type.SyntaxTree.FilePath, newProperty);
+                //context..AddCompilationUnit(type.SyntaxTree.FilePath, newProperty);
             }
         }
     }

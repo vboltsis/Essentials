@@ -106,4 +106,12 @@ public class SpanVsSubstring
 
         return result;
     }
+
+    [Benchmark]
+    [Arguments("1")]
+    public string Replace(string trimString)
+    {
+        string result = Target;
+        return result.Replace(trimString, "");
+    }
 }

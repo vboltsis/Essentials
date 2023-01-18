@@ -45,7 +45,7 @@ public class BitWiseOperations
 [Flags]
 public enum Fruits : long
 {
-    None = 1 << 0,
+    Tomato = 1 << 0,
     Banana = 1 << 1, //2
     Apple = 1 << 2, //4
     Orange = 1 << 3, //8
