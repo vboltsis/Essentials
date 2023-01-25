@@ -4,29 +4,28 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 using System;
 using System.Numerics;
+using System.Text.RegularExpressions;
 
-/*
- TO USE THIS PROJECT, YOU MUST RUN IT IN RELEASE MODE 
- */
+//TO USE THIS PROJECT, YOU MUST RUN IT IN RELEASE MODE 
 
 //RUN MULTIPLE BENCHMARKS
 //BenchmarkRunner.Run(new Type[] { typeof(Orderer), typeof(VectorsSum) });
 
+//SINGLE BENCHMARK RUN
 //BenchmarkRunner.Run<Enumerables>();
-//BenchmarkRunner.Run<EnumerablesClassVsStruct>();
-//BenchmarkRunner.Run<SpanVsSubstring>();
-//BenchmarkRunner.Run<ClassVsTuple>();
-//BenchmarkRunner.Run<TaskVsValueTask>();
-//BenchmarkRunner.Run<CachedTaskBenchmark>();
-//BenchmarkRunner.Run<StringVsStringBuilder>();
-//BenchmarkRunner.Run<VectorsSum>();
-//BenchmarkRunner.Run<InitialCapacityClass>();
-//BenchmarkRunner.Run<CheckIfNumberIsOdd>();
-//BenchmarkRunner.Run<IndexOfVsContains>();
-//BenchmarkRunner.Run<CheckIfNumberIsOdd>();
-//BenchmarkRunner.Run<StringConverter>();
-//BenchmarkRunner.Run<Orderer>();
-//BenchmarkRunner.Run<ContainsSetVsListVsArray>();
+
+//RUN THIS IN RELEASE MODE AND SELECT THE BENCHMARK FROM THE LIST
+BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
+
+
+//Regex _pipesMatchRegex = new Regex(@"\|([^\|]+)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
+//Regex _pipesMatchRegex = new Regex(@"\|(.*?)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
+//var wordsWithin = new List<string>();
+
+//var what = "|makis test| omg vs |takis rest|";
+//wordsWithin.AddRange(_pipesMatchRegex.Matches(what).Select(m => m.Value.Replace("|", "")));
+
+//Console.WriteLine();
 
 
 //var dto1 = new RoleDto { Id = 1 };
@@ -213,4 +212,3 @@ using System.Numerics;
 //            .OrderBy(s => s.Item1)
 //            .Select(s => s.Selection)
 //            .ToList();
-Console.WriteLine();

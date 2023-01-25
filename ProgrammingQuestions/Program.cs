@@ -281,8 +281,36 @@ Predicate is a special kind of Func often used for comparisons (takes a generic 
 
 /* 18. What is the difference between Span<T> and Memory<T>
  
+Span<T> and Memory<T> are both types in C# that represent a contiguous region of memory.
+However, they are used for slightly different purposes.
 
- 
+Span<T> is a lightweight, stack-allocated type that can be used to represent a span of memory,
+such as a section of an array or a substring of a string.
+It is intended to be used in situations where performance is critical,
+such as in high-performance code or in situations where the lifetime of the memory is well-defined.
+
+Memory<T> is heap-allocated and can be used to represent a region of memory that may have a longer lifetime
+than the function that created it.
+It is intended to be used in situations where the lifetime of the memory is less well-defined,
+such as when working with asynchronous code or when passing memory between threads.
+
+In summary, Span<T> is designed for high-performance scenarios where the lifetime of the memory is well defined,
+whereas Memory<T> is designed for scenarios where the lifetime of the memory is less well defined, such as async code.
+ */
+
+/* 19. What are threads and what is the difference with async in c#
+Threads are a way for a program to split itself into two or more simultaneously (concurrently) running tasks.
+This is known as multithreading. Each thread has its own stack and program counter,
+but shares memory with other threads in the same process.
+
+Async and await are keywords in C# that allow a program to run asynchronous code.
+Asynchronous code is code that runs independently of the main program flow,
+allowing the program to continue executing other code while the asynchronous code is running.
+The await keyword is used to suspend the execution of the current method until the awaited task is complete.
+The async keyword is used to indicate that a method contains asynchronous code.
+
+In short, threading is a way to run multiple tasks at the same time,
+while async/await is a way to run a single task in a non-blocking way.
  */
 
 //Cool links
