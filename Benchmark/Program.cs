@@ -1,9 +1,5 @@
-﻿using Benchmark;
-using Benchmark.Classes;
-using BenchmarkDotNet.Configs;
+﻿using Benchmark.Classes;
 using BenchmarkDotNet.Running;
-using System;
-using System.Numerics;
 using System.Text.RegularExpressions;
 
 //TO USE THIS PROJECT, YOU MUST RUN IT IN RELEASE MODE 
@@ -17,13 +13,33 @@ using System.Text.RegularExpressions;
 //RUN THIS IN RELEASE MODE AND SELECT THE BENCHMARK FROM THE LIST
 BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
 
+//var k = 0;
 
 //Regex _pipesMatchRegex = new Regex(@"\|([^\|]+)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
-//Regex _pipesMatchRegex = new Regex(@"\|(.*?)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
+////Regex _pipesMatchRegex = new Regex(@"\|(.*?)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
 //var wordsWithin = new List<string>();
 
 //var what = "|makis test| omg vs |takis rest|";
 //wordsWithin.AddRange(_pipesMatchRegex.Matches(what).Select(m => m.Value.Replace("|", "")));
+
+//var translated = new List<string>
+//{
+//    "test 1",
+//    "test 2"
+//};
+
+//var TranslationCodeDelimiterPattern = @"\|([^\|]+)\|";
+//var translation = Regex.Replace(what, TranslationCodeDelimiterPattern, m => wordsWithin[k++]);
+//var test = what;
+
+//for (int i = 0; i < wordsWithin.Count; i++)
+//{
+//    var code = wordsWithin[i];
+//    var tCode = translated[i];
+//    test = test.Replace(code, tCode);
+//}
+
+//test = test.Replace("|", "");
 
 //Console.WriteLine();
 

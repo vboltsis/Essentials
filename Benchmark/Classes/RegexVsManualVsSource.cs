@@ -5,14 +5,14 @@ namespace Benchmark.Classes;
 /*
 |                      Method |                Input |      Mean |    Error |   StdDev | Rank |   Gen0 | Allocated |
 |---------------------------- |--------------------- |----------:|---------:|---------:|-----:|-------:|----------:|
-|           ExtractWordsRegex | |maki(...)rest| [32] | 301.44 ns | 5.909 ns | 6.323 ns |    3 | 0.0725 |     912 B |
-|          ExtractWordsManual | |maki(...)rest| [32] |  41.86 ns | 0.750 ns | 1.099 ns |    1 | 0.0147 |     184 B |
-| ExtractWordsSourceGenerator | |maki(...)rest| [32] | 288.41 ns | 5.681 ns | 7.584 ns |    2 | 0.0725 |     912 B |
+|           ExtractWordsRegex | |maki(...)rest| [32] | 245.27 ns | 4.365 ns | 4.083 ns |    2 | 0.0663 |     832 B |
+|          ExtractWordsManual | |maki(...)rest| [32] |  49.93 ns | 1.009 ns | 1.571 ns |    1 | 0.0178 |     224 B |
+| ExtractWordsSourceGenerator | |maki(...)rest| [32] | 248.26 ns | 4.877 ns | 6.167 ns |    2 | 0.0663 |     832 B |
  */
 
 [RankColumn]
 [MemoryDiagnoser]
-public partial class RegexVsSpan
+public partial class RegexVsManualVsSource
 {
     private const char _pipe = '|';
 
@@ -62,4 +62,3 @@ public partial class RegexVsSpan
         return _pipesMatch().Matches(Input).Select(x => x.Value).ToArray();
     }
 }
-
