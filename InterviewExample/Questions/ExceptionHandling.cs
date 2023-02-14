@@ -10,7 +10,7 @@ public class ExceptionHandling
         }
         catch (Exception ex)
         {
-            //throw ex resets the stack trace Coming from Method 1 and propogates it to the caller(Main)
+            //throw ex resets the stack trace Coming from Method 1 and propagates it to the caller(Main)
             throw ex;
         }
     }

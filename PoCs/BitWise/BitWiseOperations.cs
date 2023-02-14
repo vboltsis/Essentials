@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Numerics;
+
 namespace PoCs.BitWise;
 
-public class BitWiseOperations
+public static class BitWiseOperations
 {
     public static void TestFruits()
     {
@@ -23,6 +25,13 @@ public class BitWiseOperations
 
         bananaApple &= Fruits.Banana;
 
+        var isSubset = bananaApple.IsSubsetOf(Fruits.Apple | Fruits.Banana | Fruits.Orange);
+        var isSubset2 = bananaApple.IsSubsetOf(Fruits.Banana | Fruits.Orange);
+        Console.WriteLine(isSubset);
+
+        var mango = Fruits.Mango;
+        mango |= Fruits.Banana;
+
         Console.ReadLine();
     }
 
@@ -40,6 +49,11 @@ public class BitWiseOperations
     {
         fruits &= ~fruit;
     }
+
+    public static bool IsSubsetOf(this Fruits fruits, Fruits other)
+    {
+        return other.HasFlag(fruits);
+    }
 }
 
 [Flags]
@@ -55,3 +69,4 @@ public enum Fruits : long
     Mango = 1 << 7, //128
     Apricot = 1 << 8 //256
 }
+
