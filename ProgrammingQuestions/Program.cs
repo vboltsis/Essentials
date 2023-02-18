@@ -313,6 +313,47 @@ In short, threading is a way to run multiple tasks at the same time,
 while async/await is a way to run a single task in a non-blocking way.
  */
 
+/* 20. What are Green threads
+Green threads are a type of lightweight threads that are scheduled and managed by a user-space library or language runtime,
+rather than the operating system's kernel.
+Unlike kernel threads, which are native to the operating system and rely on the kernel for scheduling and management,
+green threads can be created and managed entirely within user-space.
+
+Green threads offer several advantages over traditional kernel threads,
+including the ability to run on a single core, lighter weight context switching,
+and the ability to avoid the overhead associated with creating and managing threads in the operating system.
+However, because green threads rely on cooperative scheduling, they cannot take advantage of multiple cores,
+and they can also block the entire process if one green thread blocks.
+
+In general, green threads are used in situations where a large number of lightweight,
+cooperative tasks need to be scheduled and managed efficiently,
+such as in server applications where a large number of connections need to be handled simultaneously. 
+They are also used in scripting languages and other environments where the overhead of creating
+and managing kernel threads would be prohibitive.
+ */
+
+/* 21. Ways to do zero downtime deployments
+Deployment across multiple instances: By deploying the new version of the software to multiple instances,
+you can gradually shift traffic from the old instances to the new ones.
+This way, you can ensure that there is no single point of failure and that users are not impacted by the deployment.
+
+Use blue-green deployment: Blue-green deployment involves having two instances of the application running simultaneously,
+one in the "blue" state and one in the "green" state. You can deploy the new version of the software to the green instance,
+test it, and then switch traffic over to it, making it the new blue instance.
+
+Use a load balancer: A load balancer can help distribute traffic between multiple instances,
+making it easy to redirect traffic during a deployment.
+You can also use a load balancer to perform health checks on instances and redirect traffic away from instances
+that are not functioning properly.
+
+Implement versioning: Implement versioning in your code so that different versions of the software can coexist
+and be deployed to different instances.
+This allows you to gradually phase out old versions of the software as you deploy new ones.
+
+Use feature flags: Feature flags allow you to roll out new features gradually by only enabling them for a subset of users.
+This allows you to deploy new software versions with confidence, knowing that you can quickly roll back changes if necessary.
+ */
+
 //Cool links
 //https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
 //https://github.com/Maoni0/mem-doc/blob/master/doc/.NETMemoryPerformanceAnalysis.md
