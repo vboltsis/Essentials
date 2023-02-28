@@ -55,3 +55,7 @@ long population = 8000000000;
 long scandals = 999999999;
 
 Console.WriteLine();
+
+//sortedDictionary - sortedList
+//sortedSet
+//stack - queue

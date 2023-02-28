@@ -37,10 +37,8 @@ public class MemoryMetricsService : IMemoryMetricsService
         var freeMemoryParts = lines[0].Split("=", StringSplitOptions.RemoveEmptyEntries);
         var totalMemoryParts = lines[1].Split("=", StringSplitOptions.RemoveEmptyEntries);
 
-        var metrics = new MemoryMetrics();
-        metrics.Total = Math.Round(double.Parse(totalMemoryParts[1]) / 1024, 0);
-        metrics.Free = Math.Round(double.Parse(freeMemoryParts[1]) / 1024, 0);
-        metrics.Used = metrics.Total - metrics.Free;
+        var metrics = new MemoryMetrics(Math.Round(double.Parse(totalMemoryParts[1]) / 1024, 0),
+            Math.Round(double.Parse(freeMemoryParts[1]) / 1024, 0));
 
         return metrics;
     }
@@ -63,10 +61,7 @@ public class MemoryMetricsService : IMemoryMetricsService
         var lines = output.Split("\n");
         var memory = lines[1].Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-        var metrics = new MemoryMetrics();
-        metrics.Total = double.Parse(memory[1]);
-        metrics.Used = double.Parse(memory[2]);
-        metrics.Free = double.Parse(memory[3]);
+        var metrics = new MemoryMetrics(double.Parse(memory[1]), double.Parse(memory[2]));
 
         return metrics;
     }
