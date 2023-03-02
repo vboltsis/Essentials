@@ -3,7 +3,7 @@
 [MemoryDiagnoser]
 public class CheckIfNumberIsOdd
 {
-    [Params(1000, 10_000, 100_000)]
+    [Params(100_000, 1_000_000)]
     public int _number;
     private int[] _numbers { get; set; }
 
