@@ -354,6 +354,133 @@ Use feature flags: Feature flags allow you to roll out new features gradually by
 This allows you to deploy new software versions with confidence, knowing that you can quickly roll back changes if necessary.
  */
 
+/* 22. What is the difference between pinned object heap and frozen object heap in .NET
+In .NET, the terms "pinned object heap" and "frozen object heap" refer to two different memory regions
+that serve different purposes.
+
+Pinned Object Heap:
+The Pinned Object Heap is a region of memory in the .NET runtime that is used to store objects that have been explicitly pinned
+using the GCHandle struct. Pinning is a technique used to prevent the garbage collector from moving an object in memory,
+which can be necessary for interoperability with unmanaged code or for optimizing performance in certain scenarios.
+When an object is pinned, its memory address is fixed, and the garbage collector will not attempt to move it.
+
+Frozen Object Heap:
+The Frozen Object Heap is a memory region used by the .NET runtime to store objects
+that are not expected to change during the lifetime of the application.
+This memory region is used by the runtime for application domain unloading,
+as it allows the runtime to simply discard the entire memory region
+without having to scan the objects for potential references to other objects in the application domain.
+
+In summary, the main difference between the Pinned Object Heap and the Frozen Object Heap
+is that the former is used for objects that must be prevented from moving in memory,
+while the latter is used for objects that are not expected to change and can be discarded as a whole
+when the application domain is unloaded.
+
+In terms of performance, neither the Pinned Object Heap nor the Frozen Object Heap is inherently better than the other.
+They serve different purposes and are optimized for different scenarios.
+*/
+
+/* 23. What is the difference between loader heap and process heap in .NET
+In .NET, the terms "Loader Heap" and "Process Heap" refer to two different memory regions used by the .NET runtime.
+
+Loader Heap:
+The Loader Heap is a region of memory used by the .NET runtime to store data structures
+and code required for loading and executing managed assemblies.
+This memory region is created when the .NET runtime is loaded into a process
+and is used to store a variety of data structures, including the module table, type table, method table, and static field data.
+
+Process Heap:
+The Process Heap, also known as the default heap,
+is a region of memory used by the operating system to allocate memory for the application.
+When an application requests memory using functions such as malloc or new,
+the operating system uses the Process Heap to fulfill the request.
+
+In .NET, the garbage collector manages the memory used by managed objects,
+which are allocated on the Process Heap.
+The Process Heap is also used for other runtime data structures, such as thread stacks and thread-local storage.
+
+In summary, the Loader Heap is a memory region used by the .NET runtime to store data structures
+and code required for loading and executing managed assemblies,
+while the Process Heap is a memory region used by the operating system to allocate memory
+for the application and is used to store all other objects allocated by the application. 
+*/
+
+/* 24. How is Gen 0 related with the process heap and the loader heap in .NET
+In .NET, the garbage collector manages memory by dividing it into several generations.
+The first generation, Gen 0, is the youngest generation and is where newly allocated objects are initially placed.
+Gen 0 is related to both the process heap and the loader heap in the following ways:
+
+Process Heap:
+When an object is allocated in .NET, it is allocated on the process heap,
+which is a region of memory used by the operating system to allocate memory for the application.
+The garbage collector manages the process heap by periodically running garbage collection,
+which identifies objects that are no longer in use and frees up their memory.
+
+Gen 0 objects are allocated on the process heap, along with objects in the other generations.
+When a Gen 0 collection occurs, the garbage collector only scans objects in Gen 0 for garbage collection.
+This makes Gen 0 collections faster than collections for objects in older generations.
+
+Loader Heap:
+The loader heap is a region of memory used by the .NET runtime to store data structures
+and code required for loading and executing managed assemblies.
+When an assembly is loaded into the .NET runtime, its metadata is loaded into the loader heap.
+
+Gen 0 collections can also impact the loader heap, as they can trigger the loading of new metadata into the heap.
+When a new object is allocated on the process heap,
+its type information is loaded into the loader heap, which can cause the heap to grow.
+When a Gen 0 collection occurs, any unused type information may be removed from the loader heap, which can reduce its size.
+
+In summary, Gen 0 objects are allocated on the process heap,
+and Gen 0 collections only scan objects in Gen 0 for garbage collection.
+The loader heap is used by the .NET runtime to store data structures
+and code required for loading and executing managed assemblies,
+and Gen 0 collections can impact the loader heap by triggering the loading of new metadata into the heap.
+ */
+
+/* 25. What is the difference between a managed and unmanaged heap in .NET
+In .NET, the terms "managed heap" and "unmanaged heap" refer to two different memory regions used by the .NET runtime.
+
+Managed Heap:
+The managed heap is a region of memory used by the .NET runtime to store managed objects.
+Managed objects are objects whose lifetime is managed by the .NET runtime,
+and they are allocated on the managed heap using the new keyword.
+
+Unmanaged Heap:
+The unmanaged heap is a region of memory used by the .NET runtime to store unmanaged objects.
+Unmanaged objects are objects whose lifetime is not managed by the .NET runtime,
+and they are allocated on the unmanaged heap using the malloc function.
+
+In summary, the managed heap is a region of memory used by the .NET runtime to store managed objects,
+while the unmanaged heap is a region of memory used by the .NET runtime to store unmanaged objects.
+*/
+
+/* 26. What is the difference between a managed and unmanaged stack in .NET
+In .NET, the terms "managed stack" and "unmanaged stack" refer to two different types of stacks that are used by the runtime.
+
+Managed Stack:
+The managed stack is a region of memory used by the .NET runtime to store information related to the execution of managed code.
+The managed stack is used to store method parameters, local variables,
+and other information related to the execution of managed code.
+When a method is called, a new frame is created on the managed stack to store information related to that method's execution.
+
+The managed stack is managed by the .NET runtime and is subject to automatic memory management through the garbage collector.
+
+Unmanaged Stack:
+The unmanaged stack, also known as the native stack, is a region of memory used by native code executed by the .NET runtime.
+When the .NET runtime interoperates with unmanaged code,
+such as a C++ library, the unmanaged stack is used to store method parameters,
+local variables, and other information related to the execution of that code.
+
+Unlike the managed stack, the unmanaged stack is not managed by the .NET runtime
+and is not subject to automatic memory management through the garbage collector.
+Instead, the responsibility for managing the unmanaged stack lies with the developer of the native code.
+
+In summary, the managed stack is used to store information related to the execution of managed code,
+while the unmanaged stack is used to store information related to the execution of native code.
+The managed stack is managed by the .NET runtime and is subject to automatic memory management through the garbage collector,
+while the unmanaged stack is not managed by the .NET runtime and is the responsibility of the developer of the native code.
+*/
+
 //Cool links
 //https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
 //https://github.com/Maoni0/mem-doc/blob/master/doc/.NETMemoryPerformanceAnalysis.md
