@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
     <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.2" />
+    <PackageReference Include="MessagePack" Version="2.4.59" />
   </ItemGroup>
 
 </Project>

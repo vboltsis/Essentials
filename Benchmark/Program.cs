@@ -1,5 +1,9 @@
 ﻿using Benchmark.Classes;
 using BenchmarkDotNet.Running;
+using MessagePack;
+using MessagePack.Resolvers;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 
 //TO USE THIS PROJECT, YOU MUST RUN IT IN RELEASE MODE 
@@ -12,6 +16,36 @@ using System.Text.RegularExpressions;
 
 //RUN THIS IN RELEASE MODE AND SELECT THE BENCHMARK FROM THE LIST
 BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
+
+//var sampleData = new MyClass[100_000_000];
+//for (int i = 0; i < sampleData.Length; i++) {
+//    sampleData[i] = new MyClass {
+//        MyBool = true,
+//        MyDate = DateTime.Now.AddMinutes(1),
+//        MyInt = i,
+//        MyString = $"Hello World{i}"
+//    };
+//}
+////write  the following 3 lines of code to execute in parallel for ever
+
+//var options = MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4BlockArray);
+
+//sampleData.AsParallel().ForAll(x => {
+
+//    var data = MessagePackSerializer.Serialize(sampleData, options);
+
+//    //get size of sampleData in MB
+//    var size = data.Length / (1024m * 1024m);
+//});
+
+//var options = MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4BlockArray);
+
+//var data = MessagePackSerializer.Serialize(sampleData, options);
+
+////get size of sampleData in MB
+//var size = data.Length / (1024m * 1024m);
+//Console.WriteLine($"size of compressed: {size}MB");
+
 
 //var k = 0;
 
