@@ -28,23 +28,32 @@ for some odd interface cases you can find more on: https://learn.microsoft.com/e
 /*3. Differences between stack and heap memory allocations
 reference: https://docs.microsoft.com/en-us/archive/blogs/ericlippert/the-stack-is-an-implementation-detail-part-two
 
-The idea is that there is a large block of memory reserved for instances of reference types. This block of memory can have “holes” – some of the memory is associated with “live” objects,
-and some of the memory is free for use by newly created objects. Ideally though we want to have all the allocated memory bunched together and a large section of “free” memory at the top.
+The idea is that there is a large block of memory reserved for instances of reference types.
+This block of memory can have “holes” – some of the memory is associated with “live” objects,
+and some of the memory is free for use by newly created objects.
+Ideally though we want to have all the allocated memory bunched together and a large section of “free” memory at the top.
 
-If we’re in that situation when new memory is allocated then the “high water mark” is bumped up, eating up some of the previously “free” portion of the block.
-The newly-reserved memory is then usable for the reference type instance that has just been allocated. That is extremely cheap; just a single pointer move,
+If we’re in that situation when new memory is allocated then the “high water mark” is bumped up,
+eating up some of the previously “free” portion of the block.
+The newly-reserved memory is then usable for the reference type instance that has just been allocated.
+That is extremely cheap; just a single pointer move,
 plus zeroing out the newly reserved memory if necessary.
 
-If we have holes then we can maintain a “free list” – a linked list of holes. We can then search the free list for a hole of appropriate size and fill it in.
+If we have holes then we can maintain a “free list” – a linked list of holes.
+We can then search the free list for a hole of appropriate size and fill it in.
 This is a bit more expensive since there is a list search. We want to avoid this suboptimal situation if possible.
 
-When a garbage collection is performed there are three phases: mark, sweep and compact. In the “mark” phase, we assume that everything in the heap is “dead”.
-The CLR knows what objects were “guaranteed alive” when the collection started, so those guys are marked as alive. Everything they refer to is marked as alive, and so on,
-until the transitive closure of live objects are all marked. In the “sweep” phase, all the dead objects are turned into holes. In the “compact” phase,
+When a garbage collection is performed there are three phases: mark, sweep and compact.
+In the “mark” phase, we assume that everything in the heap is “dead”.
+The CLR knows what objects were “guaranteed alive” when the collection started, so those guys are marked as alive.
+Everything they refer to is marked as alive, and so on,
+until the transitive closure of live objects are all marked.
+In the “sweep” phase, all the dead objects are turned into holes. In the “compact” phase,
 the block is reorganized so that it is one contiguous block of live memory, free of holes.
 
 The CLR collector is generational. Objects start off in the “short lived” heap.
-If they survive they eventually move to the “medium lived” heap, and if they survive there long enough, they move to the “long lived” heap.
+If they survive they eventually move to the “medium lived” heap, and if they survive there long enough,
+they move to the “long lived” heap.
 The GC runs very often on the short lived heap and very seldom on the long lived heap;
 the idea is that we do not want to have the expense of constantly re-checking a long-lived object to see if it is still alive.
 But we also want short-lived objects to be reclaimed swiftly.
@@ -77,13 +86,36 @@ which just passes the ref on up the stack. The local is going to be alive anyway
 aside
 {
 A few asides:
-This explains why you cannot make a “ref int” field. If you could then you could store a ref to the value of a short-lived local inside a long-lived object. Were that legal then using the stack as a memory management technique would no longer be a viable optimization; value types would be just another kind of reference type and would have to be garbage collected.
-Anonymous function closures and iterator block closures are implemented behind-the-scenes by turning locals and formal parameters into fields. So now you know why it is illegal to capture a ref or out formal parameter in an anonymous function or iterator block; doing so would not be a legal field.
-Of course we do not want to have ugly and bizarre rules in the language like “you can close over any local or value parameter but not a ref or out parameter”. But because we want to be able to get the optimization of putting value types on the stack, we have chosen to put this odd restriction into the language. Design is, as always, the art of finding compromises.
-Finally, the CLR does allow “ref return types”; you could in theory have a method “ref int M() { … }” that returned a reference to an integer variable. If for some bizarre reason we ever decided to allow that in C#, we’d have to fix up the compiler and verifier so that they ensured that it was only possible to return refs to variables that were known to be on the heap, or known to be “lower down” on the stack than the callee.
+This explains why you cannot make a “ref int” field.
+If you could then you could store a ref to the value of a short-lived local inside a long-lived object.
+Were that legal then using the stack as a memory management technique would no longer be a viable optimization;
+value types would be just another kind of reference type and would have to be garbage collected.
+Anonymous function closures and iterator block closures are implemented behind-the-scenes
+by turning locals and formal parameters into fields.
+So now you know why it is illegal to capture a ref or out formal parameter in an anonymous function or iterator block;
+doing so would not be a legal field.
+Of course we do not want to have ugly and bizarre rules in the language like
+“you can close over any local or value parameter but not a ref or out parameter”.
+But because we want to be able to get the optimization of putting value types on the stack,
+we have chosen to put this odd restriction into the language. Design is, as always, the art of finding compromises.
+Finally, the CLR does allow “ref return types”;
+you could in theory have a method “ref int M() { … }” that returned a reference to an integer variable.
+If for some bizarre reason we ever decided to allow that in C#,
+we’d have to fix up the compiler and verifier so that they ensured that it was only possible
+to return refs to variables that were known to be on the heap, or known to be “lower down” on the stack than the callee.
 }
-So there you go. Local variables of value type go on the stack because they can. They can because (1) “normal” locals have strict ordering of lifetime, and (2) value types are always copied by value and (3) it is illegal to store a reference to a local anywhere that could live longer than the local. By contrast, reference types have a lifetime based on the number of living references, are copied by reference, and those references can be stored anywhere. The additional flexibility that reference types give you comes at the cost of a much more complex and expensive garbage collection strategy.
-But again, all of this is an implementation detail. Using the stack for locals of value type is just an optimization that the CLR performs on your behalf. The relevant feature of value types is that they have the semantics of being copied by value, not that sometimes their deallocation can be optimized by the runtime.
+So there you go. Local variables of value type go on the stack because they can.
+They can because (1) “normal” locals have strict ordering of lifetime,
+and (2) value types are always copied by value 
+and (3) it is illegal to store a reference to a local anywhere that could live longer than the local.
+By contrast, reference types have a lifetime based on the number of living references,
+are copied by reference, and those references can be stored anywhere.
+The additional flexibility that reference types give you comes at the cost of a much more complex
+and expensive garbage collection strategy.
+But again, all of this is an implementation detail.
+Using the stack for locals of value type is just an optimization that the CLR performs on your behalf.
+The relevant feature of value types is that they have the semantics of being copied by value,
+not that sometimes their deallocation can be optimized by the runtime.
  */
 
 /*4. What is a Garbage Collector
