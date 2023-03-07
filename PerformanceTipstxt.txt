@@ -1,0 +1,6 @@
+// C# 3.0 Anonymous Type (ReferenceType => Heap allocation)
+var qry1 = l.Select(emp => new { FirstLetter = emp.Name[0], emp.Name.Length });
+
+
+// C# 7.0 Value Tuple (ValueType)
+var qry2 = l.Select(emp => (FirstLetter: emp.Name[0], emp.Name.Length));
