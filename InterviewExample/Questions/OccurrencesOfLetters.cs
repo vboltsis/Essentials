@@ -2,21 +2,21 @@
 
 namespace InterviewExample;
 
-public class OccurencesOfLetters
+public class OccurrencesOfLetters
 {
-    public static Dictionary<char,int> GetOccurences(string text)
+    public static Dictionary<char,int> GetOccurrences(string text)
     {
         var dictionary = new Dictionary<char, int>();
 
-        foreach (var c in text)
+        foreach (var character in text)
         {
-            if (dictionary.TryGetValue(c, out var value))
+            if (dictionary.TryGetValue(character, out var value))
             {
-                dictionary[c] = value + 1;
+                dictionary[character] = value + 1;
             }
             else
             {
-                dictionary.Add(c, 1);
+                dictionary.Add(character, 1);
             }
         }
 

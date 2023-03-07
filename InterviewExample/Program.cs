@@ -51,7 +51,7 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 
 //OCCURENCES OF LETTERS
 
-//OccurencesOfLetters.GetOccurences("Banana");
+//OccurrencesOfLetters.GetOccurrences("Banana");
 
 //----------------------------------------------------------------------------
 
@@ -62,6 +62,10 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 //----------------------------------------------------------------------------
 
 //SORT COMMA SEPARED INTEGERS
-var numbers = "343,535,449,352,536,493,350,352,355,625,582,627,583,351,436,437,439,643,460,644,441,440,442,631,2797,2798,2799,4072,4073,4074,4075,4120,4068,4069,4070,4071,4119,4064,4110,4117,4065,4066,4116,4067,4118,4108,4115,4106,4113,4104,4111,4105,4112,4107,4114,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4109,4109";
-var result = SortCommaSeparatedIntegers.Sort(numbers);
-Console.WriteLine(result);
+//var numbers = "343,535,449,352,536,493,350,352,355,625,582,627,583,351,436,437,439,643,460,644,441,440,442,631,2797,2798,2799,4072,4073,4074,4075,4120,4068,4069,4070,4071,4119,4064,4110,4117,4065,4066,4116,4067,4118,4108,4115,4106,4113,4104,4111,4105,4112,4107,4114,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4109,4109";
+//var result = SortCommaSeparatedIntegers.Sort(numbers);
+//Console.WriteLine(result);
+
+//FIND DUPLICATES
+FindDuplicateNumbersInTextFile.FindDuplicates();
+

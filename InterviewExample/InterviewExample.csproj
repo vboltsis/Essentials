@@ -10,4 +10,10 @@
     <Folder Include="PdfOrText\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Numbers.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
