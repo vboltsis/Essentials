@@ -24,12 +24,12 @@ public class IndexOfVsContainsString {
     };
 
     [Benchmark]
-    public string[] IndexOf() {
-        return text.Where(static x => x.IndexOf("testb") != -1).ToArray();
+    public int IndexOf() {
+        return text.Where(static x => x.IndexOf("testb", StringComparison.OrdinalIgnoreCase) != -1).Count();
     }
 
     [Benchmark]
-    public string[] Contains() {
-        return text.Where(static x => x.Contains("testb")).ToArray();
+    public int Contains() {
+        return text.Where(static x => x.Contains("testb", StringComparison.OrdinalIgnoreCase)).Count();
     }
 }
