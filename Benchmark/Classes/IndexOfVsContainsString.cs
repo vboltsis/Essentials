@@ -1,10 +1,10 @@
 ﻿namespace Benchmark.Classes;
 
 /*
-|   Method |     Mean |   Error |  StdDev |   Gen0 | Allocated |
-|--------- |---------:|--------:|--------:|-------:|----------:|
-|  IndexOf | 310.3 ns | 5.44 ns | 5.09 ns | 0.0119 |     152 B |
-| Contains | 138.9 ns | 0.99 ns | 0.77 ns | 0.0119 |     152 B |
+|   Method |     Mean |    Error |   StdDev |   Median |   Gen0 | Allocated |
+|--------- |---------:|---------:|---------:|---------:|-------:|----------:|
+|  IndexOf | 211.2 ns | 26.91 ns | 79.33 ns | 167.4 ns | 0.0038 |      48 B |
+| Contains | 193.0 ns | 20.72 ns | 60.12 ns | 158.2 ns | 0.0038 |      48 B |
  */
 
 [MemoryDiagnoser]
