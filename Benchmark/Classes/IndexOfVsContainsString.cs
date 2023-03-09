@@ -9,27 +9,44 @@
 
 [MemoryDiagnoser]
 public class IndexOfVsContainsString {
-    private static string[] text = new string[] {
-        "test1",
-        "test2",
-        "test3",
-        "test4",
-        "test5",
-        "testb6",
-        "test7",
-        "test8",
-        "testb9",
-        "test10",
-        "testb11",
-    };
+
+    [Params(1000, 10_000)]
+    public int Number;
+
+    [GlobalSetup]
+    public void Setup() {
+        text = new string[Number];
+        var random = new Random(100);
+
+        for (int i = 0; i < text.Length; i++) {
+            if (i % random.Next(2, 4) == 0) {
+                text[i] = "test" + i;
+            }
+            else {
+                text[i] = "TEST" + i;
+            }
+        }
+    }
+
+    private string[] text;
 
     [Benchmark]
-    public int IndexOf() {
-        return text.Where(static x => x.IndexOf("testb", StringComparison.OrdinalIgnoreCase) != -1).Count();
+    public int IndexOfCaseInsensitive() {
+        return text.Where(static x => x.IndexOf("test9", StringComparison.OrdinalIgnoreCase) != -1).Count();
     }
 
     [Benchmark]
-    public int Contains() {
-        return text.Where(static x => x.Contains("testb", StringComparison.OrdinalIgnoreCase)).Count();
+    public int ContainsCaseInsensitive() {
+        return text.Where(static x => x.Contains("test9", StringComparison.OrdinalIgnoreCase)).Count();
+    }
+
+    [Benchmark]
+    public int IndexOfCaseSensitive() {
+        return text.Where(static x => x.IndexOf("test9") != -1).Count();
+    }
+
+    [Benchmark]
+    public int ContainsCaseSensitive() {
+        return text.Where(static x => x.Contains("test9")).Count();
     }
 }
