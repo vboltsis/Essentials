@@ -31,11 +31,11 @@ public class Compressions
     //    data = MessagePackSerializer.Serialize(sampleData, options);
     //}
 
-    [Benchmark]
-    public byte[] CompressMessagePack() {
-        return MessagePackSerializer.Serialize(deserializedData,
-            MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4BlockArray));
-    }
+    //[Benchmark]
+    //public byte[] CompressMessagePack() {
+    //    return MessagePackSerializer.Serialize(deserializedData,
+    //        MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4BlockArray));
+    //}
 
 
     [Benchmark]
@@ -48,7 +48,56 @@ public class Compressions
             brotliStream.Write(inputData, 0, inputData.Length);
         }
         return outputStream.ToArray();
-    } 
+    }
+
+    [Benchmark]
+    public byte[] CompressBrotliFastest()
+    {
+        byte[] inputData = Encoding.UTF8.GetBytes(deserializedData);
+        using var outputStream = new MemoryStream();
+        using (var brotliStream = new BrotliStream(outputStream, CompressionLevel.Fastest))
+        {
+            brotliStream.Write(inputData, 0, inputData.Length);
+        }
+        return outputStream.ToArray();
+    }
+
+    [Benchmark]
+    public byte[] CompressDeflateOptimal()
+    {
+        byte[] inputData = Encoding.UTF8.GetBytes(deserializedData);
+        using var outputStream = new MemoryStream();
+        using (var deflateStream = new DeflateStream(outputStream, CompressionLevel.Optimal))
+        {
+            deflateStream.Write(inputData, 0, inputData.Length);
+        }
+        return outputStream.ToArray();
+    }
+
+    [Benchmark]
+    public byte[] CompressDeflateFastest()
+    {
+        byte[] inputData = Encoding.UTF8.GetBytes(deserializedData);
+        using var outputStream = new MemoryStream();
+        using (var deflateStream = new DeflateStream(outputStream, CompressionLevel.Fastest))
+        {
+            deflateStream.Write(inputData, 0, inputData.Length);
+        }
+        return outputStream.ToArray();
+    }
+
+    [Benchmark]
+    public byte[] CompressDeflateSmallestSize()
+    {
+        byte[] inputData = Encoding.UTF8.GetBytes(deserializedData);
+        using var outputStream = new MemoryStream();
+        using (var deflateStream = new DeflateStream(outputStream, CompressionLevel.SmallestSize))
+        {
+            deflateStream.Write(inputData, 0, inputData.Length);
+        }
+        return outputStream.ToArray();
+    }
+
     //[Benchmark]
     //public MyClass[] Decompress() {
     //    return MessagePackSerializer.Deserialize<MyClass[]>(data,
