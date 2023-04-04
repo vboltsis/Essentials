@@ -4,9 +4,21 @@ using System.Text;
 
 namespace Benchmark.Classes;
 
+/*
+|                      Method |      Mean |     Error |    StdDev | Rank | Code Size |   Gen0 |   Gen1 | Allocated |
+|---------------------------- |----------:|----------:|----------:|-----:|----------:|-------:|-------:|----------:|
+|         CompressMessagePack |  5.162 us | 0.0987 us | 0.0923 us |    1 |   2,711 B | 0.1602 |      - |   1.98 KB |
+|       CompressBrotliOptimal | 71.055 us | 1.3917 us | 2.2867 us |    6 |   2,623 B | 1.4648 |      - |  19.29 KB |
+|       CompressBrotliFastest | 19.843 us | 0.3592 us | 0.3360 us |    2 |   2,626 B | 1.8005 | 0.0916 |  22.43 KB |
+|      CompressDeflateOptimal | 44.473 us | 0.8880 us | 2.0403 us |    4 |   3,651 B | 1.5869 | 0.0610 |  19.52 KB |
+|      CompressDeflateFastest | 24.119 us | 0.2816 us | 0.2496 us |    3 |   3,654 B | 1.6174 | 0.0916 |  19.84 KB |
+| CompressDeflateSmallestSize | 64.939 us | 0.4318 us | 0.3828 us |    5 |   3,654 B | 1.5869 |      - |  19.46 KB |
+
+ */
+
 [RankColumn]
 [MemoryDiagnoser]
-[DisassemblyDiagnoser]
+//[DisassemblyDiagnoser]
 public class Compressions
 {
     //private byte[] data;
@@ -31,12 +43,12 @@ public class Compressions
     //    data = MessagePackSerializer.Serialize(sampleData, options);
     //}
 
-    //[Benchmark]
-    //public byte[] CompressMessagePack() {
-    //    return MessagePackSerializer.Serialize(deserializedData,
-    //        MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4BlockArray));
-    //}
-
+    [Benchmark]
+    public byte[] CompressMessagePack()
+    {
+        return MessagePackSerializer.Serialize(deserializedData,
+            MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4BlockArray));
+    }
 
     [Benchmark]
     public byte[] CompressBrotliOptimal()

@@ -7,6 +7,7 @@ using PoCs.Diffing;
 
 //BitWiseOperations.TestFruits();
 
+/*
 var what = TrimEncodeUrlName("Canoe/Kayak Sprint");
 var what2 = TrimEncodeUrlName2("Canoe/Kayak Sprint");
 
@@ -102,7 +103,39 @@ static string TrimEncodeUrlName2(string name)
 //America(Clubs)-- > America - Clubs
 // Canoe / Kayak Sprint-- > Canoe - Kayak - Sprint
 //U.S.A.  ->U - S - A
+ 
+ */
 
+
+//ITest test1 = new Test
+//{
+//    Age = 1
+//};
+
+//ITest test2 = new Test
+//{
+//    Age = 1
+//};
+
+//Console.WriteLine(test2.Equals(test1));
+//Console.WriteLine();
+
+//class Test : ITest
+//{
+//    public int Age { get; set; }
+//}
+
+//interface ITest
+//{
+//    int Age { get; set; }
+
+//    public bool Equals(ITest other)
+//    {
+//        if (other == null)
+//            return false;
+//        return other.Age == Age;
+//    }
+//}
 
 //var sampleData = new MyClass[100_000_000];
 //for (int i = 0; i < sampleData.Length; i++) {
