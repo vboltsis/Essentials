@@ -7,6 +7,32 @@ using PoCs.Diffing;
 
 //BitWiseOperations.TestFruits();
 
+//var tasks = new List<Task>(5);
+
+//for (int i = 0; i < 5; i++)
+//{
+//    //await ThrowMethod(i);
+//    tasks.Add(ThrowMethod(i));
+//}
+
+//await Task.WhenAll(tasks);
+
+//Console.WriteLine();
+
+//async Task ThrowMethod(int i)
+//{
+//    try
+//    {
+//        Console.WriteLine(i);
+//        await Task.Delay(1000);
+//        throw new Exception("Exception");
+//    }
+//    catch (Exception)
+//    {
+//        Console.WriteLine($"Exception: {i}");
+//    }
+//}
+
 /*
 var what = TrimEncodeUrlName("Canoe/Kayak Sprint");
 var what2 = TrimEncodeUrlName2("Canoe/Kayak Sprint");

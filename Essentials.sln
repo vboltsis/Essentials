@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "performance", "performance"
 		PerformanceTipstxt.txt = PerformanceTipstxt.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisPlayground", "RedisPlayground\RedisPlayground.csproj", "{48377EDA-C51A-42DA-988D-9C03D316E0D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{BB426D5D-8225-4422-9FDA-0C5A5BB2DAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB426D5D-8225-4422-9FDA-0C5A5BB2DAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB426D5D-8225-4422-9FDA-0C5A5BB2DAF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48377EDA-C51A-42DA-988D-9C03D316E0D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48377EDA-C51A-42DA-988D-9C03D316E0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48377EDA-C51A-42DA-988D-9C03D316E0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48377EDA-C51A-42DA-988D-9C03D316E0D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
