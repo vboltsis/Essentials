@@ -17,7 +17,7 @@ public class CheckIfSumPairExists
     //As the whole array is needed to be traversed only once.
     public static bool PairExists(int[] intArray, int sum)
     {
-        var numberSet = new HashSet<int>();
+        var numberSet = new HashSet<int>(intArray.Length);
         for (int i = 0; i < intArray.Length; ++i)
         {
             int temp = sum - intArray[i];
