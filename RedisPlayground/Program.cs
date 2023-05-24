@@ -4,9 +4,19 @@ using StackExchange.Redis;
 //FOR PORT 10001 USE THE COMMAND BELOW
 //docker run -p 10001:6379 -p 13333:8001 redis/redis-stack:latest
 
+//default redis port is 6379
 var conn = ConnectionMultiplexer.Connect("localhost:6379");
-//getting database instances of the redis  
+//getting database instance of the redis  
 IDatabase database = conn.GetDatabase();
+
+//await database.HashSetAsync("test1", new HashEntry[]
+//{
+//    new HashEntry(55, 77),
+//    new HashEntry(33, 11),
+//    new HashEntry(22, 99),
+//});
+
+var fiftyFive = long.TryParse(database.HashGet("test1", 55), out var version);
 
 var test = new Moschato { Name = "Moschato", Age = 420 };
 await database.StringSetAsync("test", JsonConvert.SerializeObject(test));
