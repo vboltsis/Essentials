@@ -1,6 +1,6 @@
 ﻿/*1. What is REST
 Representational state transfer is a software architectural style.
-It is a subset of the HTTP Protocol GET, POST, PUT, DELETE
+It is a subset of the HTTP Protocol GET, POST, PUT, DELETE, PATCH, OPTIONS
 It creates stateless APIs'. The receiver does not retain session state from previous requests.
 The term REST was introduced and defined in 2000 by Roy Fielding in his doctoral dissertation.
 */
