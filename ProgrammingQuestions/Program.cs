@@ -530,6 +530,69 @@ This can help ensure that the necessary data is already in memory,
 and that the database can retrieve it quickly without needing to perform additional reads. 
  */
 
+/* 28. What is the difference between a thread and a task in .NET
+ * 
+In the .NET framework, a thread and a task are both means of achieving multi-threading,
+but they are used in slightly different ways and for slightly different purposes.
+
+***Thread***
+In .NET, a thread represents an independent execution path.
+It's a lower-level construct for multi-threading that provides a lot of control but also requires more management.
+You typically use threads when you need a high degree of control over the threading process.
+When you create a new thread, it takes resources like memory to store the thread's local variables,
+stack, etc., which can be costly if not managed carefully.
+In addition, working directly with threads means you need to handle things like thread pooling and synchronization,
+which can add complexity to your code.
+
+***Task***
+Tasks, on the other hand, are part of the Task Parallel Library (TPL) and represent an asynchronous operation.
+Tasks are generally easier to work with and more high-level than threads.
+They are used to make writing concurrent and multi-threaded software easier.
+When you start a task, it uses a thread from the thread pool instead of creating a new one, 
+which is more efficient because it reuses threads and reduces the overhead of thread creation.
+Tasks also allow for easier composition of asynchronous operations thanks to methods like
+ContinueWith and WaitAll, and they can return a result through the Task<T> class.
+In addition, tasks have built-in support for cancellation through the CancellationToken mechanism and
+for handling exceptions.
+
+In the .NET Framework and .NET Core, tasks don't directly spawn threads, and threads don't directly run tasks.
+
+***Tasks and Threads***
+
+When you start a Task using Task.Run or Task.Factory.StartNew, the Task scheduler assigns it to run on a thread.
+However, by default, it doesn't create a new thread for each Task. Instead, it uses threads from a thread pool.
+This approach is more efficient because creating a new thread is a costly operation in terms of system resources.
+
+Moreover, a Task can move between threads over its lifetime,
+particularly when it involves I/O-bound operations (like reading a file or making a network request).
+While a Task is waiting for an I/O operation to complete, it can free up its thread to be used by another Task.
+This behavior allows for more efficient use of system resources than dedicating a single thread to a single operation from start to finish,
+especially for I/O-bound operations.
+
+***Threads Running Tasks***
+
+The .NET runtime manages threads and the assignment of tasks to threads.
+A developer generally doesn't have direct control over which thread runs a given Task (except in some advanced scenarios).
+Instead, when a Task is scheduled, it is placed on a queue.
+The thread pool then takes tasks from the queue and executes them on available threads.
+
+In summary, tasks and threads in .NET have a many-to-many relationship.
+A single task can be run on multiple threads over its lifetime (though not simultaneously),
+and a single thread can run multiple tasks (one after the other).
+The .NET runtime manages this process to optimize system resources.
+
+Here's a summary of the differences:
+Thread is a lower-level concept for multi-threading that provides more control but requires more management.
+Creating a new thread is a costly operation.
+
+Task is a higher-level concept that represents an asynchronous operation.
+It is more efficient because it uses a thread from the thread pool instead of creating a new one,
+and it offers easier ways to compose and manage asynchronous operations.
+
+As a general guideline, unless you specifically need the low-level control that threads offer,
+you should use tasks in modern .NET applications because of their efficiency and ease of use.
+*/
+
 //Cool links
 //https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
 //https://github.com/Maoni0/mem-doc/blob/master/doc/.NETMemoryPerformanceAnalysis.md
