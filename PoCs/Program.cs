@@ -1,11 +1,110 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using PoCs.BitWise;
 using PoCs.Diffing;
 
+//VALUE TYPES
+//int-datetime-decimal-long-short-bool-enum-struct-byte-sbyte-float-double-uint-ulong-ushort-char
+
+//REFERENCE TYPES
+//string-class-interface-object-dynamic
+
+//Date#Name#Age
+var dateText = "2023-01-01#Takis#25";
+var index = dateText.IndexOf('#');
+var date = DateTime.Parse(dateText.Substring(0, index));
+
+var span = dateText.AsSpan();
+var date2 = DateTime.Parse(span.Slice(0, index));
+
+
 //BitWiseOperations.TestFruits();
+Regex _pipesMatchRegex = new Regex(@"\|([^\|]+)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
+
+string testString = "This |test string| is designed to |demonstrate| how the |regex| works.|t|";
+string testString2 = "This |test string| is designed to |demonstrate| how the |regex works.";
+string testString3 = "This test string is designed to demonstrate how the |regex works.";
+string testString4 = "This test string is designed to demonstrate how the regex works.";
+
+//var what = await TranslateRegex(testString);
+//var result = await TranslateSubstrings(testString);
+
+//Console.WriteLine(what == result);
+
+//var result2 = ExtractSubstrings(testString2);
+//var result3 = ExtractSubstrings(testString3);
+//var result4 = ExtractSubstrings(testString4);
+
+//Console.WriteLine();
+//static List<string> ExtractSubstrings(string input)
+//{
+//    List<string> result = new List<string>();
+//    ReadOnlySpan<char> span = input.AsSpan();
+
+//    while (true)
+//    {
+//        int start = span.IndexOf('|');
+//        if (start == -1)
+//            break;
+//        span = span.Slice(start + 1);
+//        int end = span.IndexOf('|');
+//        if (end == -1)
+//            break;
+//        result.Add(span.Slice(0, end).ToString());
+//        span = span.Slice(end + 1);
+//    }
+
+//    return result;
+//}
+//async Task<string> TranslateRegex(string input)
+//{
+//    var matches = _pipesMatchRegex.Matches(input);
+//    var translations = new List<string>(matches.Count);
+
+//    foreach (var item in matches)
+//    {
+//        translations.Add("Takis");
+//    }
+
+//    var i = 0;
+//    return Regex.Replace(input, _pipesMatchRegex.ToString(), m => translations[i++]);
+//}
+
+//static async Task<string> TranslateSubstrings(string input)
+//{
+//    var span = input.AsMemory();
+//    var builder = new StringBuilder();
+
+//    int previousEnd = 0;
+
+//    while (true)
+//    {
+//        int start = span.Span.IndexOf('|');
+//        if (start == -1)
+//        {
+//            builder.Append(span.ToString());
+//            break;
+//        }
+//        builder.Append(span.Slice(0, start).ToString());
+//        span = span.Slice(start + 1);
+//        int end = span.Span.IndexOf('|');
+//        if (end == -1)
+//        {
+//            builder.Append("|" + span.ToString());
+//            break;
+//        }
+//        string toTranslate = span.Slice(0, end).ToString();
+//        string translation = "Takis";
+//        builder.Append(translation);
+//        span = span.Slice(end + 1);
+//    }
+
+//    return builder.ToString();
+//}
 
 //var tasks = new List<Task>(5);
 
