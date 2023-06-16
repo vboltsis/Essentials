@@ -2,7 +2,7 @@
 
 /*
 You are given a positive integer, the method should return the sum of all digits of that integer
-Example: 1234 -> 10
+Example: 1234 -> 1+2+3+4 --> 10
  */
 
 public class SumOfDigits
