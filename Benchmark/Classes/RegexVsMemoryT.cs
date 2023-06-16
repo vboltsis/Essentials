@@ -15,7 +15,6 @@ namespace Benchmark;
 |      TranslateRegex |   |Test| |vs| |Test| | 772.61 ns | 14.367 ns | 30.616 ns | 760.41 ns | 0.1564 |    1968 B | 
 */
 
-
 [MemoryDiagnoser]
 public class RegexVsMemoryT
 {
@@ -27,29 +26,29 @@ public class RegexVsMemoryT
     [Benchmark]
     public async Task<string> TranslateSubstrings()
     {
-        var span = input.AsMemory();
+        var memory = input.AsMemory();
         var builder = new StringBuilder();
 
         while (true)
         {
-            int start = span.Span.IndexOf('|');
+            int start = memory.Span.IndexOf('|');
             if (start == -1)
             {
-                builder.Append(span.ToString());
+                builder.Append(memory);
                 break;
             }
-            builder.Append(span.Slice(0, start).ToString());
-            span = span.Slice(start + 1);
-            int end = span.Span.IndexOf('|');
+            builder.Append(memory.Slice(0, start).ToString());
+            memory = memory.Slice(start + 1);
+            int end = memory.Span.IndexOf('|');
             if (end == -1)
             {
-                builder.Append("|" + span.ToString());
+                builder.Append("|" + memory.ToString());
                 break;
             }
-            string toTranslate = span.Slice(0, end).ToString();
+            string toTranslate = memory.Slice(0, end).ToString();
             string translation = "Takis";
             builder.Append(translation);
-            span = span.Slice(end + 1);
+            memory = memory.Slice(end + 1);
         }
 
         return builder.ToString();

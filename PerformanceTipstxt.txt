@@ -40,3 +40,6 @@ TIP 6
 TIP 7
 //Use ValueTask instead of Task if possible
 
+TIP 8
+
+//Use TrueForAll instead of All when checking lists (check AllVsTrueForAll.cs)

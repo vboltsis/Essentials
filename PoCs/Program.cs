@@ -13,22 +13,34 @@ using PoCs.Diffing;
 //REFERENCE TYPES
 //string-class-interface-object-dynamic
 
-//Date#Name#Age
-var dateText = "2023-01-01#Takis#25";
-var index = dateText.IndexOf('#');
-var date = DateTime.Parse(dateText.Substring(0, index));
-
-var span = dateText.AsSpan();
-var date2 = DateTime.Parse(span.Slice(0, index));
 
 
-//BitWiseOperations.TestFruits();
-Regex _pipesMatchRegex = new Regex(@"\|([^\|]+)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
+//var array = new int[5];
 
-string testString = "This |test string| is designed to |demonstrate| how the |regex| works.|t|";
-string testString2 = "This |test string| is designed to |demonstrate| how the |regex works.";
-string testString3 = "This test string is designed to demonstrate how the |regex works.";
-string testString4 = "This test string is designed to demonstrate how the regex works.";
+//var list = new List<int>(array.Length);
+
+//foreach (var item in array)
+//{
+//    Console.WriteLine(item);
+//}
+
+////Date#Name#Age
+//var dateText = "2023-01-01#Takis#25";
+//var index = dateText.IndexOf('#');
+//var date = DateTime.Parse(dateText.Substring(0, index));
+
+//var span = dateText.AsSpan();
+//var date2 = DateTime.Parse(span.Slice(0, index));
+
+
+////BitWiseOperations.TestFruits();
+//Regex _pipesMatchRegex = new Regex(@"\|([^\|]+)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
+
+//string testString = "This |test string| is designed to |demonstrate| how the |regex| works.|t|";
+//string testString2 = "This |test string| is designed to |demonstrate| how the |regex works.";
+//string testString3 = "This test string is designed to demonstrate how the |regex works.";
+//string testString4 = "This test string is designed to demonstrate how the regex works.";
+
 
 //var what = await TranslateRegex(testString);
 //var result = await TranslateSubstrings(testString);

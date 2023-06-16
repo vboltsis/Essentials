@@ -13,7 +13,14 @@ using System.Text;
 //BenchmarkRunner.Run<Enumerables>();
 
 //RUN THIS IN RELEASE MODE AND SELECT THE BENCHMARK FROM THE LIST
-BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
+//BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
+
+var types = typeof(Program).Assembly.GetTypes()
+    .Where(t => t.GetCustomAttributes(typeof(MemoryDiagnoserAttribute), false).Any())
+    .OrderBy(t => t.Name)
+    .ToArray();
+
+BenchmarkSwitcher.FromTypes(types).Run();
 
 
 //var what = "13ogntMvb33Qk6brT679HVw==.1685605589|#42";
