@@ -38,4 +38,15 @@ public class SumOfDigits
     {
         return number.ToString().Select(c => int.Parse(c.ToString())).Sum();
     }
+
+    public static int GetSumOfDigitsFor(int number)
+    {
+        var sum = 0;
+        for (var i = 0; i < number.ToString().Length; i++)
+        {
+            sum += int.Parse(number.ToString()[i].ToString());
+        }
+
+        return sum;
+    }
 }
