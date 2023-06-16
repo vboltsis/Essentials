@@ -67,7 +67,12 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 //Console.WriteLine(result);
 
 //FIND DUPLICATES
-FindDuplicateNumbersInTextFile.FindDuplicates();
+//FindDuplicateNumbersInTextFile.FindDuplicates();
+
+//FIND SUM OF DIGITS
+var sum = SumOfDigits.GetSumOfDigitsLinq2(123);
+var sum2 = SumOfDigits.GetSumOfDigitsLinq2(10);
+Console.WriteLine();
 
 static class Utils {
     static string Right(this string text, int length) {
