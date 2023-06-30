@@ -30,7 +30,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "performance", "performance"
 		PerformanceTipstxt.txt = PerformanceTipstxt.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisPlayground", "RedisPlayground\RedisPlayground.csproj", "{48377EDA-C51A-42DA-988D-9C03D316E0D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisPlayground", "RedisPlayground\RedisPlayground.csproj", "{48377EDA-C51A-42DA-988D-9C03D316E0D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansExample", "OrleansExample\OrleansExample.csproj", "{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,10 @@ Global
 		{48377EDA-C51A-42DA-988D-9C03D316E0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48377EDA-C51A-42DA-988D-9C03D316E0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48377EDA-C51A-42DA-988D-9C03D316E0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
