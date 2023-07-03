@@ -28,34 +28,51 @@ but they use all of their bits to represent the magnitude of the number and
 do not use the leftmost bit to represent the sign.
  */
 
-bool flag = true;
-bool result = false;
+//bool flag = true;
+//bool result = false;
 
-byte age = 35;
-byte maxSpeed = 255;
+//byte age = 35;
+//byte maxSpeed = 255;
 
-int count = 10;
-uint uCount = 15;
-int number = -5;
+//int count = 10;
+//uint uCount = 15;
+//int number = -5;
 
-char letter = 'A';
-char symbol = '#';
-int character = 'W';
+//char letter = 'A';
+//char symbol = '#';
+//int character = 'W';
 
-double pi = 3.14159;
-double average = 86.5;
+//double pi = 3.14159;
+//double average = 86.5;
 
-decimal price = 19.99m;
-decimal balance = 100.00m;
+//decimal price = 19.99m;
+//decimal balance = 100.00m;
 
-float temperature = 72.5f;
-float distance = 3.9f;
+//float temperature = 72.5f;
+//float distance = 3.9f;
 
-long population = 8000000000;
-long scandals = 999999999;
+//long population = 8000000000;
+//long scandals = 999999999;
+
+using Types;
+
+int number = 1;
+int? nullable = null;
+DateTime date = new DateTime(1111, 1, 1);
+string text = "1";
+List<int> list = new List<int> { 1, 1 };
+Person person = new Person { Name = "1", Age = 1 };
+byte[] bytes = new byte[4];
+PersonStruct personStruct = new PersonStruct { Name = "1", Age = 1 };
+
+
+ByValueOrByReference.ByValue(number, nullable, date, text, list, person, bytes, personStruct);
+ByValueOrByReference.ByReference(ref number, ref nullable, ref date, ref text, ref list, ref person, ref bytes, ref personStruct);
 
 Console.WriteLine();
+
 
 //sortedDictionary - sortedList
 //sortedSet
 //stack - queue
+
