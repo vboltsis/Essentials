@@ -43,3 +43,21 @@ TIP 7
 TIP 8
 
 //Use TrueForAll instead of All when checking lists (check AllVsTrueForAll.cs)
+//You can create TrueForAll extension method for any IEnumerable if you want like so:
+    public static bool TrueForAll<T>(this T[] array, Predicate<T> match)
+    {
+        if (match == null)
+        {
+            throw new ArgumentNullException(nameof(match));
+        }
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (!match(array[i]))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }

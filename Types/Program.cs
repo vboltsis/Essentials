@@ -1,15 +1,23 @@
 ﻿using Types;
 
-int number = 1;
-int? nullable = null;
-DateTime date = new DateTime(1111, 1, 1);
-string text = "1";
-List<int> list = new List<int> { 1, 1 };
-Person person = new Person { Name = "1", Age = 1 };
-byte[] bytes = new byte[4];
-PersonStruct personStruct = new PersonStruct { Name = "1", Age = 1 };
+//int number = 1;
+//int? nullable = null;
+//DateTime date = new DateTime(1111, 1, 1);
+//string text = "1";
+//List<int> list = new List<int> { 1, 1 };
+//Person person = new Person { Name = "1", Age = 1 };
+//byte[] bytes = new byte[4];
+//PersonStruct personStruct = new PersonStruct { Name = "1", Age = 1 };
 
-ByValueOrByReference.ByValue(number, nullable, date, text, list, person, bytes, personStruct);
-ByValueOrByReference.ByReference(ref number, ref nullable, ref date, ref text, ref list, ref person, ref bytes, ref personStruct);
+//ByValueOrByReference.ByValue(number, nullable, date, text, list, person, bytes, personStruct);
+//ByValueOrByReference.ByReference(ref number, ref nullable, ref date, ref text, ref list, ref person, ref bytes, ref personStruct);
+
+//BOXING
+//object number = 1;
+//object number2 = 1;
+
+//var result = number == number2; //false
+//var result2 = number.Equals(number2); //true
+
 
 Console.WriteLine();
