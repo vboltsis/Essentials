@@ -32,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "performance", "performance"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisPlayground", "RedisPlayground\RedisPlayground.csproj", "{48377EDA-C51A-42DA-988D-9C03D316E0D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansExample", "OrleansExample\OrleansExample.csproj", "{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansExample", "OrleansExample\OrleansExample.csproj", "{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
