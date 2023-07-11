@@ -29,58 +29,9 @@ using Types;
 
 //Enumerables!!
 
-//ArrayList arrayList = new ArrayList();
-//arrayList.Add(1);
-//arrayList.Add("hello world");
+Plumber.WillThrowWhenRun();
 
-//foreach (var item in arrayList)
-//{
-//    Console.WriteLine(item);
-//}
-
-
-int[] array = new int[2];
-var humans = new List<IHuman>();
-List<int> list = new List<int>(humans.Count);//set correct initial capacity
-
-for (int i = 0; i < humans.Count; i++)
-{
-    list.Add(i);
-}
-
-Collection<int> collection = new Collection<int>();
-Dictionary<int, string> dictionary = new Dictionary<int, string>(10);
-HashSet<int> hashSet = new HashSet<int>(10);
-Stack<int> stack = new Stack<int>(10);
-Queue<int> queue = new Queue<int>(10);
-ConcurrentDictionary<int, string> concurrentDictionary = new ConcurrentDictionary<int, string>();
-ConcurrentQueue<int> concurrentQueue = new ConcurrentQueue<int>();
-ConcurrentStack<int> concurrentStack = new ConcurrentStack<int>();
-
-//var student = new Student();
-//var teacher = new Teacher();
-
-//list.Add(student);
-//list.Add(teacher);
 
 Console.WriteLine();
+Console.ReadKey();
 
-class Student : Human
-{
-
-}
-
-class Teacher : Human
-{
-
-}
-
-class Human : IHuman
-{
-
-}
-
-interface IHuman
-{
-
-}
