@@ -70,8 +70,12 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 //FindDuplicateNumbersInTextFile.FindDuplicates();
 
 //FIND SUM OF DIGITS
-var sum = SumOfDigits.GetSumOfDigitsLinq2(123);
-var sum2 = SumOfDigits.GetSumOfDigitsLinq2(10);
+//var sum = SumOfDigits.GetSumOfDigitsLinq2(123);
+//var sum2 = SumOfDigits.GetSumOfDigitsLinq2(10);
+
+//JOSEPHUS PROBLEM
+var result = JosephusProblem.GetLastStanding(100);
+var result2 = JosephusProblem.GetLastStandingRecursive(100);
 Console.WriteLine();
 
 static class Utils {
