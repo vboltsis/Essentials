@@ -1,61 +1,37 @@
-﻿/*
-bool: a Boolean value that can be either true or false.
-byte: an 8-bit unsigned integer.
-char: a 16-bit Unicode character.
-decimal: a 128-bit precise decimal value.
-double: a 64-bit double-precision floating-point number.
-float: a 32-bit single-precision floating-point number.
-int: a 32-bit signed integer. 
-long: a 64-bit signed integer.
+﻿using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
+using Types;
 
-The main difference between signed and unsigned integers is the range of values that they can represent.
+//int number = 1;
+//int? nullable = null;
+//DateTime date = new DateTime(1111, 1, 1);
+//string text = "1";
+//List<int> list = new List<int> { 1, 1 };
+//Person person = new Person { Name = "1", Age = 1 };
+//byte[] bytes = new byte[4];
+//PersonStruct personStruct = new PersonStruct { Name = "1", Age = 1 };
 
-A signed integer is a whole number that can be positive, negative, or zero,
-and it uses the leftmost bit to represent the sign (0 for positive and 1 for negative).
-For example, an int is a signed integer that can range from -2147483648 to 2147483647.
+//ByValueOrByReference.ByValue(number, nullable, date, text, list, person, bytes, personStruct);
+//ByValueOrByReference.ByReference(ref number, ref nullable, ref date, ref text, ref list, ref person, ref bytes, ref personStruct);
 
-On the other hand, an unsigned integer is a whole number that can only be positive or zero,
-and it does not use the leftmost bit to represent the sign.
-Instead, all of the bits are used to represent the magnitude of the number.
-For example, a uint (unsigned integer) can range from 0 to 4294967295.
+//BOXING
+//object number = 1;
+//object number2 = 1;
 
-Signed integers are useful when you need to represent both positive and negative values,
-while unsigned integers are useful when you only need to represent positive values or zero.
+//var result = number == number2; //false
+//var result2 = number.Equals(number2); //true
 
-C# also has unsigned versions of the other integer types: byte, short, and long.
-These types are similar to their signed counterparts,
-but they use all of their bits to represent the magnitude of the number and
-do not use the leftmost bit to represent the sign.
- */
+//DateTime date = new DateTime(1111, 1, 1);
+//DateTimeOffset dateTimeOffset = new DateTimeOffset(date);
+//DateOnly dateOnly = new DateOnly(2020,1,1);
+//TimeOnly timeOnly = new TimeOnly(10, 10);
 
-bool flag = true;
-bool result = false;
+//Enumerables!!
 
-byte age = 35;
-byte maxSpeed = 255;
+Plumber.WillThrowWhenRun();
 
-int count = 10;
-uint uCount = 15;
-int number = -5;
-
-char letter = 'A';
-char symbol = '#';
-int character = 'W';
-
-double pi = 3.14159;
-double average = 86.5;
-
-decimal price = 19.99m;
-decimal balance = 100.00m;
-
-float temperature = 72.5f;
-float distance = 3.9f;
-
-long population = 8000000000;
-long scandals = 999999999;
 
 Console.WriteLine();
+Console.ReadKey();
 
-//sortedDictionary - sortedList
-//sortedSet
-//stack - queue

@@ -2,6 +2,62 @@ TIP 1
 // C# 3.0 Anonymous Type (ReferenceType => Heap allocation)
 var qry1 = l.Select(emp => new { FirstLetter = emp.Name[0], emp.Name.Length });
 
-
+//Use the below example instead of the above one
 // C# 7.0 Value Tuple (ValueType)
-var qry2 = l.Select(emp => (FirstLetter: emp.Name[0], emp.Name.Length));TIP 2//use indexers instead of First() and Last() if possiblelist[0];list[^1];TIP 3use static whenever possible in LinQ statements.Where(static x => x.Name == "Test");TIP 4Use .Any() instead of .Count() > 0 
+var qry2 = l.Select(emp => (FirstLetter: emp.Name[0], emp.Name.Length));
+
+TIP 2
+//Use indexers instead of First() and Last() if possible
+list[0];
+list[^1];
+
+TIP 3
+//Use static whenever possible in LinQ statements
+.Where(static x => x.Name == "Test");
+
+TIP 4
+//Use .Any() instead of .Count() > 0 
+
+TIP 5
+//Use Frozen Collections (optimized for reads) in hot paths for static data
+
+TIP 6
+//Use Spans to avoid allocations when possible (use it to parse substrings, etc.)
+
+//BAD
+        string result = Target;
+        while (result.StartsWith(trimString))
+        {
+            result = result.Substring(trimString.Length);
+        }
+//GOOD
+        ReadOnlySpan<char> result = Target.AsSpan();
+        while (result.EndsWith(trimString))
+        {
+            result = result.Slice(0, result.Length - trimString.Length);
+        }
+
+TIP 7
+//Use ValueTask instead of Task if possible
+
+TIP 8
+
+//Use TrueForAll instead of All when checking lists (check AllVsTrueForAll.cs)
+//You can create TrueForAll extension method for any IEnumerable if you want like so:
+    public static bool TrueForAll<T>(this T[] array, Predicate<T> match)
+    {
+        if (match == null)
+        {
+            throw new ArgumentNullException(nameof(match));
+        }
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (!match(array[i]))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }

@@ -66,19 +66,17 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 //var result = SortCommaSeparatedIntegers.Sort(numbers);
 //Console.WriteLine(result);
 
+//----------------------------------------------------------------------------
 //FIND DUPLICATES
-FindDuplicateNumbersInTextFile.FindDuplicates();
+//FindDuplicateNumbersInTextFile.FindDuplicates();
 
-static class Utils {
-    static string Right(this string text, int length) {
-        if (text is null) {
-            throw new ArgumentNullException(nameof(text), $"{nameof(Right)} cannot be used with null strings");
-        }
+//----------------------------------------------------------------------------
+//FIND SUM OF DIGITS
+//var sum = SumOfDigits.GetSumOfDigitsLinq2(123);
+//var sum2 = SumOfDigits.GetSumOfDigitsLinq2(10);
 
-        if (length <= 0) {
-            throw new ArgumentOutOfRangeException(nameof(length), "Length cannot be zero or negative");
-        }
-
-        return text.Length >= length ? text[^length..] : text;
-    }
-}
+//----------------------------------------------------------------------------
+//JOSEPHUS PROBLEM
+var result = JosephusProblem.GetLastStanding(100);
+var result2 = JosephusProblem.GetLastStandingRecursive(100);
+Console.WriteLine();
