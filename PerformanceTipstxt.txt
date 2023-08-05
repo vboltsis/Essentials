@@ -61,3 +61,13 @@ TIP 8
 
         return true;
     }
+
+TIP 9
+
+//Use the new stopwatch GetTimestamp() and GetElapsedTime() methods instead of the old ones for 0 allocation
+
+long startTime = Stopwatch.GetTimestamp();
+// Do Something...
+TimeSpan elapsedTime = Stopwatch.GetElapsedTime(startTime);
+OR
+var elapsedTime = Stopwatch.GetElapsedTime(startTime).TotalMilliseconds;

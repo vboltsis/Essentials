@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using Types;
 
 //int number = 1;
@@ -29,9 +30,49 @@ using Types;
 
 //Enumerables!!
 
-Plumber.WillThrowWhenRun();
+//Plumber.WillThrowWhenRun();
+Test.Method();
 
+var array = new Takis[] { 
+    new Takis { Id = 3, Age = 3 },
+    new Takis { Id = 1, Age = 1 },
+    new Takis { Id = 2, Age = 2 },
+};
 
-Console.WriteLine();
+Array.Sort(array, (a, b) => a.Id.CompareTo(b.Id));
+
+var numbers = new List<int> { 8, 2, 3, 4, 5, 6, 7, 1 };
+numbers.Sort();
+
 Console.ReadKey();
 
+struct Takis
+{
+    public int Id { get; set; }
+    public int Age { get; set; }
+}
+
+class Test
+{
+    public static void Method()
+    {
+        var size = 100_000_000;
+        var array = GC.AllocateUninitializedArray<int>(size);
+
+        Span<int> array1 = stackalloc int[10];
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = i;
+        }
+
+        foreach(double item in array)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+    public static void Method2(in Takis test)
+    {
+        Console.WriteLine();
+    }
+}

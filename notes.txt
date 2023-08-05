@@ -1,0 +1,34 @@
+REFERENCE COUNTING (NOT USED IN .NET)
+Pros:
+- Deterministic
+- Incremental work
+- simple implementation
+Cons:
+- Mutator's overhead - best case is within 10% of the fastest tracing GC
+- Cyclic references
+may use deferred reference counting
+
+TRACING
+Pros:
+- Simple to use
+- "Faster" - smaller mutator overhead with only occasional pauses
+- Handles cyclic references out of the box
+Cons:
+- Non-deterministic deallocation
+- Not always pauseless
+- Can be hard to implement
+
+In .NET we have various runtimes but only a few GC implementations.
+The GC has two modes of operation: workstation and server.
+The workstation GC is the default on client machines and the server GC is the default on server machines.
+The server GC is optimized for throughput, while the workstation GC is optimized for latency.
+The GC has three generations: 0, 1, and 2.
+
+
+The GC is a generational, mark-and-sweep, compacting, stop-the-world, tracing GC. 
+It is a conservative GC, meaning that it will not move objects that are not known to be references.
+It is a compacting GC, meaning that it will move objects around in memory to reduce fragmentation. 
+It is a generational GC, meaning that it will treat objects differently based on their age. 
+It is a mark-and-sweep GC, meaning that it will mark objects that are still in use and sweep away those that are not.
+It is a stop-the-world GC, meaning that it will pause all threads while it does its work.
+It is a tracing GC, meaning that it will follow references to find all live objects.
