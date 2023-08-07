@@ -16,7 +16,8 @@ TIP 3
 .Where(static x => x.Name == "Test");
 
 TIP 4
-//Use .Any() instead of .Count() > 0 
+//Use .Any() instead of .Count() when dealing with IEnumerable > 0 
+//Use .Length for Arrays or .Count for collections when they are materialized
 
 TIP 5
 //Use Frozen Collections (optimized for reads) in hot paths for static data

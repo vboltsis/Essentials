@@ -14,15 +14,51 @@ using PoCs.Diffing;
 //string-class-interface-object-dynamic
 
 
+var user = new UserProfile 
+{ 
+    DateOfBirth = new DateTime(2000, 1, 1),
+    Address = new Address { Street = "abc"} 
+};
 
-//var array = new int[5];
+var dob = user.DateOfBirth;
+dob = dob.AddMonths(1);  // This doesn't modify user.DateOfBirth because DateTime is immutable.
+var address = user.Address;
+address.Street = "def";  // This does modify user.Address because it's a reference type.
 
-//var list = new List<int>(array.Length);
+user.DateOfBirth = user.DateOfBirth.AddDays(10);  // This does modify user.DateOfBirth because it's a property setter.
 
-//foreach (var item in array)
-//{
-//    Console.WriteLine(item);
-//}
+var what = user.ToString();
+
+Console.Read();
+public record UserProfile
+{
+    public DateTime DateOfBirth { get; set; }
+    public Address Address { get; set; }
+}
+
+public record Address
+{
+    public string Street { get; set; }
+}
+/*
+         public T? Find(Predicate<T> match)
+        {
+            if (match == null)
+            {
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+            }
+ 
+            for (int i = 0; i < _size; i++)
+            {
+                if (match(_items[i]))
+                {
+                    return _items[i];
+                }
+            }
+            return default;
+        }
+ */
+
 
 ////Date#Name#Age
 //var dateText = "2023-01-01#Takis#25";
