@@ -12,7 +12,6 @@
 |       DictionaryAdd | 1000000 |  12.405 ms | 0.2476 ms | 0.2752 ms |    5 |  640.6250 |  625.0000 | 625.0000 |  51.39 MB |
  */
 
-
 [RankColumn]
 [MemoryDiagnoser]
 public class SortedVsNotSortedAdd {

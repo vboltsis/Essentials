@@ -31,7 +31,8 @@ using Types;
 //Enumerables!!
 
 //Plumber.WillThrowWhenRun();
-Test.Method();
+var res1 = Test.StopwatchStart();
+var res2 = Test.GetTimestamp();
 
 var array = new Takis[] { 
     new Takis { Id = 3, Age = 3 },
@@ -54,6 +55,37 @@ struct Takis
 
 class Test
 {
+    public static double StopwatchStart()
+    {
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        var sum = 0;
+        for (int i = 0; i < 1_000_000; i++)
+        {
+            sum += i;
+        }
+
+        stopwatch.Stop();
+
+        return stopwatch.Elapsed.TotalMilliseconds;
+    }
+
+    public static double GetTimestamp()
+    {
+        var start = Stopwatch.GetTimestamp();
+
+        var sum = 0;
+        for (int i = 0; i < 1_000_000; i++)
+        {
+            sum += i;
+        }
+
+        var stop = Stopwatch.GetElapsedTime(start);
+
+        return stop.TotalMilliseconds;
+    }
+
     public static void Method()
     {
         var size = 100_000_000;

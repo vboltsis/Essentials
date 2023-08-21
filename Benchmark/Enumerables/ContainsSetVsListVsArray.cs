@@ -19,7 +19,6 @@
 | ContainsArray |  10000 | 247.535 ns | 4.2564 ns | 5.6822 ns | 244.387 ns |         - |
  */
 
-
 [MemoryDiagnoser]
 public class ContainsSetVsListVsArray
 {
