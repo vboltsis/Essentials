@@ -13,7 +13,7 @@ namespace InterviewExample;
 
 public class CheckIfSumPairExists
 {
-    //Time Complexity: O(n). 
+    //Time Complexity: O(n).
     //As the whole array is needed to be traversed only once.
     public static bool PairExists(int[] intArray, int sum)
     {

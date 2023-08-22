@@ -20,10 +20,10 @@ TIP 4
 //Use .Length for Arrays or .Count for collections when they are materialized
 
 TIP 5
-//Use Frozen Collections (optimized for reads) in hot paths for static data
+//Use Frozen Collections (.NET 8 feature, optimized for reads) in hot paths for static data
 
 TIP 6
-//Use Spans to avoid allocations when possible (use it to parse substrings, etc.)
+//Use Span<T> to avoid allocations when possible (use it to parse substrings or when iterating etc)
 
 //BAD
         string result = Target;
@@ -39,7 +39,7 @@ TIP 6
         }
 
 TIP 7
-//Use ValueTask instead of Task if possible
+//Use ValueTask instead of Task if possible for async methods that might return synchronously
 
 TIP 8
 
@@ -72,3 +72,9 @@ long startTime = Stopwatch.GetTimestamp();
 TimeSpan elapsedTime = Stopwatch.GetElapsedTime(startTime);
 OR
 var elapsedTime = Stopwatch.GetElapsedTime(startTime).TotalMilliseconds;
+
+(check StopwatchVsGetTimestamp.cs)
+
+TIP 10
+
+//Use .Find instead of .FirstOrDefault when dealing with List<T> (check FindVsFirstOrDefault.cs)
