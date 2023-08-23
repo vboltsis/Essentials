@@ -141,14 +141,3 @@ class Test
             array[i] = i;
         }
 
-        foreach(double item in array)
-        {
-            Console.WriteLine(item);
-        }
-    }
-
-    public static void Method2(in Takis test)
-    {
-        Console.WriteLine();
-    }
-}
