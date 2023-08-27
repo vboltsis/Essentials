@@ -1,5 +1,6 @@
 ﻿using Benchmark;
 using Benchmark.Classes;
+using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 using MessagePack;
 using System.Text;
@@ -18,13 +19,22 @@ BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
 WILL PRINT THE BENCHMARKS IN ALPHABETICAL ORDER IN THE CONSOLE
 */
 
-#if RELEASE
+namespace Benchmark;
 
-var types = typeof(Program).Assembly.GetTypes()
-    .Where(t => t.GetCustomAttributes(typeof(MemoryDiagnoserAttribute), false).Any())
-    .OrderBy(t => t.Name)
-    .ToArray();
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var config = ManualConfig.CreateMinimumViable();
+        config.ArtifactsPath = "/app/benchmarks";
+        BenchmarkRunner.Run<ChannelsUnbounded>(config);
+        //BenchmarkRunner.Run<ChannelsUnbounded>();
 
-BenchmarkSwitcher.FromTypes(types).Run();
+        //var types = typeof(Program).Assembly.GetTypes()
+        //    .Where(t => t.GetCustomAttributes(typeof(MemoryDiagnoserAttribute), false).Any())
+        //    .OrderBy(t => t.Name)
+        //    .ToArray();
 
-#endif
+        //BenchmarkSwitcher.FromTypes(types).Run();
+    }
+}

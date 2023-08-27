@@ -140,4 +140,5 @@ class Test
         {
             array[i] = i;
         }
-
+    }
+}
