@@ -30,7 +30,7 @@ public class ChannelExamples
         var options = new BoundedChannelOptions(10)
         {
             AllowSynchronousContinuations = false,
-            Capacity = 10,
+            Capacity = 10_000,
             SingleReader = false,
             SingleWriter = false,
             FullMode = BoundedChannelFullMode.Wait
@@ -89,7 +89,7 @@ public class MyChannel<T>
         _semaphore.Release();
     }
 
-    public async Task<T> ReadAsync()
+    public async ValueTask<T> ReadAsync()
     {
         await _semaphore.WaitAsync();
         _queue.TryDequeue(out var item);
