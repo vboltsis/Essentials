@@ -14,6 +14,19 @@ public class BlogContext : DbContext
     }
 }
 
+public class BlogThreadContext : DbContext
+{
+    public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Post> Posts { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.EnableThreadSafetyChecks(false);
+        optionsBuilder.UseSqlServer(@"Server=.;Database=BlogDB;Trusted_Connection=True;TrustServerCertificate=True");
+    }
+}
+
+
 [Table("Blog")]
 public class Blog
 {

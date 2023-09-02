@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebApi;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +11,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IRuntimeInformationService, RuntimeInformationService>();
 builder.Services.AddSingleton<IMemoryMetricsService, MemoryMetricsService>();
+
+builder.Services.AddDbContextPool<WeatherContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WeatherDB"));
+    options.EnableThreadSafetyChecks(false);
+});
 
 var app = builder.Build();
 

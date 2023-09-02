@@ -19,22 +19,10 @@ BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
 WILL PRINT THE BENCHMARKS IN ALPHABETICAL ORDER IN THE CONSOLE
 */
 
-namespace Benchmark;
 
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        var config = ManualConfig.CreateMinimumViable();
-        config.ArtifactsPath = "/app/benchmarks";
-        BenchmarkRunner.Run<ChannelsUnbounded>(config);
-        //BenchmarkRunner.Run<ChannelsUnbounded>();
+var types = typeof(Program).Assembly.GetTypes()
+    .Where(t => t.GetCustomAttributes(typeof(MemoryDiagnoserAttribute), false).Any())
+    .OrderBy(t => t.Name)
+    .ToArray();
 
-        //var types = typeof(Program).Assembly.GetTypes()
-        //    .Where(t => t.GetCustomAttributes(typeof(MemoryDiagnoserAttribute), false).Any())
-        //    .OrderBy(t => t.Name)
-        //    .ToArray();
-
-        //BenchmarkSwitcher.FromTypes(types).Run();
-    }
-}
+BenchmarkSwitcher.FromTypes(types).Run();
