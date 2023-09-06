@@ -42,11 +42,23 @@ List<IAnimal> animal = new List<IAnimal>
     new Cat()
 };
 
+var queue = new ChannelTaskQueue();
 
+queue.StartTaskConsumers(3);
 
+// Enqueue some tasks
+for (int i = 0; i < 10_000; i++)
+{
+    var local = i;
+    await queue.EnqueueTask(async () => {
+        await Task.Delay(1000);
+        Console.WriteLine($"Task {local} completed!");
+    });
+}
 
+await Task.Delay(30000);
 
-
+Console.WriteLine();
 
 //int number = 1;
 //int? nullable = null;

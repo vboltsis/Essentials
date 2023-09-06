@@ -58,11 +58,11 @@ class SomeData
         yield return new SomeData();
     }
 
-    /*
-     The advantage of using yield is that if the function consuming your data simply needs the first item of the collection,
-    the rest of the items won't be created.
-    The yield operator allows the creation of items as it is demanded.
-     */
+/*
+ The advantage of using yield is that if the function consuming your data simply needs the first item of the collection,
+the rest of the items won't be created.
+The yield operator allows the creation of items as it is demanded.
+ */
 }
 
 /*
