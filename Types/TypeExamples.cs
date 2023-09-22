@@ -1,4 +1,6 @@
-﻿namespace Types;
+﻿using System.Collections.Concurrent;
+
+namespace Types;
 
 internal class TypeExamples
 {
@@ -36,6 +38,8 @@ do not use the leftmost bit to represent the sign.
         //sortedDictionary - sortedList
         //sortedSet
         //stack - queue
+
+        //TYPE -- NAME OF VARIABLE -- VALUE
         bool flag = true;
         bool result = false;
 
@@ -43,7 +47,6 @@ do not use the leftmost bit to represent the sign.
         byte maxSpeed = 255;
 
         int count = 10;
-        uint uCount = 15;
         int number = -5;
 
         char letter = 'A';
@@ -61,5 +64,48 @@ do not use the leftmost bit to represent the sign.
 
         long population = 8000000000;
         long scandals = 999999999;
+
+        short temperature2 = -5;
+        short temperature3 = 6;
+        uint temperature4 = 6;
+        ushort temperature5 = 6;
+        ulong temperature6 = 6;
+
+        DateTime today = DateTime.Now;
+        DateTime todayUtc = DateTime.UtcNow;
+        DateTime birthday = new DateTime(1985, 3, 28);
+        DateTimeOffset dateTimeOffset = DateTimeOffset.Parse("2024-01-01 10:10:10 +04:00");
+        DateTimeOffset dateTimeOffset2 = DateTimeOffset.Parse("2024-01-01 10:10:10 +02:00");
+
+        DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
+        TimeOnly timeOnly = TimeOnly.FromDateTime(DateTime.Now);
+
+        int[] numbers = new int[10];
+        List<int> list = new List<int>(9);
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+        list.Add(4);
+        list.Add(5);
+        list.Add(6);
+        list.Add(7);
+        list.Add(8);
+        list.Add(9);
+
+        var dictionary = new Dictionary<int, string>(10) { { 1, "one" }, { 2, "two" } };
+        HashSet<int> hashSet = new HashSet<int>(10) { 1, 2, 3, 4, 5 };
+        Queue<int> queue = new Queue<int>();
+        Stack<int> stack = new Stack<int>();
+
+        ConcurrentDictionary<int, string> keyValuePairs = new ConcurrentDictionary<int, string>(Environment.ProcessorCount, 10);
+        ConcurrentQueue<int> ints = new ConcurrentQueue<int>();
+        ConcurrentBag<int> ints2 = new ConcurrentBag<int>();
+        ConcurrentStack<int> ints3 = new ConcurrentStack<int>();
+
+        //.NET FRAMEWORK 1 - 2 - 4.8
+        //.NET CORE 1 - 2.2 - 3.1 - 5 - 6 - 7 - 8
+
+        //CLASS --> REFERENCE TYPE --> HEAP
+        //STRUCT --> VALUE TYPE --> STACK
     }
 }

@@ -1,26 +1,49 @@
-﻿using System.Collections;
+﻿using FeatureExamples;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Types;
 
-var queue = new ChannelTaskQueue();
+Examples.StaticTest();
 
-queue.StartTaskConsumers(3);
+Examples examples = new Examples();
 
-// Enqueue some tasks
-for (int i = 0; i < 10_000; i++)
-{
-    var local = i;
-    await queue.EnqueueTask(async () => {
-        await Task.Delay(1000);
-        Console.WriteLine($"Task {local} completed!");
-    });
-}
-
-await Task.Delay(30000);
+examples.Test();
 
 Console.WriteLine();
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TypeExamples.Types();
+
+//var queue = new ChannelTaskQueue();
+
+//queue.StartTaskConsumers(3);
+
+//// Enqueue some tasks
+//for (int i = 0; i < 10_000; i++)
+//{
+//    var local = i;
+//    await queue.EnqueueTask(async () => {
+//        await Task.Delay(1000);
+//        Console.WriteLine($"Task {local} completed!");
+//    });
+//}
+
+//await Task.Delay(30000);
+
+//Console.WriteLine();
 
 //int number = 1;
 //int? nullable = null;
