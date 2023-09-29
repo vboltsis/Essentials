@@ -5,15 +5,21 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Types;
 
-Examples.StaticTest();
+//AsyncExample.BoomAsync();
 
-Examples examples = new Examples();
+var sw = Stopwatch.GetTimestamp();
 
-examples.Test();
+await Task.WhenAll(AsyncExample.PrintAsyncOne(), AsyncExample.PrintAsyncTwo());
+//await AsyncExample.PrintAsyncOne();
+//await AsyncExample.PrintAsyncTwo();
 
-Console.WriteLine();
+//another async thing
 
+var elapsed = Stopwatch.GetElapsedTime(sw);
 
+Console.WriteLine(elapsed);
+
+Console.ReadKey();
 
 
 
