@@ -14,11 +14,8 @@ public class RaceConditions
 
             Task.Run(() => 
             {
-                Console.WriteLine("Hello from inside");
                 number++;
             });
-
-            Console.WriteLine("Test");
         }
 
         Console.WriteLine(number);

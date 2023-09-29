@@ -1,26 +1,55 @@
-﻿using System.Collections;
+﻿using FeatureExamples;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Types;
 
-var queue = new ChannelTaskQueue();
+//AsyncExample.BoomAsync();
 
-queue.StartTaskConsumers(3);
+var sw = Stopwatch.GetTimestamp();
 
-// Enqueue some tasks
-for (int i = 0; i < 10_000; i++)
-{
-    var local = i;
-    await queue.EnqueueTask(async () => {
-        await Task.Delay(1000);
-        Console.WriteLine($"Task {local} completed!");
-    });
-}
+await Task.WhenAll(AsyncExample.PrintAsyncOne(), AsyncExample.PrintAsyncTwo());
+//await AsyncExample.PrintAsyncOne();
+//await AsyncExample.PrintAsyncTwo();
 
-await Task.Delay(30000);
+//another async thing
 
-Console.WriteLine();
+var elapsed = Stopwatch.GetElapsedTime(sw);
+
+Console.WriteLine(elapsed);
+
+Console.ReadKey();
+
+
+
+
+
+
+
+
+
+
+
+//TypeExamples.Types();
+
+//var queue = new ChannelTaskQueue();
+
+//queue.StartTaskConsumers(3);
+
+//// Enqueue some tasks
+//for (int i = 0; i < 10_000; i++)
+//{
+//    var local = i;
+//    await queue.EnqueueTask(async () => {
+//        await Task.Delay(1000);
+//        Console.WriteLine($"Task {local} completed!");
+//    });
+//}
+
+//await Task.Delay(30000);
+
+//Console.WriteLine();
 
 //int number = 1;
 //int? nullable = null;

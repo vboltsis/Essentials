@@ -12,7 +12,7 @@ using PoCs.Diffing;
 
 //REFERENCE TYPES
 //string-class-interface-object-dynamic
-
+BitWiseOperations.TestFruits();
 
 var user = new UserProfile 
 { 
