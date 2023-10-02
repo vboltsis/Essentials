@@ -3,6 +3,7 @@ using Benchmark.Classes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 using MessagePack;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 /*TO USE THIS PROJECT, YOU MUST RUN IT IN RELEASE MODE 
@@ -18,7 +19,6 @@ BenchmarkSwitcher.FromAssembly(typeof(Orderer).Assembly).Run();
 
 WILL PRINT THE BENCHMARKS IN ALPHABETICAL ORDER IN THE CONSOLE
 */
-
 
 var types = typeof(Program).Assembly.GetTypes()
     .Where(t => t.GetCustomAttributes(typeof(MemoryDiagnoserAttribute), false).Any())

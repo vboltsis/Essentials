@@ -60,22 +60,26 @@
 //Console.WriteLine(student.Equals(student2));
 
 //3. ICloneable Example
-var consumer = new Consumer
-{
-    Name = "John",
-    Age = 30,
-    Address = new Address
-    {
-        Street = "123 Main St",
-        City = "New York",
-        State = "NY",
-        Zip = "10001"
-    }
-};
+//var consumer = new Consumer
+//{
+//    Name = "John",
+//    Age = 30,
+//    Address = new Address
+//    {
+//        Street = "123 Main St",
+//        City = "New York",
+//        State = "NY",
+//        Zip = "10001"
+//    }
+//};
 
-Consumer clonedConsumer = (Consumer)consumer.Clone();
+//Consumer clonedConsumer = (Consumer)consumer.Clone();
 
-Console.WriteLine(clonedConsumer.Name);       // Output: "John"
-Console.WriteLine(clonedConsumer.Age);        // Output: 30
-Console.WriteLine(clonedConsumer.Address.City); // Output: "New York"
-Console.WriteLine(consumer == clonedConsumer); //Output: false
+//Console.WriteLine(clonedConsumer.Name);       // Output: "John"
+//Console.WriteLine(clonedConsumer.Age);        // Output: 30
+//Console.WriteLine(clonedConsumer.Address.City); // Output: "New York"
+//Console.WriteLine(consumer == clonedConsumer); //Output: false
+
+//4. ISpanFormattable Example
+SpanFormattableExample.PrintHuman();
+Console.WriteLine();
