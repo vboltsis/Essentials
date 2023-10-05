@@ -25,6 +25,10 @@ internal class ExceptionHandling
         {
             Console.WriteLine($"An error occurred: {ex.Message}");
         }
+        finally
+        {
+            Console.WriteLine("Finally");
+        }
     }
 
     public static void HandleWithExceptionFilters()
