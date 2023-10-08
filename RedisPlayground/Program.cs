@@ -18,7 +18,7 @@ IDatabase database = conn.GetDatabase();
 
 var fiftyFive = long.TryParse(database.HashGet("test1", 55), out var version);
 
-var test = new Moschato { Name = "Moschato", Age = 420 };
+var test = new RedisClass { Name = "Moschato", Age = 420 };
 await database.StringSetAsync("test", JsonConvert.SerializeObject(test));
 
 //remove key
@@ -27,7 +27,7 @@ await database.KeyDeleteAsync("test");
 var test2 = await database.StringGetAsync("test");
 var boo = test2.IsNull;
 
-var what = JsonConvert.DeserializeObject<Moschato>(test2);
+var what = JsonConvert.DeserializeObject<RedisClass>(test2);
 
 
 await database.SetAddAsync("test1", 420);
@@ -68,7 +68,7 @@ var value = database.StringGet("redisKey");
 Console.WriteLine("Value cached in redis server is: " + value);
 Console.ReadLine();*/
 
-class Moschato
+class RedisClass
 {
     public string Name { get; set; }
     public int Age { get; set; }
