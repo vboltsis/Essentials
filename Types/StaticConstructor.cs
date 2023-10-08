@@ -2,9 +2,9 @@
 
 public class StaticConstructor
 {
-    public static string _name = "makis";
+    public readonly static string _name = "makis";
 
-    //it is called only once
+    //it is called only once throughout the lifetime of the application
     //it is called before the first instance is created
     //Static constructors must be parameterless
     static StaticConstructor()

@@ -1,6 +1,6 @@
 ﻿namespace FeatureExamples;
 
-public class Singleton1
+public sealed class Singleton1
 {
     private static Singleton1 _instance;
     private static readonly object _lock = new object();
@@ -29,7 +29,7 @@ public class Singleton1
     }
 }
 
-public class Singleton2
+public sealed class Singleton2
 {
     private static readonly Singleton2 _instance = new Singleton2();
 
