@@ -7,6 +7,15 @@ using Types;
 
 //AsyncExample.BoomAsync();
 
+ExpressionTreesExample.LinqExample();
+
+var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+
+var newList = list.Where(i => i > 5).ToList();
+var newList2 = list.FindAll(i => i > 5);
+
+
 var sw = Stopwatch.GetTimestamp();
 
 await Task.WhenAll(AsyncExample.PrintAsyncOne(), AsyncExample.PrintAsyncTwo());
