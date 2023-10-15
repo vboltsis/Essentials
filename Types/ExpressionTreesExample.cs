@@ -10,7 +10,7 @@ public class ExpressionTreesExample
         var paramB = Expression.Parameter(typeof(int), "b");
         var body = Expression.Add(paramA, paramB);
         var addExpression = Expression.Lambda<Func<int, int, int>>(body, paramA, paramB);
-        var compiled = addExpression.Compile();
+        Func<int, int, int> compiled = addExpression.Compile();
 
         Console.WriteLine(compiled(1, 2));  // Outputs: 3
     }
@@ -25,30 +25,30 @@ public class ExpressionTreesExample
         };
 
         // Dynamic filter criteria
-        string userInputName = "Laptop";  // Example user input
+        string nameFilter = "Laptop";  // Example user input
         decimal? userInputPrice = null;  // No price filter
 
         // Building the expression tree
-        var param = Expression.Parameter(typeof(Product), "p");
+        var productParamExpression = Expression.Parameter(typeof(Product), "p");
         Expression predicate = Expression.Constant(true);  // Default to true for AND operations
 
-        if (!string.IsNullOrEmpty(userInputName))
+        if (!string.IsNullOrEmpty(nameFilter))
         {
-            var nameProperty = Expression.Property(param, "Name");
-            var nameValue = Expression.Constant(userInputName);
+            var nameProperty = Expression.Property(productParamExpression, "Name");
+            var nameValue = Expression.Constant(nameFilter);
             var nameEquals = Expression.Equal(nameProperty, nameValue);
             predicate = Expression.AndAlso(predicate, nameEquals);
         }
 
         if (userInputPrice.HasValue)
         {
-            var priceProperty = Expression.Property(param, "Price");
+            var priceProperty = Expression.Property(productParamExpression, "Price");
             var priceValue = Expression.Constant(userInputPrice.Value);
-            var priceEquals = Expression.Equal(priceProperty, priceValue);
+            var priceEquals = Expression.GreaterThanOrEqual(priceProperty, priceValue);
             predicate = Expression.AndAlso(predicate, priceEquals);
         }
 
-        var lambda = Expression.Lambda<Func<Product, bool>>(predicate, param);
+        var lambda = Expression.Lambda<Func<Product, bool>>(predicate, productParamExpression);
         var filteredProducts = products.AsQueryable().Where(lambda).ToList();
 
         foreach (var product in filteredProducts)
