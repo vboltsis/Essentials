@@ -15,25 +15,25 @@ namespace Benchmark;
 [MemoryDiagnoser]
 public class SpanVsSubstring
 {
-    //[Params("11", "22Tasrwuegfudvfjybvjsdn")]
-    //public string Text { get; set; }
+    [Params("11", "22Tasrwuegfudvfjybvjsdn")]
+    public string Text { get; set; }
 
-    //[Benchmark(Baseline = true)]
-    //public int SpanSlice()
-    //{
-    //    var span = Text.AsSpan();
-    //    var number = int.Parse(span[..2]);
+    [Benchmark(Baseline = true)]
+    public int SpanSlice()
+    {
+        var span = Text.AsSpan();
+        var number = int.Parse(span[..2]);
 
-    //    return number;
-    //}
+        return number;
+    }
 
-    //[Benchmark]
-    //public int SubString()
-    //{
-    //    var number = int.Parse(Text[..2]);
+    [Benchmark]
+    public int SubString()
+    {
+        var number = int.Parse(Text[..2]);
 
-    //    return number;
-    //}
+        return number;
+    }
 
     //[Benchmark]
     //public bool SliceEquals()
@@ -52,66 +52,66 @@ public class SpanVsSubstring
     //    return text.Substring(0, 1) == one;
     //}
 
-    [Params("11text11, 111text111")]
-    public string Target { get; set; }
+    //[Params("11text11, 111text111")]
+    //public string Target { get; set; }
 
-    [Benchmark]
-    [Arguments("1")]
-    public string TrimStartSpan(string trimString)
-    {
-        ReadOnlySpan<char> result = Target.AsSpan();
-        while (result.StartsWith(trimString))
-        {
-            result = result.Slice(trimString.Length);
-        }
+    //[Benchmark]
+    //[Arguments("1")]
+    //public string TrimStartSpan(string trimString)
+    //{
+    //    ReadOnlySpan<char> result = Target.AsSpan();
+    //    while (result.StartsWith(trimString))
+    //    {
+    //        result = result.Slice(trimString.Length);
+    //    }
 
-        return result.ToString();
-    }
+    //    return result.ToString();
+    //}
 
-    [Benchmark]
-    [Arguments("1")]
-    public string TrimStart(string trimString)
-    {
-        string result = Target;
-        while (result.StartsWith(trimString))
-        {
-            result = result.Substring(trimString.Length);
-        }
+    //[Benchmark]
+    //[Arguments("1")]
+    //public string TrimStart(string trimString)
+    //{
+    //    string result = Target;
+    //    while (result.StartsWith(trimString))
+    //    {
+    //        result = result.Substring(trimString.Length);
+    //    }
 
-        return result;
-    }
+    //    return result;
+    //}
 
-    [Benchmark]
-    [Arguments("1")]
-    public string TrimEndSpan(string trimString)
-    {
-        ReadOnlySpan<char> result = Target.AsSpan();
-        while (result.EndsWith(trimString))
-        {
-            result = result.Slice(0, result.Length - trimString.Length);
-        }
+    //[Benchmark]
+    //[Arguments("1")]
+    //public string TrimEndSpan(string trimString)
+    //{
+    //    ReadOnlySpan<char> result = Target.AsSpan();
+    //    while (result.EndsWith(trimString))
+    //    {
+    //        result = result.Slice(0, result.Length - trimString.Length);
+    //    }
 
-        return result.ToString();
-    }
+    //    return result.ToString();
+    //}
 
-    [Benchmark]
-    [Arguments("1")]
-    public string TrimEnd(string trimString)
-    {
-        string result = Target;
-        while (result.EndsWith(trimString))
-        {
-            result = result.Substring(0, result.Length - trimString.Length);
-        }
+    //[Benchmark]
+    //[Arguments("1")]
+    //public string TrimEnd(string trimString)
+    //{
+    //    string result = Target;
+    //    while (result.EndsWith(trimString))
+    //    {
+    //        result = result.Substring(0, result.Length - trimString.Length);
+    //    }
 
-        return result;
-    }
+    //    return result;
+    //}
 
-    [Benchmark]
-    [Arguments("1")]
-    public string Replace(string trimString)
-    {
-        string result = Target;
-        return result.Replace(trimString, "");
-    }
+    //[Benchmark]
+    //[Arguments("1")]
+    //public string Replace(string trimString)
+    //{
+    //    string result = Target;
+    //    return result.Replace(trimString, "");
+    //}
 }

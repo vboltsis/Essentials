@@ -9,10 +9,11 @@
 |     SumYield | 3.481 us | 0.0400 us | 0.0374 us | 0.0038 |      - |      32 B |
 */
 
+[RankColumn]
 [MemoryDiagnoser]
 public class YieldVsList
 {
-    [Benchmark]
+    [Benchmark(Baseline = true)]
     public void ConsumeList()
     {
         var list = GetList();
@@ -56,7 +57,6 @@ public class YieldVsList
         return list;
     }
 
-    
     public IEnumerable<int> GetYield()
     {
         for (int i = 0; i < 1000; i++)

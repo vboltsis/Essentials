@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Benchmark.Classes;
+namespace Benchmark;
 
 /*
 |              Method |               name |      Mean |    Error |   StdDev | Ratio | RatioSD | Rank |   Gen0 | Allocated | Alloc Ratio |

@@ -6,7 +6,8 @@ using System.Diagnostics;
 using Types;
 
 //AsyncExample.BoomAsync();
-
+SpanExamples.ParseDateFromStringSpan("monday:2020/1/1");
+SpanExamples.ParseDateFromString("monday:2020/1/1");
 ExpressionTreesExample.LinqExample();
 
 var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
