@@ -1,14 +1,14 @@
 ﻿using NSubstitute;
 
-namespace XUnitTests;
+namespace XUnitTests.NSubstitute;
 
-public class OrderServiceTests
+public class OrderServiceNTests
 {
     private readonly IInventory _inventory;
     private readonly IPaymentGateway _paymentGateway;
     private readonly OrderService _orderService;
 
-    public OrderServiceTests()
+    public OrderServiceNTests()
     {
         _inventory = Substitute.For<IInventory>();
         _paymentGateway = Substitute.For<IPaymentGateway>();
