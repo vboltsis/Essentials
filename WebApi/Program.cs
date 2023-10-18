@@ -12,6 +12,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IRuntimeInformationService, RuntimeInformationService>();
 builder.Services.AddSingleton<IMemoryMetricsService, MemoryMetricsService>();
 
+//EXAMPLE SERVICES
+builder.Services.AddTransient<ITransientCounterService, CounterService>();
+builder.Services.AddScoped<IScopedCounterService, CounterService>();
+builder.Services.AddSingleton<ISingletonCounterService, CounterService>();
+builder.Services.AddTransient<IAnotherService, AnotherService>();
+
+
+
 builder.Services.AddDbContextPool<WeatherContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("WeatherDB"));
