@@ -55,6 +55,37 @@ public class RegexVsMemoryT
     }
 
     [Benchmark]
+    public async Task<string> TranslateSubstrings2()
+    {
+        var memory = input.AsMemory();
+        var builder = new StringBuilder();
+
+        while (true)
+        {
+            int start = memory.Span.IndexOf('|');
+            if (start == -1)
+            {
+                builder.Append(memory);
+                break;
+            }
+            builder.Append(memory.Slice(0, start));
+            memory = memory.Slice(start + 1);
+            int end = memory.Span.IndexOf('|');
+            if (end == -1)
+            {
+                builder.Append($"|{memory}");
+                break;
+            }
+            string toTranslate = memory.Slice(0, end).ToString();
+            string translation = "Takis";
+            builder.Append(translation);
+            memory = memory.Slice(end + 1);
+        }
+
+        return builder.ToString();
+    }
+
+    [Benchmark]
     public async Task<string> TranslateRegex()
     {
         var matches = _pipesMatchRegex.Matches(input);
