@@ -1,6 +1,7 @@
 ﻿namespace FeatureExamples;
 
-//One task --> many threads /// one thread --> many tasks
+//One task --> may be executed by many threads 
+//One thread --> executes many tasks
 public class AsyncExample
 {
     public void Print()
@@ -32,8 +33,10 @@ public class AsyncExample
 
     public static async Task PrintAsyncOne()
     {
+        Console.WriteLine(Environment.CurrentManagedThreadId);
         await Task.Delay(100);
         Console.WriteLine("Hello from one");
+        Console.WriteLine(Environment.CurrentManagedThreadId);
     }
 
     public static async Task PrintAsyncTwo()

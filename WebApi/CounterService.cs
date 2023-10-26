@@ -19,7 +19,7 @@ public class CounterService : ICounterService,
 
 public interface IAnotherService
 {
-    int GetTransientCount();
+    int GetScopedCount();
 }
 
 public class AnotherService : IAnotherService
@@ -31,7 +31,7 @@ public class AnotherService : IAnotherService
         _transientCounter = transientCounter;
     }
 
-    public int GetTransientCount()
+    public int GetScopedCount()
     {
         return _transientCounter.IncreaseAndGet();
     }

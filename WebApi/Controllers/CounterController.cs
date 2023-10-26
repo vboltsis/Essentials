@@ -26,10 +26,11 @@ public class CounterController : ControllerBase
     [HttpGet]
     public IActionResult GetCounts()
     {
-        var one = _anotherService.GetTransientCount();
+        var one = _anotherService.GetScopedCount();
         var two = _transientCounter.IncreaseAndGet();
         var three = _scopedCounter.IncreaseAndGet();
         var four = _singletonCounter.IncreaseAndGet();
+        var five = _singletonCounter.IncreaseAndGet();
 
         return Ok();
     }
