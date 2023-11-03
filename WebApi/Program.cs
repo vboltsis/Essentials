@@ -13,11 +13,10 @@ builder.Services.AddSingleton<IRuntimeInformationService, RuntimeInformationServ
 builder.Services.AddSingleton<IMemoryMetricsService, MemoryMetricsService>();
 
 //EXAMPLE SERVICES
-builder.Services.AddTransient<ITransientCounterService, CounterService>();
-builder.Services.AddScoped<IScopedCounterService, CounterService>();
-builder.Services.AddSingleton<ISingletonCounterService, CounterService>();
+builder.Services.AddTransient<ITransientCounterService, CounterService>(); // one instance per request per service
+builder.Services.AddScoped<IScopedCounterService, CounterService>(); // one instance per request
+builder.Services.AddSingleton<ISingletonCounterService, CounterService>(); //one instance for the whole application
 builder.Services.AddTransient<IAnotherService, AnotherService>();
-
 
 
 builder.Services.AddDbContextPool<WeatherContext>(options =>
