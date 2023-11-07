@@ -77,6 +77,12 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 
 //----------------------------------------------------------------------------
 //JOSEPHUS PROBLEM
-var result = JosephusProblem.GetLastStanding(100);
-var result2 = JosephusProblem.GetLastStandingRecursive(100);
-Console.WriteLine();
+//var result = JosephusProblem.GetLastStanding(100);
+//var result2 = JosephusProblem.GetLastStandingRecursive(100);
+//Console.WriteLine();
+
+//----------------------------------------------------------------------------
+//ASYNC PRINT
+var asyncPrint = new AsyncPrintQuestion();
+//asyncPrint.TestWait();
+asyncPrint.TestAwait();
