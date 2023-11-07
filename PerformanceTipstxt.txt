@@ -40,6 +40,7 @@ TIP 6
 
 TIP 7
 //Use ValueTask instead of Task if possible for async methods that might return synchronously
+//Or for chained method calls that ends with a true async method
 
 TIP 8
 
