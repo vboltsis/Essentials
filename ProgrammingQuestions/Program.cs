@@ -593,6 +593,82 @@ As a general guideline, unless you specifically need the low-level control that 
 you should use tasks in modern .NET applications because of their efficiency and ease of use.
 */
 
+/* 29. How many design patterns exist and give examples of some of them
+Design patterns are typical solutions to commonly occurring problems in software design. They are categorized into three primary groups:
+
+Creational Patterns: These deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or add complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+
+Examples:
+-Singleton Pattern: Ensures a class has only one instance and provides a global point of access to it.
+-Factory Method: Defines an interface for creating an object, but lets subclasses alter the type of objects that will be created.
+-Abstract Factory: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+-Builder: Allows constructing complex objects step by step. The pattern allows producing different types and representations of an object using the same construction code.
+-Prototype: Allows copying existing objects without making your code dependent on their classes.
+-Structural Patterns: These concern class and object composition. They use inheritance to compose interfaces and define ways to compose objects to obtain new functionalities.
+
+Examples:
+-Adapter Pattern: Allows objects with incompatible interfaces to collaborate.
+-Decorator: Allows for the dynamic addition of behaviors to objects without affecting other objects from the same class.
+-Composite: Composes objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
+-Proxy: Provides a placeholder for another object to control access, reduce cost, and reduce complexity.
+-Flyweight: Minimizes memory usage or computational expenses by sharing as much as possible with similar objects.
+-Behavioral Patterns: These are concerned with algorithms and the assignment of responsibilities between objects. They don't just describe patterns of objects or classes but also the patterns of communication between them.
+
+Examples:
+-Strategy: Allows defining a family of algorithms, encapsulating each one, and making them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+-Observer: Defines a dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+-Command: Turns a request into a stand-alone object that contains all information about the request. This transformation lets you parameterize methods with different requests, delay or queue a request's execution, and support undoable operations.
+-Iterator: Provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+-Memento: Allows saving and restoring the previous state of an object without revealing the details of its implementation.
+*/
+
+/* What are Sealed classes and how to extend a sealed class
+Sealed classes in C# are used to prevent a class from being inherited.
+In other words, if you declare a class as sealed, no other class can derive from it.
+This is useful when you want to provide a comprehensive set of functionalities within a class and ensure that they remain unaltered by inheritance,
+which could otherwise potentially alter the way the class is intended to be used.
+
+However, you can still extend the functionality of a sealed class using a few different techniques:
+
+Composition: Instead of inheriting from the sealed class, you can create a new class that includes it as a field,
+sometimes referred to as a "has-a" relationship.
+
+public class MyComposedClass
+{
+    private MySealedClass mySealedClass = new MySealedClass();
+    
+    // You can expose the functionalities of MySealedClass through MyComposedClass methods
+}
+
+Extension Methods: C# allows you to add new methods to an existing class using extension methods.
+These are static methods in a static class, where the this keyword is used to specify which type the method operates on.
+
+public static class MySealedClassExtensions
+{
+    public static void ExtendedMethod(this MySealedClass mySealedClass)
+    {
+        // New functionality here
+    }
+}
+
+
+Aggregation: Similar to composition, but the relationship is typically looser.
+The new class stores a reference to an instance of the sealed class rather than owning it directly.
+
+public class MyAggregatedClass
+{
+    private MySealedClass mySealedClass;
+    
+    public MyAggregatedClass(MySealedClass mySealedClass)
+    {
+        this.mySealedClass = mySealedClass;
+    }
+    
+    // Additional methods and properties
+}
+
+*/
+
 //Cool links
 //https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
 //https://github.com/Maoni0/mem-doc/blob/master/doc/.NETMemoryPerformanceAnalysis.md
