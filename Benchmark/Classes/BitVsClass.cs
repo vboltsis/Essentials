@@ -1,16 +1,16 @@
 ﻿namespace Benchmark;
 
 /*
-|                  Method |       Mean |     Error |    StdDev |   Gen0 | Allocated |
-|------------------------ |-----------:|----------:|----------:|-------:|----------:|
-| CheckIfFruitExistsClass | 25.9151 ns | 0.2644 ns | 0.2473 ns | 0.0019 |      24 B |
-|   CheckIfFruitExistsBit |  0.0320 ns | 0.0105 ns | 0.0093 ns |      - |         - | 
+| Method                  | Mean      | Error     | StdDev    | Gen0   | Allocated |
+|------------------------ |----------:|----------:|----------:|-------:|----------:|
+| CheckIfFruitExistsClass | 32.465 ns | 0.1069 ns | 0.1000 ns | 0.0029 |      24 B |
+| CheckIfFruitExistsBit   |  3.523 ns | 0.0966 ns | 0.1074 ns |      - |         - |
 */
 [MemoryDiagnoser]
 public class BitVsClass
 {
     private HashSet<Fruit> _fruits;
-    private Fruits _fruitsBit;
+    private HashSet<Fruits> _fruitsBit;
 
     [GlobalSetup]
     public void GlobalSetup()
@@ -28,8 +28,18 @@ public class BitVsClass
             new Fruit { Name = "Apricot" }
         };
 
-        _fruitsBit = Fruits.Tomato | Fruits.Banana | Fruits.Apple | Fruits.Orange | Fruits.PineApple |
-            Fruits.WaterMelon | Fruits.Melon | Fruits.Mango | Fruits.Apricot;
+        _fruitsBit = new HashSet<Fruits>
+        { 
+            Fruits.Tomato,
+            Fruits.Banana,
+            Fruits.Apple,
+            Fruits.Orange,
+            Fruits.PineApple,
+            Fruits.WaterMelon,
+            Fruits.Melon,
+            Fruits.Mango,
+            Fruits.Apricot
+        };
     }
 
     [Benchmark]
@@ -41,10 +51,9 @@ public class BitVsClass
     [Benchmark]
     public bool CheckIfFruitExistsBit()
     {
-        return (_fruitsBit & Fruits.Mango) != 0;
+        return _fruitsBit.Contains(Fruits.Apple);
     }
 }
-
 
 record Fruit
 {
