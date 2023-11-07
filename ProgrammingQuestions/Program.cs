@@ -742,6 +742,40 @@ public class ImmutablePoint
 
 */
 
+/* 33. What is RabbitMQ
+RabbitMQ is an open-source message broker software (sometimes called message-oriented middleware) that implements the Advanced Message Queiring Protocol (AMQP). The main purpose of RabbitMQ is to provide a central platform to send and receive messages, and it can be used to handle background jobs or inter-service communication in a distributed system.
+
+Here are some key concepts in RabbitMQ:
+
+-Producer: A producer is an application that sends messages to a RabbitMQ broker.
+-Consumer: A consumer is an application that receives messages from a RabbitMQ broker.
+-Queue: A queue is a buffer that stores messages. Consumers connect to the queue to receive messages.
+-Exchange: An exchange is responsible for routing messages to one or more queues.
+The exchange type determines how it routes messages.
+-Binding: A binding is a link between a queue and an exchange.
+
+RabbitMQ has several exchange types that define how messages are routed:
+
+-Direct Exchange: The message is routed to the queues whose binding key exactly matches the routing key of the message.
+-Fanout Exchange: When a message is published to a fanout exchange, it is copied and sent to all queues bound to that exchange, ignoring any binding keys.
+-Topic Exchange: The message is routed to one or many queues based on a matching between a message routing key and the pattern that was used to bind a queue to an exchange.
+-Headers Exchange: The message is routed to queues based on header values instead of routing keys.
+-Default Exchange: A direct exchange with no name (empty string) pre-declared by the broker. It is a direct exchange and the routing key is the queue name it should route to.
+
+Here are some additional concepts you should be familiar with:
+
+-Message Acknowledgement: When a message is delivered to a consumer, it must acknowledge the message.
+If the consumer fails to do so, RabbitMQ will re-queue the message and may deliver it to another consumer.
+-Message Durability: Messages can be set as persistent, and queues can be declared durable,
+which means that they survive broker restarts.
+-Prefetch Count: This setting controls how many messages the server will deliver to consumers before acknowledgments are received.
+It is used to control the message flow.
+-Dead Letter Exchange: When a message can't be processed or delivered, it can be sent to a dead letter exchange.
+-Clustering and High Availability: RabbitMQ can be run in a cluster to ensure high availability and reliability.
+-Federation and Shovel: These are mechanisms to connect multiple brokers (or clusters) to share messages between them.
+ 
+ */
+
 //Cool links
 //https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet
 //https://github.com/Maoni0/mem-doc/blob/master/doc/.NETMemoryPerformanceAnalysis.md
