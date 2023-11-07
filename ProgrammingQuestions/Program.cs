@@ -622,7 +622,7 @@ Examples:
 -Memento: Allows saving and restoring the previous state of an object without revealing the details of its implementation.
 */
 
-/* What are Sealed classes and how to extend a sealed class
+/* 30. What are Sealed classes and how to extend a sealed class
 Sealed classes in C# are used to prevent a class from being inherited.
 In other words, if you declare a class as sealed, no other class can derive from it.
 This is useful when you want to provide a comprehensive set of functionalities within a class and ensure that they remain unaltered by inheritance,
@@ -665,6 +665,79 @@ public class MyAggregatedClass
     }
     
     // Additional methods and properties
+}
+
+*/
+
+/* 31. What is the difference between virtual and abstract methods in C#
+
+In C#, both virtual and abstract methods enable polymorphism,
+but they serve different purposes and have different rules for how they can be used in your classes:
+
+Virtual Methods:
+
+-Purpose: Virtual methods are used in a base class to define a method that can be overridden in derived classes. They provide a default implementation that may be sufficient for some derived classes, but can also be tailored in others by overriding it.
+-Usage: A virtual method must provide an implementation in the base class. It is marked with the virtual keyword.
+-Overriding: Derived classes can override the virtual method to provide a new implementation, but it's not mandatory. If not overridden, the default implementation in the base class is used.
+-Instantiation: Classes with virtual methods can be instantiated, and they are not required to be derived from.
+
+public class BaseClass
+{
+    public virtual void VirtualMethod()
+    {
+        // Default implementation
+    }
+}
+
+Abstract Methods:
+
+-Purpose: Abstract methods define a method signature without any implementation and must be overridden in non-abstract derived classes. They are used when the base class cannot provide a meaningful implementation for the method, and it is up to the derived class to provide the specific behavior.
+-Usage: An abstract method cannot have any implementation in the base class and must be marked with the abstract keyword. Also, the class that contains an abstract method must be declared as abstract.
+-Overriding: Derived classes must provide an implementation for abstract methods unless they are also declared abstract. Failure to do so will result in a compile-time error.
+-Instantiation: Abstract classes cannot be instantiated directly; they must be subclassed, and their abstract methods must be implemented before you can create an instance of the derived class.
+
+public abstract class AbstractClass
+{
+    public abstract void AbstractMethod();
+}
+
+*/
+
+/* 32. What are Immutable Types in C#
+Immutable types in C# are types whose instances cannot be changed once they have been created. After an object of an immutable type is instantiated, its data cannot be altered in any way. Any operation that appears to change the object actually returns a new object with the modified values.
+
+Here are some characteristics and benefits of immutable types:
+
+Unchangeable State: Once an instance of an immutable type is created, its state cannot change. If you want to modify an object, you would create a new instance with the new values.
+Simplicity: Immutable objects are simpler to understand and use because you don't have to deal with complex state management. Once created, the state of the object is known and predictable at all times.
+Thread Safety: Immutable objects are inherently thread-safe, as they cannot be modified after creation. This means there is no need to synchronize access to them across threads, which can lead to performance benefits in concurrent applications.
+Good for Caching: Since immutable objects cannot change, they are ideal for caching. If you need the same data again, you can reuse the instance without worrying about whether it has been changed elsewhere in the code.
+Hash Key Friendly: Immutable types make excellent dictionary keys because their hash codes do not change over time, ensuring that the hash-based collections work correctly.
+
+In C#, strings are a common example of an immutable type.
+When you "modify" a string, you are actually creating a new string object in memory.
+
+To create your own immutable type in C#, you would:
+
+Declare all fields as readonly.
+Set all properties to have private setters or no setters at all.
+Ensure that all properties return data that is also immutable.
+Provide a constructor that sets all properties at the time of object creation.
+Here’s an example of a simple immutable class:
+
+public class ImmutablePoint
+{
+    public int X { get; }
+    public int Y { get; }
+
+    public ImmutablePoint(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    public ImmutablePoint WithX(int x) => new ImmutablePoint(x, this.Y);
+    public ImmutablePoint WithY(int y) => new ImmutablePoint(this.X, y);
 }
 
 */
