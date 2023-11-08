@@ -94,13 +94,13 @@ public class RadiusProperty
     public double Radius { get; set; }
 }
 
-public class Rectangle
+public class Rectangle1
 {
     public AreaProperty AreaInfo { get; set; } = new AreaProperty();
     public WidthHeightProperty Dimensions { get; set; } = new WidthHeightProperty();
 }
 
-public class Circle
+public class Circle1
 {
     public AreaProperty AreaInfo { get; set; } = new AreaProperty();
     public RadiusProperty RadiusInfo { get; set; } = new RadiusProperty();
