@@ -58,4 +58,16 @@ The main thread does not wait for the 5-second delay to complete and immediately
         t.Wait();
         Console.WriteLine("All done");
     }
+
+    public void TestAwait2()
+    {
+        var t = Task.Run(async () =>
+        {
+            Console.WriteLine("Start");
+            await Task.Delay(5000);
+            Console.WriteLine("Done");
+        });
+        t.Wait();
+        Console.WriteLine("All done");
+    }
 }
