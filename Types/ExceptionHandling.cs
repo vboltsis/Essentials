@@ -51,6 +51,10 @@ internal class ExceptionHandling
         {
             Console.WriteLine("Error: Your account is locked due to suspicious activity. Please contact support.");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
     }
 }
 
@@ -72,7 +76,7 @@ public class BankAccount
             throw new InsufficientFundsException();
         }
 
-        // ... other logic, like checking if the account is locked
+        // ... other logic
         Balance -= amount;
     }
 }
