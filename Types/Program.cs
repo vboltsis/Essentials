@@ -5,40 +5,42 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Types;
 
+
+AsyncExample.DoSomethingAsync();
+
+
+for (int i = 0; i < 1000; i++)
+{
+    Console.WriteLine($"hello {i}");
+}
+
+Console.ReadLine();
+
 //AsyncExample.BoomAsync();
-SpanExamples.ParseDateFromStringSpan("monday:2020/1/1");
-SpanExamples.ParseDateFromString("monday:2020/1/1");
-ExpressionTreesExample.LinqExample();
+//SpanExamples.ParseDateFromStringSpan("monday:2020/1/1");
+//SpanExamples.ParseDateFromString("monday:2020/1/1");
+//ExpressionTreesExample.LinqExample();
 
-var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-
-var newList = list.Where(i => i > 5).ToList();
-var newList2 = list.FindAll(i => i > 5);
+//var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
 
 
-var sw = Stopwatch.GetTimestamp();
+//var newList = list.Where(i => i > 5).ToList();
+//var newList2 = list.FindAll(i => i > 5);
 
-await Task.WhenAll(AsyncExample.PrintAsyncOne(), AsyncExample.PrintAsyncTwo());
+
+//var sw = Stopwatch.GetTimestamp();
+
+//await Task.WhenAll(AsyncExample.PrintAsyncOne(), AsyncExample.PrintAsyncTwo());
 //await AsyncExample.PrintAsyncOne();
 //await AsyncExample.PrintAsyncTwo();
 
 //another async thing
 
-var elapsed = Stopwatch.GetElapsedTime(sw);
+//var elapsed = Stopwatch.GetElapsedTime(sw);
 
-Console.WriteLine(elapsed);
+//Console.WriteLine(elapsed);
 
 Console.ReadKey();
-
-
-
-
-
-
-
-
-
 
 
 //TypeExamples.Types();

@@ -44,4 +44,28 @@ public class AsyncExample
         await Task.Delay(10);
         Console.WriteLine("Hello from two");
     }
+
+    public static Task<int> DoSomethingAsync()
+    {
+        // This method does not use async-await but returns a Task.
+        // Any exception thrown here will be captured in the returned Task.
+        throw new InvalidOperationException("Something went wrong");
+    }
+
+    public async Task<int> CallDoSomethingAsync()
+    {
+        try
+        {
+            // Even though DoSomethingAsync doesn't use async-await,
+            // awaiting its Task will still asynchronously wait for it to complete.
+            return await DoSomethingAsync();
+        }
+        catch (InvalidOperationException ex)
+        {
+            // The exception thrown in DoSomethingAsync is caught here.
+            Console.WriteLine(ex.Message);
+            return -1;
+        }
+    }
+
 }
