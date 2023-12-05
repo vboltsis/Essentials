@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FeatureExamples;
+﻿namespace FeatureExamples;
 
 //a static class contains only static members
 static class StaticClass
 {
     static void Print()
-    {         
+    {
         Console.WriteLine("test");
     }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FeatureExamples
+﻿namespace FeatureExamples
 {
     internal class DefensiveCopies
     {
@@ -72,7 +66,7 @@ output:
 1
 
 A Glimpse Under The Hood
-What actually happened is what I have been asking you about in the first lines of this article; it is Defensive Copy.
+What actually happened is a Defensive Copy.
 
 What happened could be broken down into simple steps:
 

@@ -3,7 +3,7 @@
 namespace Benchmark;
 
 /*
-    | Method          | Mean     | Error   | StdDev  | Ratio | Gen0   | Allocated | Alloc Ratio |
+| Method          | Mean     | Error   | StdDev  | Ratio | Gen0   | Allocated | Alloc Ratio |
 |---------------- |---------:|--------:|--------:|------:|-------:|----------:|------------:|
 | FormatString    | 147.2 ns | 2.16 ns | 1.69 ns |  1.00 | 0.0181 |     152 B |        1.00 |
 | FormatComposite | 130.4 ns | 1.85 ns | 1.81 ns |  0.89 | 0.0124 |     104 B |        0.68 | 

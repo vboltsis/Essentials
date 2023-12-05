@@ -3,11 +3,6 @@
 namespace Benchmark;
 
 /*
-docker build -t benchmark .
-*/
-
-/*
---WINDOWS BENCHMARK--
 |                      Method |     Mean |    Error |   StdDev |   Gen0 | Allocated |
 |---------------------------- |---------:|---------:|---------:|-------:|----------:|
 | ParallelWriteAndReadChannel | 47.87 us | 0.941 us | 1.465 us | 0.0610 |     600 B |

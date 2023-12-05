@@ -54,8 +54,8 @@ public class EnumerableExamples
 
 public class Plumber : Hooman
 {
-    static List<int> sharedList = new List<int>();
-    static Random rnd = new Random();
+    static List<int> sharedList = [];
+    static Random rnd = new();
     public static void WillThrowWhenRun()
     {
         Thread t1 = new Thread(AddItems);
