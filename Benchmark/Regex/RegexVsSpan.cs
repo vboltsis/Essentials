@@ -3,13 +3,13 @@
 namespace Benchmark;
 
 /*
-|      Method |                 hash |      Mean |     Error |    StdDev |   Gen0 | Allocated |
-|------------ |--------------------- |----------:|----------:|----------:|-------:|----------:|
-|   ParseHash | 13ogn(...)9|#42 [40] | 352.12 ns |  6.695 ns |  5.591 ns | 0.0806 |    1016 B |
-| ParseHashV2 | 13ogn(...)9|#42 [40] |  76.15 ns |  1.236 ns |  1.032 ns | 0.0267 |     336 B |
+| Method      | hash                 | Mean      | Error    | StdDev   | Gen0   | Allocated |
+|------------ |--------------------- |----------:|---------:|---------:|-------:|----------:|
+| ParseHash   | 1xZ3b(...)|#38! [41] | 303.52 ns | 2.994 ns | 2.940 ns | 0.0806 |    1016 B |
+| ParseHashV2 | 1xZ3b(...)|#38! [41] |  73.32 ns | 0.313 ns | 0.277 ns | 0.0267 |     336 B |
 
-|   ParseHash | aBc12(...)23456 [42] | 816.72 ns | 12.801 ns | 11.348 ns | 0.1583 |    1992 B |
-| ParseHashV2 | aBc12(...)23456 [42] | 215.92 ns |  3.904 ns |  4.937 ns | 0.0653 |     824 B |
+| ParseHash   | aBc12(...)23456 [42] | 714.84 ns | 4.087 ns | 3.623 ns | 0.1583 |    1992 B |
+| ParseHashV2 | aBc12(...)23456 [42] | 188.95 ns | 3.264 ns | 3.886 ns | 0.0656 |     824 B |
  */
 
 [MemoryDiagnoser]
@@ -18,7 +18,7 @@ public class RegexVsSpan
     private static readonly Regex _hashReaderRegex = new Regex(@"(?<hash>[a-zA-Z0-9\+\/\=]+)\.(?<timestampSeconds>\d+)\|(?<randomValues>[\d\:\.\,]*)\#(?<id>[\d]+)", RegexOptions.Compiled);
     private static readonly char[] characters = new char[] { '.', '|', '#' };
 
-    [Params("13ogntMvb33Qk6brT679HVw==.1685605589|#42", "aBc123+/=.1593847226|12:3.45,6:7.89#123456")]
+    [Params("1xZ3bUYdCDzq40efL08KS2A==.1702048130|#38!", "aBc123+/=.1593847226|12:3.45,6:7.89#123456")]
     public string hash { get; set; }
 
     [Benchmark]
@@ -60,11 +60,18 @@ public class RegexVsSpan
             return null;
         }
 
-        if (!long.TryParse(parts[1], out var timestamp) || !int.TryParse(parts[^1], out var customerId))
+        if (!long.TryParse(parts[1], out var timestamp))
         {
             return null;
         }
 
+        var customerId = ExtractIntegerPart(parts[3]);
+
+        if (customerId is -1)
+        {
+            return null;
+        }
+       
         var enhancedOddsString = parts[2];
 
         if (!string.IsNullOrWhiteSpace(enhancedOddsString))
@@ -87,6 +94,31 @@ public class RegexVsSpan
         }
 
         return new SomeClass(parts[0], timestamp, enhancedOdds, customerId);
+    }
+
+    static int ExtractIntegerPart(string input)
+    {
+        var inputSpan = input.AsSpan();
+        int startIndex = -1;
+        int length = 0;
+
+        for (int i = 0; i < inputSpan.Length; i++)
+        {
+            if (char.IsDigit(inputSpan[i]))
+            {
+                if (startIndex == -1)
+                {
+                    startIndex = i;
+                }
+                length++;
+            }
+            else if (startIndex != -1)
+            {
+                break;
+            }
+        }
+
+        return startIndex != -1 ? int.Parse(inputSpan.Slice(startIndex, length)) : -1;
     }
 }
 
