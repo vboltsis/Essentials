@@ -10,8 +10,8 @@
 [MemoryDiagnoser]
 public class AnonymousObjectVsValueTuple
 {
-    private static readonly Movie[] Movies = new Movie[]
-    {
+    private static readonly Movie[] Movies =
+    [
         new Movie { Title = "The Dark Knight", Year = 2008, Director = "Christopher Nolan", Rating = 9.0 },
         new Movie { Title = "The Shawshank Redemption", Year = 1994, Director = "Frank Darabont", Rating = 9.3 },
         new Movie { Title = "Pulp Fiction", Year = 1994, Director = "Quentin Tarantino", Rating = 8.9 },
@@ -27,7 +27,7 @@ public class AnonymousObjectVsValueTuple
         new Movie { Title = "The Lord of the Rings: The Return of the King", Year = 2003, Director = "Peter Jackson", Rating = 8.9 },
         new Movie { Title = "The Godfather", Year = 1972, Director = "Francis Ford Coppola", Rating = 9.2 },
         new Movie { Title = "The Godfather: Part II", Year = 1974, Director = "Francis Ford Coppola", Rating = 9.0}
-    };
+    ];
 
     [Benchmark]
     public Dictionary<string, IGrouping<string, Movie>> AnonymousObject()
@@ -57,7 +57,6 @@ public class AnonymousObjectVsValueTuple
         return movies;
     }
 }
-
 
 public class Movie
 {
