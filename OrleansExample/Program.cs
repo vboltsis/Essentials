@@ -1,11 +1,19 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.Concurrency;
-using System.Diagnostics;
+using Orleans.Configuration;
 
-// Configure the host
 using var host = new HostBuilder()
-    .UseOrleans(builder => builder.UseLocalhostClustering())
+    .UseOrleans(builder => builder.UseLocalhostClustering()
+    .Configure<ClusterOptions>(options =>
+    {
+        options.ClusterId = "dev";
+        options.ServiceId = "HelloWorldApp";
+    })
+    .Configure<GrainCollectionOptions>(options =>
+    {
+        options.CollectionAge = TimeSpan.FromMinutes(2);
+    }))
     .Build();
 
 // Start the host
@@ -18,13 +26,10 @@ var grainFactory = host.Services.GetRequiredService<IGrainFactory>();
 var friendGrain = grainFactory.GetGrain<IHelloGrain>("friend");
 
 // Call the grain and print the result to the console
-var result = friendGrain.SayHello("Good morning!");
-var d = result.IsCompletedSuccessfully;
+await Task.WhenAll(friendGrain.SayHello("Good morning!").AsTask(),
+    friendGrain.GetGreeting().AsTask(), friendGrain.GetSomething().AsTask());
 
 var greeting = await friendGrain.GetGreeting();
-
-
-
 
 Console.WriteLine("Orleans is running.\nPress Enter to terminate...");
 Console.ReadLine();
@@ -42,23 +47,27 @@ public sealed class HelloGrain : Grain, IHelloGrain
         return base.OnActivateAsync(cancellationToken);
     }
 
-    public ValueTask<string> SayHello(string greeting)
+    public async ValueTask<string> SayHello(string greeting)
     {
-        Console.WriteLine("Start " + DateTime.Now);
-        var d = Stopwatch.StartNew();
-        while (d.ElapsedMilliseconds < 5000)
-        {
+        Console.WriteLine("Start");
 
-        }
+        await Task.Delay(5000);
+
         _greeting = greeting;
-        Console.WriteLine("Finished Hello " + DateTime.Now);
-        return ValueTask.FromResult($"Hello, {greeting}!");
+        Console.WriteLine($"Finished: {_greeting}");
+        return $"Hello, {greeting}!";
     }
 
     public ValueTask<string> GetGreeting()
     {
-        Console.WriteLine("Retrieved Greetings "+ DateTime.Now);
+        Console.WriteLine($"Got: {_greeting}");
         return ValueTask.FromResult(_greeting);
+    }
+
+    public ValueTask<string> GetSomething()
+    {
+        Console.WriteLine("Something");
+        return ValueTask.FromResult("Something");
     }
 }
 
@@ -67,4 +76,5 @@ public interface IHelloGrain : IGrainWithStringKey
     ValueTask<string> SayHello(string greeting);
     [AlwaysInterleave]
     ValueTask<string> GetGreeting();
+    ValueTask<string> GetSomething();
 }
