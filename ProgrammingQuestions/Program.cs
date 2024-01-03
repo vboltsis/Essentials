@@ -715,7 +715,9 @@ public abstract class AbstractClass
 */
 
 /* 32. What are Immutable Types in C#
-Immutable types in C# are types whose instances cannot be changed once they have been created. After an object of an immutable type is instantiated, its data cannot be altered in any way. Any operation that appears to change the object actually returns a new object with the modified values.
+Immutable types in C# are types whose instances cannot be changed once they have been created.
+After an object of an immutable type is instantiated, its data cannot be altered in any way.
+Any operation that appears to change the object actually returns a new object with the modified values.
 
 Here are some characteristics and benefits of immutable types:
 
