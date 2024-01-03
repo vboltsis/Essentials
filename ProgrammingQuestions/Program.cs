@@ -602,7 +602,8 @@ you should use tasks in modern .NET applications because of their efficiency and
 /* 29. How many design patterns exist and give examples of some of them
 Design patterns are typical solutions to commonly occurring problems in software design. They are categorized into three primary groups:
 
-Creational Patterns: These deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or add complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+~~Creational Patterns: These deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or add complexity to the design.
+Creational design patterns solve this problem by somehow controlling this object creation.
 
 Examples:
 -Singleton Pattern: Ensures a class has only one instance and provides a global point of access to it.
@@ -610,7 +611,9 @@ Examples:
 -Abstract Factory: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
 -Builder: Allows constructing complex objects step by step. The pattern allows producing different types and representations of an object using the same construction code.
 -Prototype: Allows copying existing objects without making your code dependent on their classes.
--Structural Patterns: These concern class and object composition. They use inheritance to compose interfaces and define ways to compose objects to obtain new functionalities.
+
+~~Structural Patterns: These concern class and object composition.
+They use inheritance to compose interfaces and define ways to compose objects to obtain new functionalities.
 
 Examples:
 -Adapter Pattern: Allows objects with incompatible interfaces to collaborate.
@@ -618,7 +621,9 @@ Examples:
 -Composite: Composes objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 -Proxy: Provides a placeholder for another object to control access, reduce cost, and reduce complexity.
 -Flyweight: Minimizes memory usage or computational expenses by sharing as much as possible with similar objects.
--Behavioral Patterns: These are concerned with algorithms and the assignment of responsibilities between objects. They don't just describe patterns of objects or classes but also the patterns of communication between them.
+
+~~Behavioral Patterns: These are concerned with algorithms and the assignment of responsibilities between objects.
+They don't just describe patterns of objects or classes but also the patterns of communication between them.
 
 Examples:
 -Strategy: Allows defining a family of algorithms, encapsulating each one, and making them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
