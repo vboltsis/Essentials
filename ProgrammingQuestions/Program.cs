@@ -7,12 +7,14 @@ The term REST was introduced and defined in 2000 by Roy Fielding in his doctoral
 
 /*2. Class vs Struct vs Interface
 A class is a blueprint for an object.
+A struct is also a blueprint for an object but it is a value type and not a reference type.
 To create a struct the following characteristics should apply
 
 It logically represents a single value, similar to primitive types (int, double, etc.).
 
 It has an instance size under 16/20/24 bytes x32/x86/x64. (Microsoft violates this rule many times)
-Instances of the type are large (greater than 16/20/24 bytes) and are not passed as method parameters or returned from methods.
+Instances of the type are large (greater than 16/20/24 bytes) and
+are not passed as method parameters or returned from methods. This is to prevent excessive copying of the struct.
 
 It is immutable.
 
@@ -133,7 +135,11 @@ such as forgetting to free an object and causing a memory leak or attempting to 
 It's faster to compact the memory for a portion of the managed heap than for the entire managed heap.
 Newer objects have shorter lifetimes and older objects have longer lifetimes.
 Newer objects tend to be related to each other and accessed by the application around the same time.
-Garbage collection primarily occurs with the reclamation of short-lived objects. To optimize the performance of the garbage collector, the managed heap is divided into three generations, 0, 1, and 2, so it can handle long-lived and short-lived objects separately. The garbage collector stores new objects in generation 0. Objects created early in the application's lifetime that survive collections are promoted and stored in generations 1 and 2. Because it's faster to compact a portion of the managed heap than the entire heap, this scheme allows the garbage collector to release the memory in a specific generation rather than release the memory for the entire managed heap each time it performs a collection.
+Garbage collection primarily occurs with the reclamation of short-lived objects.
+To optimize the performance of the garbage collector, the managed heap is divided into three generations, 0, 1, and 2, so it can handle long-lived and short-lived objects separately.
+The garbage collector stores new objects in generation 0.
+Objects created early in the application's lifetime that survive collections are promoted and stored in generations 1 and 2.
+Because it's faster to compact a portion of the managed heap than the entire heap, this scheme allows the garbage collector to release the memory in a specific generation rather than release the memory for the entire managed heap each time it performs a collection.
 
 Generation 0. This is the youngest generation and contains short-lived objects.
 An example of a short-lived object is a temporary variable. Garbage collection occurs most frequently in this generation.
@@ -743,7 +749,10 @@ public class ImmutablePoint
 */
 
 /* 33. What is RabbitMQ
-RabbitMQ is an open-source message broker software (sometimes called message-oriented middleware) that implements the Advanced Message Queiring Protocol (AMQP). The main purpose of RabbitMQ is to provide a central platform to send and receive messages, and it can be used to handle background jobs or inter-service communication in a distributed system.
+RabbitMQ is an open-source message broker software (sometimes called message-oriented middleware)
+that implements the Advanced Message Querying Protocol (AMQP).
+The main purpose of RabbitMQ is to provide a central platform to send and receive messages,
+and it can be used to handle background jobs or inter-service communication in a distributed system.
 
 Here are some key concepts in RabbitMQ:
 
