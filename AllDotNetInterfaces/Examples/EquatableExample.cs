@@ -10,6 +10,16 @@ public class Customer : IEquatable<Customer>
     {
         return Name == other.Name && Id == other.Id;
     }
+
+    public static bool operator !=(Customer left, Customer right)
+    {
+        return !(left.Name == right.Name && left.Id == right.Id);
+    }
+
+    public static bool operator ==(Customer left, Customer right)
+    {
+        return left.Name == right.Name && left.Id == right.Id;
+    }
 }
 
 public class Student

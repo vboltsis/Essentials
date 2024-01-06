@@ -39,9 +39,9 @@
 //    Name = "Test"
 //};
 
-//Console.WriteLine("CUSTOMERS");
 //Console.WriteLine(customer == customer2);
 //Console.WriteLine(customer.Equals(customer2));
+//Console.WriteLine();
 
 //var student = new Student
 //{
@@ -81,5 +81,5 @@
 //Console.WriteLine(consumer == clonedConsumer); //Output: false
 
 //4. ISpanFormattable Example
-SpanFormattableExample.PrintHuman();
-Console.WriteLine();
+//SpanFormattableExample.PrintHuman();
+//Console.WriteLine();
