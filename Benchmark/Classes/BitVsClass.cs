@@ -1,16 +1,19 @@
 ﻿namespace Benchmark;
 
 /*
-| Method                  | Mean      | Error     | StdDev    | Gen0   | Allocated |
-|------------------------ |----------:|----------:|----------:|-------:|----------:|
-| CheckIfFruitExistsClass | 32.465 ns | 0.1069 ns | 0.1000 ns | 0.0029 |      24 B |
-| CheckIfFruitExistsBit   |  3.523 ns | 0.0966 ns | 0.1074 ns |      - |         - |
+| Method                  | Mean      | Error     | StdDev    | Allocated |
+|------------------------ |----------:|----------:|----------:|----------:|
+| CheckIfFruitExistsClass | 15.857 ns | 0.2194 ns | 0.2052 ns |         - |
+| CheckIfFruitExistsBit   |  2.902 ns | 0.0039 ns | 0.0035 ns |         - |
 */
 [MemoryDiagnoser]
 public class BitVsClass
 {
     private HashSet<Fruit> _fruits;
     private HashSet<Fruits> _fruitsBit;
+
+    private static Fruit _fruit = new() { Name = "Mango" };
+    private static Fruits _fruitBit = Fruits.Mango;
 
     [GlobalSetup]
     public void GlobalSetup()
@@ -45,13 +48,13 @@ public class BitVsClass
     [Benchmark]
     public bool CheckIfFruitExistsClass()
     {
-        return _fruits.Contains(new Fruit { Name = "Mango" });
+        return _fruits.Contains(_fruit);
     }
 
     [Benchmark]
     public bool CheckIfFruitExistsBit()
     {
-        return _fruitsBit.Contains(Fruits.Apple);
+        return _fruitsBit.Contains(_fruitBit);
     }
 }
 
