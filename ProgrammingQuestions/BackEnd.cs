@@ -7,12 +7,14 @@ The term REST was introduced and defined in 2000 by Roy Fielding in his doctoral
 
 /*2. Class vs Struct vs Interface
 A class is a blueprint for an object.
+A struct is also a blueprint for an object but it is a value type and not a reference type.
 To create a struct the following characteristics should apply
 
 It logically represents a single value, similar to primitive types (int, double, etc.).
 
 It has an instance size under 16/20/24 bytes x32/x86/x64. (Microsoft violates this rule many times)
-Instances of the type are large (greater than 16/20/24 bytes) and are not passed as method parameters or returned from methods.
+Instances of the type are large (greater than 16/20/24 bytes) and
+are not passed as method parameters or returned from methods. This is to prevent excessive copying of the struct.
 
 It is immutable.
 
@@ -133,7 +135,11 @@ such as forgetting to free an object and causing a memory leak or attempting to 
 It's faster to compact the memory for a portion of the managed heap than for the entire managed heap.
 Newer objects have shorter lifetimes and older objects have longer lifetimes.
 Newer objects tend to be related to each other and accessed by the application around the same time.
-Garbage collection primarily occurs with the reclamation of short-lived objects. To optimize the performance of the garbage collector, the managed heap is divided into three generations, 0, 1, and 2, so it can handle long-lived and short-lived objects separately. The garbage collector stores new objects in generation 0. Objects created early in the application's lifetime that survive collections are promoted and stored in generations 1 and 2. Because it's faster to compact a portion of the managed heap than the entire heap, this scheme allows the garbage collector to release the memory in a specific generation rather than release the memory for the entire managed heap each time it performs a collection.
+Garbage collection primarily occurs with the reclamation of short-lived objects.
+To optimize the performance of the garbage collector, the managed heap is divided into three generations, 0, 1, and 2, so it can handle long-lived and short-lived objects separately.
+The garbage collector stores new objects in generation 0.
+Objects created early in the application's lifetime that survive collections are promoted and stored in generations 1 and 2.
+Because it's faster to compact a portion of the managed heap than the entire heap, this scheme allows the garbage collector to release the memory in a specific generation rather than release the memory for the entire managed heap each time it performs a collection.
 
 Generation 0. This is the youngest generation and contains short-lived objects.
 An example of a short-lived object is a temporary variable. Garbage collection occurs most frequently in this generation.
@@ -596,7 +602,8 @@ you should use tasks in modern .NET applications because of their efficiency and
 /* 29. How many design patterns exist and give examples of some of them
 Design patterns are typical solutions to commonly occurring problems in software design. They are categorized into three primary groups:
 
-Creational Patterns: These deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or add complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+~~Creational Patterns: These deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or add complexity to the design.
+Creational design patterns solve this problem by somehow controlling this object creation.
 
 Examples:
 -Singleton Pattern: Ensures a class has only one instance and provides a global point of access to it.
@@ -604,7 +611,9 @@ Examples:
 -Abstract Factory: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
 -Builder: Allows constructing complex objects step by step. The pattern allows producing different types and representations of an object using the same construction code.
 -Prototype: Allows copying existing objects without making your code dependent on their classes.
--Structural Patterns: These concern class and object composition. They use inheritance to compose interfaces and define ways to compose objects to obtain new functionalities.
+
+~~Structural Patterns: These concern class and object composition.
+They use inheritance to compose interfaces and define ways to compose objects to obtain new functionalities.
 
 Examples:
 -Adapter Pattern: Allows objects with incompatible interfaces to collaborate.
@@ -612,7 +621,9 @@ Examples:
 -Composite: Composes objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 -Proxy: Provides a placeholder for another object to control access, reduce cost, and reduce complexity.
 -Flyweight: Minimizes memory usage or computational expenses by sharing as much as possible with similar objects.
--Behavioral Patterns: These are concerned with algorithms and the assignment of responsibilities between objects. They don't just describe patterns of objects or classes but also the patterns of communication between them.
+
+~~Behavioral Patterns: These are concerned with algorithms and the assignment of responsibilities between objects.
+They don't just describe patterns of objects or classes but also the patterns of communication between them.
 
 Examples:
 -Strategy: Allows defining a family of algorithms, encapsulating each one, and making them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
@@ -704,7 +715,9 @@ public abstract class AbstractClass
 */
 
 /* 32. What are Immutable Types in C#
-Immutable types in C# are types whose instances cannot be changed once they have been created. After an object of an immutable type is instantiated, its data cannot be altered in any way. Any operation that appears to change the object actually returns a new object with the modified values.
+Immutable types in C# are types whose instances cannot be changed once they have been created.
+After an object of an immutable type is instantiated, its data cannot be altered in any way.
+Any operation that appears to change the object actually returns a new object with the modified values.
 
 Here are some characteristics and benefits of immutable types:
 
@@ -743,7 +756,10 @@ public class ImmutablePoint
 */
 
 /* 33. What is RabbitMQ
-RabbitMQ is an open-source message broker software (sometimes called message-oriented middleware) that implements the Advanced Message Queiring Protocol (AMQP). The main purpose of RabbitMQ is to provide a central platform to send and receive messages, and it can be used to handle background jobs or inter-service communication in a distributed system.
+RabbitMQ is an open-source message broker software (sometimes called message-oriented middleware)
+that implements the Advanced Message Querying Protocol (AMQP).
+The main purpose of RabbitMQ is to provide a central platform to send and receive messages,
+and it can be used to handle background jobs or inter-service communication in a distributed system.
 
 Here are some key concepts in RabbitMQ:
 

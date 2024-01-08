@@ -1,5 +1,10 @@
 ﻿namespace Types;
 
+//EVERYTHING IS PASSED BY VALUE IN C# UNLESS YOU USE THE REF KEYWORD
+
+//if we pass a value type, we are passing a copy of the value
+//if we pass a reference type, we are passing a copy of the reference
+
 internal class ByValueOrByReference
 {
     public static void ByValue(int number, int? nullable, DateTime date, string text,
@@ -11,7 +16,7 @@ internal class ByValueOrByReference
         date = new DateTime(2222, 2, 2); 
         text = "2"; 
         personStruct.Age = 2; 
-        personStruct.Name = "2"; 
+        personStruct.Name = "2";
 
         // This will NOT change the value of the variable passed in since we are assigning a new object
         list = new List<int>(); 

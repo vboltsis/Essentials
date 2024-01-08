@@ -12,36 +12,30 @@ public class AsyncExample
 
     public async Task PrintAsync()
     {
-        await Task.Delay(1000);
+        Task.Delay(10000);
         Console.WriteLine("Hello world");
+        await Task.Delay(1000);
     }
 
     //this will crash the application
+    //void does not create a state machine and so the exception is not captured
     public async static void BoomAsync()
     {
-        try
-        {
-            await Task.Delay(1);
-            throw new Exception("Boom");
-        }
-        catch (Exception)
-        {
-
-            throw;
-        }
+        await Task.Delay(1);
+        throw new Exception("Boom");
     }
 
     public static async Task PrintAsyncOne()
     {
         Console.WriteLine(Environment.CurrentManagedThreadId);
-        await Task.Delay(100);
+        await Task.Delay(1000);
         Console.WriteLine("Hello from one");
         Console.WriteLine(Environment.CurrentManagedThreadId);
     }
 
     public static async Task PrintAsyncTwo()
     {
-        await Task.Delay(10);
+        await Task.Delay(2000);
         Console.WriteLine("Hello from two");
     }
 
