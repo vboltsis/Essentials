@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 
 namespace Types;
 
 public class EnumerableExamples
 {
+    public static readonly HashSet<int> Set = [1, 2, 3, 4, 5];
+    public static readonly FrozenSet<int> FrozenSet = new HashSet<int> { 1, 2, 3, 4, 5 }.ToFrozenSet();
+
     public static void Test()
     {
         ArrayList arrayList = new ArrayList();
@@ -37,6 +41,7 @@ public class EnumerableExamples
         ConcurrentDictionary<int, string> concurrentDictionary = new ConcurrentDictionary<int, string>();
         ConcurrentQueue<int> concurrentQueue = new ConcurrentQueue<int>();
         ConcurrentStack<int> concurrentStack = new ConcurrentStack<int>();
+        ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
 
         queue.Enqueue(1);
         queue.Enqueue(2);

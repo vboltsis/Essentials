@@ -1,5 +1,5 @@
 ﻿/* 1. What are the different data types in JavaScript?
- * 
+
 JavaScript primarily has two types of data types: Primitive and Non-primitive.
 
 ~Primitive Types: These are the basic data types that include:

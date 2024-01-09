@@ -11,7 +11,7 @@ internal class ByValueOrByReference
         List<int> list, Person person, byte[] bytes, PersonStruct personStruct)
     {
         // These will NOT change the value of the variables passed in
-        number = 2; 
+        number = 2;
         nullable = 2; 
         date = new DateTime(2222, 2, 2); 
         text = "2"; 

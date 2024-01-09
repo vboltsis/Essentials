@@ -60,18 +60,18 @@ public class CatEater : IEater
 
 //---------------------------------------------------------------
 //CLASSIC INHERITANCE
-public class Shape1
+public class Shape
 {
     public double Area { get; set; }
 }
 
-public class Rectangle : Shape1
+public class Rectangle : Shape
 {
     public double Width { get; set; }
     public double Height { get; set; }
 }
 
-public class Circle : Shape1
+public class Circle : Shape
 {
     public double Radius { get; set; }
 }
