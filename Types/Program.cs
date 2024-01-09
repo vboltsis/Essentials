@@ -1,1 +1,4 @@
-﻿Console.WriteLine("Hello!");
+﻿using Types;
+
+RaceConditions.IncreaseNumber();
+Console.WriteLine("");

@@ -6,13 +6,15 @@ public class OrderServiceMoqTests
 {
     private readonly Mock<IInventory> _mockInventory;
     private readonly Mock<IPaymentGateway> _mockPaymentGateway;
+    private readonly Mock<IMailService> _mailService;
     private readonly OrderService _orderService;
 
     public OrderServiceMoqTests()
     {
         _mockInventory = new Mock<IInventory>();
         _mockPaymentGateway = new Mock<IPaymentGateway>();
-        _orderService = new OrderService(_mockInventory.Object, _mockPaymentGateway.Object);
+        _mailService = new Mock<IMailService>();
+        _orderService = new OrderService(_mockInventory.Object, _mockPaymentGateway.Object, _mailService.Object);
     }
 
     [Fact]

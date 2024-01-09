@@ -6,13 +6,15 @@ public class OrderServiceNTests
 {
     private readonly IInventory _inventory;
     private readonly IPaymentGateway _paymentGateway;
+    private readonly IMailService _mailService;
     private readonly OrderService _orderService;
 
     public OrderServiceNTests()
     {
         _inventory = Substitute.For<IInventory>();
         _paymentGateway = Substitute.For<IPaymentGateway>();
-        _orderService = new OrderService(_inventory, _paymentGateway);
+        _mailService = Substitute.For<IMailService>();
+        _orderService = new OrderService(_inventory, _paymentGateway, _mailService);
     }
 
     [Fact]
@@ -28,6 +30,7 @@ public class OrderServiceNTests
         // Assert
         Assert.True(result);
         _inventory.Received(1).ReduceStock("apple");
+        _mailService.Received(1).SendMail("Purchased item apple for 10");
     }
 
     [Fact]
@@ -42,6 +45,7 @@ public class OrderServiceNTests
         // Assert
         Assert.False(result);
         _inventory.DidNotReceive().ReduceStock("apple");
+        _mailService.DidNotReceive().SendMail(Arg.Any<string>());
     }
 
     [Fact]
@@ -57,6 +61,7 @@ public class OrderServiceNTests
         // Assert
         Assert.False(result);
         _inventory.DidNotReceive().ReduceStock("apple");
+        _mailService.DidNotReceive().SendMail(Arg.Any<string>());
     }
 }
 
