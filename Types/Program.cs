@@ -1,4 +1,5 @@
-﻿using Types;
+﻿using FeatureExamples;
 
-RaceConditions.IncreaseNumber();
-Console.WriteLine("");
+UpperCaseStringCollection.Example();
+Console.WriteLine();
+

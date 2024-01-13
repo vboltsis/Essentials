@@ -83,6 +83,11 @@ UNCOMMENT THE PROBLEM YOU WANT TO DEBUG
 
 //----------------------------------------------------------------------------
 //ASYNC PRINT
-var asyncPrint = new AsyncPrintQuestion();
+//var asyncPrint = new AsyncPrintQuestion();
 //asyncPrint.TestWait();
-asyncPrint.TestAwait();
+//asyncPrint.TestAwait();
+
+//----------------------------------------------------------------------------
+//MAX NUMBER
+var maxNumber = MaxNumber.GetMaxDictionary();
+Console.WriteLine();
