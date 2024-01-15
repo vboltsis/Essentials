@@ -103,7 +103,9 @@ do not use the leftmost bit to represent the sign.
         ConcurrentStack<int> ints3 = new ConcurrentStack<int>();
 
         //.NET FRAMEWORK 1 - 2 - 4.8
-        //.NET CORE 1 - 2.2 - 3.1 - 5 - 6 - 7 - 8
+        //.NET CORE 1 - 2.2 - 3.1
+        //.NET - 5 - 6 - 7 - 8
+        //.NET STANDARD 1.0 - 2.0 - 2.1
 
         //CLASS --> REFERENCE TYPE --> HEAP
         //STRUCT --> VALUE TYPE --> STACK

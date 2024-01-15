@@ -1,6 +1,6 @@
 ﻿namespace FeatureExamples;
 
-public class StaticConstructor
+file class StaticConstructor
 {
     public readonly static string _name = "makis";
 
@@ -25,5 +25,17 @@ public class StaticConstructor
 
 class Takis
 {
+    static void Test()
+    {
+        var staticConstructor = new StaticConstructor();
+        var staticConstructor2 = new StaticConstructor("hello");
+    }
 
+    private class NestedClass
+    {
+        public NestedClass()
+        {
+            Console.WriteLine("Hello from nested class");
+        }
+    }
 }

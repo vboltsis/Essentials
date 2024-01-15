@@ -2,3 +2,5 @@ Never use .Wait()
 Never use async void methods
 Never use ArrayList or Collection<T>
 Never create a new Thread manually
+Never use Thread.Sleep
+Never use dynamic

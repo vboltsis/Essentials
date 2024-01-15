@@ -37,6 +37,21 @@ public class OccurrencesOfCharacter
     }
 
     [Benchmark]
+    public int GetOccurencesWithForeachLoopAndSpan()
+    {
+        var count = 0;
+        foreach (var character in Input.AsSpan())
+        {
+            if (character == 'a')
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    [Benchmark]
     public int GetOccurencesWithLoopAndSpan()
     {
         var count = 0;
