@@ -786,7 +786,7 @@ If the consumer fails to do so, RabbitMQ will re-queue the message and may deliv
 which means that they survive broker restarts.
 -Prefetch Count: This setting controls how many messages the server will deliver to consumers before acknowledgments are received.
 It is used to control the message flow.
--Dead Letter Exchange: When a message can't be processed or delivered, it can be sent to a dead letter exchange.
+-Dead Letter Queue: When a message can't be processed or delivered, it can be sent to a dead letter queue.
 -Clustering and High Availability: RabbitMQ can be run in a cluster to ensure high availability and reliability.
 -Federation and Shovel: These are mechanisms to connect multiple brokers (or clusters) to share messages between them.
  
