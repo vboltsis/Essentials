@@ -1,6 +1,6 @@
-Never use .Wait()
-Never use async void methods
-Never use ArrayList or Collection<T>
-Never create a new Thread manually
-Never use Thread.Sleep
-Never use dynamic
+Never use .Wait()						- prefer await async
+Never use async void methods			- prefer async Task
+Never use ArrayList or Collection<T>	- prefer List<T>
+Never create a new Thread manually		- prefer Task.Run
+Never use Thread.Sleep					- prefer await Task.Delay
+Never use dynamic						- prefer strongly typed code

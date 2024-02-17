@@ -4,7 +4,7 @@
  Given a list of numbers, find the max number in the list that exists as many times as the number itself.
  */
 
-internal class MaxNumber
+public class MaxNumber
 {
     private static List<int> _numbers = new List<int> { 1, 2, 2, 3, 3, 3, 4, 5, 5, 5, 5, 5, 6, 7, 7, 7, 7, 7, 7 };
 

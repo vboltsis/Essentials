@@ -10,7 +10,7 @@ namespace Benchmark.Classes;
  */
 
 [MemoryDiagnoser]
-public class TaskVsValueTask
+public class TaskVsValueTaskBad
 {
     [Benchmark]
     public async Task<string> GetWeatherTask()

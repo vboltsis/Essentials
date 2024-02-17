@@ -27,98 +27,7 @@ This allows you to create a common set of behaviors that can be shared by multip
 for some odd interface cases you can find more on: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/explicit-interface-implementation
  */
 
-/*3. Differences between stack and heap memory allocations
-reference: https://docs.microsoft.com/en-us/archive/blogs/ericlippert/the-stack-is-an-implementation-detail-part-two
 
-The idea is that there is a large block of memory reserved for instances of reference types.
-This block of memory can have “holes” – some of the memory is associated with “live” objects,
-and some of the memory is free for use by newly created objects.
-Ideally though we want to have all the allocated memory bunched together and a large section of “free” memory at the top.
-
-If we’re in that situation when new memory is allocated then the “high water mark” is bumped up,
-eating up some of the previously “free” portion of the block.
-The newly-reserved memory is then usable for the reference type instance that has just been allocated.
-That is extremely cheap; just a single pointer move,
-plus zeroing out the newly reserved memory if necessary.
-
-If we have holes then we can maintain a “free list” – a linked list of holes.
-We can then search the free list for a hole of appropriate size and fill it in.
-This is a bit more expensive since there is a list search. We want to avoid this suboptimal situation if possible.
-
-When a garbage collection is performed there are three phases: mark, sweep and compact.
-In the “mark” phase, we assume that everything in the heap is “dead”.
-The CLR knows what objects were “guaranteed alive” when the collection started, so those guys are marked as alive.
-Everything they refer to is marked as alive, and so on,
-until the transitive closure of live objects are all marked.
-In the “sweep” phase, all the dead objects are turned into holes. In the “compact” phase,
-the block is reorganized so that it is one contiguous block of live memory, free of holes.
-
-The CLR collector is generational. Objects start off in the “short lived” heap.
-If they survive they eventually move to the “medium lived” heap, and if they survive there long enough,
-they move to the “long lived” heap.
-The GC runs very often on the short lived heap and very seldom on the long lived heap;
-the idea is that we do not want to have the expense of constantly re-checking a long-lived object to see if it is still alive.
-But we also want short-lived objects to be reclaimed swiftly.
-
-The GC has a huge amount of carefully tuned policy that ensures high performance;
-it attempts to balance the memory and time costs of having a Swiss-cheesed heap against the high cost of the compaction phase.
-Extremely large objects are stored in a special heap that has different compaction policy. And so on. I don’t know all the details, and fortunately,
-I don’t need to. (And of course, I have left out lots of additional complexity that is not germane to this article – pinning and finalization and weak refs and so on.)
-
-Now compare this to the stack. The stack is like the heap in that it is a big block of memory with a “high water mark”.
-But what makes it a “stack” is that the memory on the bottom of the stack always lives longer than the memory on the top of the stack;
-the stack is strictly ordered. The objects that are going to die first are on the top, the objects that are going to die last are on the bottom.
-And with that guarantee, we know that the stack will never have holes, and therefore will not need compacting.
-We know that the stack memory will always be “freed” from the top, and therefore do not need a free list. We know that anything low-down on the stack is guaranteed alive,
-and so we do not need to mark or sweep.
-
-On a stack, the allocation is just a single pointer move – the same as the best (and typical) case on the heap.
-But because of all those guarantees, the deallocation is also a single pointer move! And that is where the huge time performance savings is.
-A lot of people seem to think that heap allocation is expensive and stack allocation is cheap. They are actually about the same, typically.
-It’s the deallocation costs – the marking and sweeping and compacting and moving memory from generation to generation – that are massive for heap memory compared to stack memory.
-
-Clearly it is better to use a stack than a GC heap if you can. When can you?
-Only when you can guarantee that all the necessary conditional that make a stack work are actually achieved.
-Local variables and formal parameters of value type are the sweet spot that achieve that.
-The locals of frames on the bottom of the stack clearly live longer than the locals on the frames of the top of the stack.
-Locals of value type are copied by value, not by reference, so the local is the only thing that references the memory; 
-there is no need to track who is referencing a particular value to determine its lifetime. And the only way to take a ref to a local is to pass it as a ref or out parameter,
-which just passes the ref on up the stack. The local is going to be alive anyway, so the fact that there is a ref to it “higher up” the call stack doesn’t change its lifetime.
-
-aside
-{
-A few asides:
-This explains why you cannot make a “ref int” field.
-If you could then you could store a ref to the value of a short-lived local inside a long-lived object.
-Were that legal then using the stack as a memory management technique would no longer be a viable optimization;
-value types would be just another kind of reference type and would have to be garbage collected.
-Anonymous function closures and iterator block closures are implemented behind-the-scenes
-by turning locals and formal parameters into fields.
-So now you know why it is illegal to capture a ref or out formal parameter in an anonymous function or iterator block;
-doing so would not be a legal field.
-Of course we do not want to have ugly and bizarre rules in the language like
-“you can close over any local or value parameter but not a ref or out parameter”.
-But because we want to be able to get the optimization of putting value types on the stack,
-we have chosen to put this odd restriction into the language. Design is, as always, the art of finding compromises.
-Finally, the CLR does allow “ref return types”;
-you could in theory have a method “ref int M() { … }” that returned a reference to an integer variable.
-If for some bizarre reason we ever decided to allow that in C#,
-we’d have to fix up the compiler and verifier so that they ensured that it was only possible
-to return refs to variables that were known to be on the heap, or known to be “lower down” on the stack than the callee.
-}
-So there you go. Local variables of value type go on the stack because they can.
-They can because (1) “normal” locals have strict ordering of lifetime,
-and (2) value types are always copied by value 
-and (3) it is illegal to store a reference to a local anywhere that could live longer than the local.
-By contrast, reference types have a lifetime based on the number of living references,
-are copied by reference, and those references can be stored anywhere.
-The additional flexibility that reference types give you comes at the cost of a much more complex
-and expensive garbage collection strategy.
-But again, all of this is an implementation detail.
-Using the stack for locals of value type is just an optimization that the CLR performs on your behalf.
-The relevant feature of value types is that they have the semantics of being copied by value,
-not that sometimes their deallocation can be optimized by the runtime.
- */
 
 /*4. What is a Garbage Collector
 reference: https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals
@@ -519,24 +428,7 @@ The managed stack is managed by the .NET runtime and is subject to automatic mem
 while the unmanaged stack is not managed by the .NET runtime and is the responsibility of the developer of the native code.
 */
 
-/* 27. What are secondary reads in SQL
-In SQL, "secondary reads" usually refer to additional reads of data that occur when a query requires data
-that is not already present in memory or cached by the database.
-These additional reads can slow down query performance,
-especially when the data being read is stored on a separate physical disk or in a remote location.
-
-Secondary reads can occur in a number of situations, including:
--When a query joins data from multiple tables, and the necessary data is not already in memory.
--When a query requires data that is not covered by an index, and the data must be read from disk.
--When a query retrieves a large number of rows, and the database needs to access additional data blocks from disk.
-
-To improve query performance and minimize the number of secondary reads,
-it is often a good idea to use indexing and other optimization techniques.
-This can help ensure that the necessary data is already in memory,
-and that the database can retrieve it quickly without needing to perform additional reads. 
- */
-
-/* 28. What is the difference between a thread and a task in .NET
+/* 27. What is the difference between a thread and a task in .NET
  * 
 In the .NET framework, a thread and a task are both means of achieving multi-threading,
 but they are used in slightly different ways and for slightly different purposes.
@@ -599,7 +491,7 @@ As a general guideline, unless you specifically need the low-level control that 
 you should use tasks in modern .NET applications because of their efficiency and ease of use.
 */
 
-/* 29. How many design patterns exist and give examples of some of them
+/* 28. How many design patterns exist and give examples of some of them
 Design patterns are typical solutions to commonly occurring problems in software design. They are categorized into three primary groups:
 
 ~~Creational Patterns: These deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or add complexity to the design.
@@ -633,7 +525,7 @@ Examples:
 -Memento: Allows saving and restoring the previous state of an object without revealing the details of its implementation.
 */
 
-/* 30. What are Sealed classes and how to extend a sealed class
+/* 29. What are Sealed classes and how to extend a sealed class
 Sealed classes in C# are used to prevent a class from being inherited.
 In other words, if you declare a class as sealed, no other class can derive from it.
 This is useful when you want to provide a comprehensive set of functionalities within a class and ensure that they remain unaltered by inheritance,
@@ -680,7 +572,7 @@ public class MyAggregatedClass
 
 */
 
-/* 31. What is the difference between virtual and abstract methods in C#
+/* 30. What is the difference between virtual and abstract methods in C#
 
 In C#, both virtual and abstract methods enable polymorphism,
 but they serve different purposes and have different rules for how they can be used in your classes:
@@ -714,7 +606,7 @@ public abstract class AbstractClass
 
 */
 
-/* 32. What are Immutable Types in C#
+/* 31. What are Immutable Types in C#
 Immutable types in C# are types whose instances cannot be changed once they have been created.
 After an object of an immutable type is instantiated, its data cannot be altered in any way.
 Any operation that appears to change the object actually returns a new object with the modified values.
@@ -755,7 +647,7 @@ public class ImmutablePoint
 
 */
 
-/* 33. What is RabbitMQ
+/* 32. What is RabbitMQ
 RabbitMQ is an open-source message broker software (sometimes called message-oriented middleware)
 that implements the Advanced Message Querying Protocol (AMQP).
 The main purpose of RabbitMQ is to provide a central platform to send and receive messages,
@@ -791,6 +683,62 @@ It is used to control the message flow.
 -Federation and Shovel: These are mechanisms to connect multiple brokers (or clusters) to share messages between them.
  
  */
+
+/* 33. What is the CAP theorem
+The CAP Theorem, also known as Brewer's Theorem,
+is a fundamental principle in the field of distributed computing and database systems.
+Formulated by Eric Brewer in 2000, the theorem states that in any distributed data store,
+only two out of the following three guarantees can be achieved simultaneously:
+
+1. Consistency
+Definition: Every read receives the most recent write or an error. In other words, all nodes see the same data at the same time. Consistency here refers to the data being uniform across all nodes in the system.
+Implication: If a data item is updated, that update must be immediately visible to all subsequent transactions, regardless of which node in the cluster they access.
+
+2. Availability
+Definition: Every request receives a (non-error) response, without the guarantee that it contains the most recent write. It means the system remains operational and accessible (read and write operations) at all times.
+Implication: Any request made to the system must return a response, even if one or more nodes are down or some data is not up-to-date.
+
+3. Partition Tolerance
+Definition: The system continues to operate despite network failures that prevent communication between nodes in the system. Partition tolerance is essential in any distributed system as network partitions are unavoidable.
+Implication: The system can continue to operate even if there is a loss of message(s) between nodes due to network failures.
+
+~Understanding CAP in Practice
+Trade-offs: In reality, partition tolerance is non-negotiable in distributed systems,
+as network failures are a fact of life. Therefore, the real trade-off is between consistency and availability.
+
+~Consistency vs Availability:
+-A system that chooses consistency over availability will ensure that all nodes have the most recent data
+but might refuse to respond to read/write operations during a network partition to maintain consistency.
+
+-A system that chooses availability over consistency will always process queries and tries to return the most recent available version of the data,
+even if some nodes are partitioned. However, this might mean that not all nodes have the latest data immediately.
+
+Consistency and Partition Tolerance (CP)
+Systems that prioritize Consistency and Partition Tolerance may compromise Availability during network partitions. Examples include:
+
+HBase: A distributed, scalable, big data store, part of the Apache Hadoop ecosystem, providing consistent reads and writes.
+MongoDB: In certain configurations, particularly with its replica sets, MongoDB can be CP, ensuring consistency and partition tolerance.
+Zookeeper: Primarily used for coordination and configuration management in distributed systems, Zookeeper ensures consistent state across all nodes.
+Redis (with Redis Cluster configuration): While Redis is often used as an in-memory data store with a focus on performance, in cluster mode it can provide CP characteristics.
+CockroachDB: A SQL database that provides strong consistency and partition tolerance, often used in financial and other transactional systems.
+
+Availability and Partition Tolerance (AP)
+Systems that prioritize Availability and Partition Tolerance may allow for some inconsistency (eventual consistency) during network partitions. Examples include:
+
+Cassandra: Known for its high availability and partition tolerance, Cassandra offers eventual consistency across its distributed architecture.
+CouchDB: A document-oriented NoSQL database that prioritizes high availability and partition tolerance, using eventual consistency for data replication.
+DynamoDB: Amazon's NoSQL database is designed for high availability and partition tolerance, with eventual consistency options.
+Riak: A distributed NoSQL database designed for high availability, fault tolerance, and operational simplicity, providing eventual consistency.
+Couchbase: Initially based on CouchDB, Couchbase Server is designed for high throughput and scalability, offering AP characteristics.
+
+Consistency and Availability (CA)
+Systems that prioritize Consistency and Availability typically do not tolerate network partitions well. These are often traditional, single-node databases. Examples include:
+
+MySQL: A relational database management system that, in a single-node setup, focuses on consistency and availability.
+PostgreSQL: Similar to MySQL, PostgreSQL in a single-node setup provides consistency and availability but struggles with partition tolerance.
+Microsoft SQL Server: In a non-distributed setup, SQL Server ensures data consistency and high availability.
+Oracle Database: Oracle RDBMS, particularly with a single-instance configuration, focuses on consistency and availability.
+*/
 
 //Cool links
 //https://endjin.com/blog/2020/09/arraypool-vs-memorypool-minimizing-allocations-ais-dotnet

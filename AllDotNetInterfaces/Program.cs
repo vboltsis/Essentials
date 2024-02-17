@@ -1,5 +1,6 @@
 ﻿using AllDotNetInterfaces;
 
+Console.WriteLine("Hello");
 //1. IComparable Example
 //var person1 = new Person
 //{

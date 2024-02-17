@@ -23,7 +23,7 @@ file class StaticConstructor
     }
 }
 
-class Takis
+class StaticConstructorExample
 {
     static void Test()
     {
