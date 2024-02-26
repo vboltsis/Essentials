@@ -35,7 +35,7 @@ public record Post
         {
             //create post
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogError();
         }
@@ -47,7 +47,7 @@ public record Post
         {
             //delete post
         }
-        catch (Exception e)
+        catch (Exception)
         {
             _logger.LogError();
         }

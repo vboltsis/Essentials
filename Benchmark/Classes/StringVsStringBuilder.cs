@@ -22,10 +22,10 @@ namespace Benchmark.Classes;
 public class StringVsStringBuilder
 {
     [Params(1, 10, 100)]
-    public int _number;
-    private List<FileManager> _files { get; set; }
+    public int Number;
+    private List<FileManager> Files { get; set; }
 
-    private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
+    private static readonly ObjectPool<StringBuilder> StringBuilderPool =
         new DefaultObjectPool<StringBuilder>(new StringBuilderPooledObjectPolicy
         {
             InitialCapacity = 256,
@@ -35,7 +35,7 @@ public class StringVsStringBuilder
     [GlobalSetup]
     public void GlobalSetup()
     {
-        _files = GetFileManagers(_number);
+        Files = GetFileManagers(Number);
     }
 
     [Benchmark(Baseline = true)]
@@ -43,14 +43,14 @@ public class StringVsStringBuilder
     {
         var logMessage = $"File Offers{Environment.NewLine}" +
                          string.Join(Environment.NewLine,
-                         _files.Select(c => FileResponseLogFormat(c, c.FileError.FileErrorMetadata.FileAmount, c.FileError)));
+                         Files.Select(c => FileResponseLogFormat(c, c.FileError.FileErrorMetadata.FileAmount, c.FileError)));
 
         return logMessage;
     }
 
-    private string FileResponseLogFormat(FileManager file, decimal? FileAmount, FileError FileError)
+    private string FileResponseLogFormat(FileManager file, decimal? fileAmount, FileError fileError)
     {
-        return $"{file.Id}: {(FileAmount.HasValue ? $"{FileAmount}" : FileError?.ToString())}";
+        return $"{file.Id}: {(fileAmount.HasValue ? $"{fileAmount}" : fileError?.ToString())}";
     }
 
     [Benchmark]
@@ -59,7 +59,7 @@ public class StringVsStringBuilder
         var separator = ": ";
         var builder = new StringBuilder();
         builder.AppendLine("File Offers");
-        foreach (var file in _files)
+        foreach (var file in Files)
         {
             builder.Append(file.Id);
             builder.Append(separator);
@@ -69,7 +69,7 @@ public class StringVsStringBuilder
             }
             else
             {
-                builder.Append(file.FileError.FileErrorMetadata.Error);
+                builder.Append(file.FileError?.FileErrorMetadata?.Error);
             }
             builder.Append(Environment.NewLine);
         }
@@ -81,9 +81,9 @@ public class StringVsStringBuilder
     public string LogFileOfferStringBuilderPool()
     {
         var separator = ": ";
-        var builder = _stringBuilderPool.Get();
+        var builder = StringBuilderPool.Get();
         builder.AppendLine("File Offers");
-        foreach (var file in _files)
+        foreach (var file in Files)
         {
             builder.Append(file.Id);
             builder.Append(separator);
@@ -93,20 +93,20 @@ public class StringVsStringBuilder
             }
             else
             {
-                builder.Append(file.FileError.FileErrorMetadata.Error);
+                builder.Append(file.FileError?.FileErrorMetadata?.Error);
             }
             builder.Append(Environment.NewLine);
         }
 
         var result = builder.ToString();
         builder.Clear();
-        _stringBuilderPool.Return(builder);
+        StringBuilderPool.Return(builder);
         return result;
     }
 
     private static List<FileManager> GetFileManagers(int amount)
     {
-        var list = new List<FileManager>();
+        var list = new List<FileManager>(amount);
         for (int i = 0; i < amount; i++)
         {
             list.Add(new FileManager
