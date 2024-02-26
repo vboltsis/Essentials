@@ -1,6 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-
-namespace Benchmark.Classes;
+﻿namespace Benchmark.Classes;
 
 /*
 |              Method |     Mean |   Error |   StdDev | Allocated |

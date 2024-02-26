@@ -1,5 +1,12 @@
 ﻿namespace Benchmark;
 
+/*
+| Method           | Mean     | Error    | StdDev   | Gen0   | Allocated |
+|----------------- |---------:|---------:|---------:|-------:|----------:|
+| GetTestTask      | 23.23 ns | 0.487 ns | 0.500 ns | 0.0172 |     144 B |
+| GetTestValueTask | 21.99 ns | 0.038 ns | 0.032 ns |      - |         - |
+ */
+
 [MemoryDiagnoser]
 public class TaskVsValueTaskGood
 {
