@@ -11,6 +11,8 @@ public class RecordsVsClasses
         set.Add(stu1);
         set.Add(stu2);
 
+        var contains = set.Contains(new Student { Name = "Takis" });
+        
         stu1.Print();
         var result = stu1 == stu2;
         var result2 = stu1.Equals(stu2);
@@ -26,6 +28,8 @@ public class RecordsVsClasses
         var set = new HashSet<RecordStudent> { };
         set.Add(stu1);
         set.Add(stu2);
+        
+        var contains = set.Contains(new RecordStudent { Name = "Takis" });
 
         var result = stu1 == stu2;
         var result2 = stu1.Equals(stu2);
