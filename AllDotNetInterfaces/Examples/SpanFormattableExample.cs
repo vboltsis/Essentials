@@ -48,17 +48,17 @@ public class Human : ISpanFormattable
     {
         ReadOnlySpan<char> output;
 
-        if (format.IsEmpty || format.ToString() == "F")
+        if (format.IsEmpty || format == "F")
         {
             output = $"{FirstName} {LastName}".AsSpan();
         }
-        else if (format.ToString() == "I")
+        else if (format == "I")
         {
             output = $"{FirstName[0]}.{LastName[0]}.".AsSpan();
         }
         else
         {
-            throw new FormatException($"The format of '{format.ToString()}' is invalid.");
+            throw new FormatException($"The format of '{format}' is invalid.");
         }
 
         if (destination.Length < output.Length)

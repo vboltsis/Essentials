@@ -82,5 +82,5 @@ Console.WriteLine("Hello");
 //Console.WriteLine(consumer == clonedConsumer); //Output: false
 
 //4. ISpanFormattable Example
-//SpanFormattableExample.PrintHuman();
+SpanFormattableExample.PrintHuman();
 //Console.WriteLine();
