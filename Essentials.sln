@@ -25,24 +25,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{51660938
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTests", "XUnitTests\XUnitTests.csproj", "{BB426D5D-8225-4422-9FDA-0C5A5BB2DAF5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "performance-notes", "performance-notes", "{4B20E6CB-962D-46D8-8421-FB029E5E2BB4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{4B20E6CB-962D-46D8-8421-FB029E5E2BB4}"
 	ProjectSection(SolutionItems) = preProject
 		PerformanceTipstxt.txt = PerformanceTipstxt.txt
+		CommonMistakes.txt = CommonMistakes.txt
+		GC-notes.txt = GC-notes.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisPlayground", "RedisPlayground\RedisPlayground.csproj", "{48377EDA-C51A-42DA-988D-9C03D316E0D1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrleansExample", "OrleansExample\OrleansExample.csproj", "{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gc-notes", "Gc-notes", "{D293F252-EF45-4C88-AC0C-D90F4BA3398E}"
-	ProjectSection(SolutionItems) = preProject
-		notes.txt = notes.txt
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouchbasePlayground", "CouchbasePlayground\CouchbasePlayground.csproj", "{49A6C14D-064D-48FC-9C2F-0D176391E4CD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OAED", "OAED", "{4CDFB908-6713-489A-93F2-72D4F578E7D3}"
-	ProjectSection(SolutionItems) = preProject
-		Mistakes.txt = Mistakes.txt
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playgrounds", "Playgrounds", "{1464008C-B2A5-4C6F-8F59-EB491F4658C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,12 +94,18 @@ Global
 		{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95BD4371-D5F1-4FEE-B0BD-2C0FC8A6BAF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A6C14D-064D-48FC-9C2F-0D176391E4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A6C14D-064D-48FC-9C2F-0D176391E4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A6C14D-064D-48FC-9C2F-0D176391E4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A6C14D-064D-48FC-9C2F-0D176391E4CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BB426D5D-8225-4422-9FDA-0C5A5BB2DAF5} = {51660938-2A41-4D02-ACC1-5630E9643D20}
+		{48377EDA-C51A-42DA-988D-9C03D316E0D1} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
+		{49A6C14D-064D-48FC-9C2F-0D176391E4CD} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1640BA4-EDBC-40AD-B6F1-64B90C8CCF41}
