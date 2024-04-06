@@ -1,4 +1,6 @@
-﻿namespace FeatureExamples;
+﻿using System.Text.Json;
+
+namespace FeatureExamples;
 
 public sealed class Singleton1
 {
@@ -38,5 +40,24 @@ public sealed class Singleton2
     public static Singleton2 GetInstance()
     {
         return _instance;
+    }
+}
+
+public class JsonSerializerSettings
+{
+    private static readonly JsonSerializerOptions _options = new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true,
+        PropertyNameCaseInsensitive = true
+    };
+    
+    private JsonSerializerSettings()
+    {
+    }
+
+    public static JsonSerializerOptions Options
+    {
+        get { return _options; }
     }
 }
