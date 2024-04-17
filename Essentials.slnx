@@ -1,0 +1,34 @@
+<Solution>
+  <Folder Name="/Tests/UnitTests/">
+    <Project Path="XUnitTests\XUnitTests.csproj" />
+  </Folder>
+  <Folder Name="/Tests/IntegrationTests/" />
+  <Folder Name="/Tests/" />
+  <Folder Name="/Playgrounds/">
+    <Project Path="CouchbasePlayground\CouchbasePlayground.csproj" />
+    <Project Path="OrleansExample\OrleansPlayground.csproj" />
+    <Project Path="RedisPlayground\RedisPlayground.csproj" />
+  </Folder>
+  <Folder Name="/Notes/">
+    <File Path="CommonMistakes.txt" />
+    <File Path="GC-notes.txt" />
+    <File Path="PerformanceTipstxt.txt" />
+  </Folder>
+  <Folder Name="/Interview/">
+    <Project Path="InterviewExample\InterviewExample.csproj" />
+    <Project Path="ProgrammingQuestions\ProgrammingQuestions.csproj" />
+  </Folder>
+  <Folder Name="/Blazor/">
+    <Project Path="BlazorHybrid\BlazorHybrid.Client\BlazorHybrid.Client.csproj" Type="Classic C#" />
+    <Project Path="BlazorHybrid\BlazorHybrid\BlazorHybrid.csproj" Type="Classic C#" />
+    <Project Path="BlazorServerSide\BlazorServerSide.csproj" />
+    <Project Path="BlazorWebAssembly\BlazorWebAssembly.csproj" Type="Classic C#" />
+  </Folder>
+  <Project Path="AllDotNetInterfaces\AllDotNetInterfaces.csproj" />
+  <Project Path="Benchmark\Benchmark.csproj" />
+  <Project Path="CSharpHistory\CSharpHistory.csproj" />
+  <Project Path="PoCs\PoCs.csproj" />
+  <Project Path="SOLID\SOLID.csproj" />
+  <Project Path="Types\FeatureExamples.csproj" />
+  <Project Path="WebApi\WeatherExample.csproj" />
+</Solution>
