@@ -1,8 +1,6 @@
-﻿using System.Drawing;
+﻿namespace Types;
 
-namespace Types;
-
-//access modifiers public, private, protected, internal, protected internal
+//access modifiers public, private, protected, internal, protected internal, file
 //abstract class, sealed class, static class
 
 //the default access modifier is internal for class and private for members

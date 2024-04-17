@@ -1,4 +1,6 @@
-﻿public class SpanExamples
+﻿namespace Types;
+
+public class SpanExamples
 {
     //monday:2020/1/1
     public static DateTime ParseDateFromStringSpan(string text)
