@@ -27,6 +27,7 @@ public class OrderServiceMoqTests
 
         Assert.True(result);
         _mockInventory.Verify(inv => inv.ReduceStock("item1"), Times.Once);
+        _mockPaymentGateway.Verify(p => p.ProcessPayment(100.0), Times.Once);
     }
 
     [Fact]
@@ -49,5 +50,6 @@ public class OrderServiceMoqTests
         bool result = _orderService.ProcessOrder("item1", 100.0);
 
         Assert.False(result);
+        _mockInventory.Verify(inv => inv.ReduceStock("item1"), Times.Never);
     }
 }

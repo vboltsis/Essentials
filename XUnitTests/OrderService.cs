@@ -31,16 +31,15 @@ public class OrderService
 
     public bool ProcessOrder(string item, double amount)
     {
-        if (_inventory.IsInStock(item))
-        {
-            if (_paymentGateway.ProcessPayment(amount))
-            {
-                _inventory.ReduceStock(item);
-                _mailService.SendMail($"Purchased item {item} for {amount}");
-                return true;
-            }
-        }
+        if (!_inventory.IsInStock(item)) 
+            return false;
 
-        return false;
+        if (!_paymentGateway.ProcessPayment(amount)) 
+            return false;
+        
+        _inventory.ReduceStock(item);
+        _mailService.SendMail($"Purchased item {item} for {amount}");
+        
+        return true;
     }
 }
