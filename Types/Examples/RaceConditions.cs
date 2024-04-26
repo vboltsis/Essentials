@@ -1,4 +1,6 @@
-﻿namespace Types;
+﻿using System.Runtime.CompilerServices;
+
+namespace Types;
 
 public class RaceConditions
 {
@@ -8,19 +10,86 @@ public class RaceConditions
 
         for (int i = 0; i < 10_000; i++)
         {
+            #region spoilers
             //fire and forget async
             //tasks are not run in the same order as created
             //we do not block any thread
-
+            #endregion
+            
             Task.Run(() => 
             {
+                //db call
                 number++;
             });
         }
-
+        
         Console.WriteLine(number);
     }
+    
+    public static void IncreaseNumberSolution1()
+    {
+        var number = 0;
+
+        for (int i = 0; i < 10_000; i++)
+        {
+            Task.Run(() => 
+            {
+                //db call
+                Interlocked.Increment(ref number);
+            });
+        }
+
+        Thread.Sleep(1000);
+        Console.WriteLine(number);
+    }
+    
+    public static async Task IncreaseNumberSolution2()
+    {
+        var number = 0;
+        var lockObject = new object();
+
+        for (int i = 0; i < 10_000; i++)
+        {
+            Task.Run(() => 
+            {
+                //db call
+                lock (lockObject)
+                {
+                    number++;
+                }
+            });
+        }
+
+        await Task.Delay(1000);
+        Console.WriteLine(number);
+    }
+    
+    public static async Task IncreaseNumberSolution3()
+    {
+        for (int i = 0; i < 10_000; i++)
+        {
+            Task.Run(() => 
+            {
+                //db call
+                IncreaseNumber(Test);
+            });
+        }
+
+        await Task.Delay(1000);
+        Console.WriteLine(Test);
+    }
+    
+    public static volatile int Test;
+
+    [MethodImpl(MethodImplOptions.Synchronized)]
+    static void IncreaseNumber(int number)
+    {
+        Test++;
+    }
 }
+
+
+
 
 /*When it makes sense to use await Task.Run()?
 1) Legacy Libraries: You might be dealing with a legacy synchronous library or method that you can't modify.
