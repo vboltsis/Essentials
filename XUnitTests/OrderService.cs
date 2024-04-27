@@ -14,6 +14,7 @@ public interface IPaymentGateway
 public interface IMailService
 {
     void SendMail(string message);
+    void SendErrorEmail(Exception exception);
 }
 
 public class OrderService
@@ -31,16 +32,23 @@ public class OrderService
 
     public bool ProcessOrder(string item, double amount)
     {
-        if (_inventory.IsInStock(item))
+        try
         {
-            if (_paymentGateway.ProcessPayment(amount))
-            {
-                _inventory.ReduceStock(item);
-                _mailService.SendMail($"Purchased item {item} for {amount}");
-                return true;
-            }
+            if (!_inventory.IsInStock(item))
+                return false;
+
+            if (!_paymentGateway.ProcessPayment(amount))
+                return false;
+
+            _inventory.ReduceStock(item);
+            _mailService.SendMail($"Purchased item {item} for {amount}");
+        }
+        catch (Exception e)
+        {
+            _mailService.SendErrorEmail(e);
+            return false;
         }
 
-        return false;
+        return true;
     }
 }

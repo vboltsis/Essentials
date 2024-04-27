@@ -4,16 +4,15 @@ public class DefaultBadExample
 {
     public static void DefaultKeywordWrongUsage()
     {
-        var myClass = new FirstClass
+        var firstClass = new FirstClass
         {
             SecondClass = new SecondClass
             {
                 Id = 0
             }
         };
-
-
-        if (myClass.SecondClass?.Id != default)
+        
+        if (firstClass.SecondClass?.Id != default)
         {
             Console.WriteLine("it is not 0");
         }

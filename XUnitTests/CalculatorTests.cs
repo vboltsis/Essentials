@@ -7,6 +7,7 @@ public class CalculatorTests
     [Theory]
     [InlineData(10, 2, 8)]
     [InlineData(3, 2, 1)]
+    [InlineData(1, 2, -1)]
     public void Subtract_TwoNumbers_Success(int firstNumber, int secondNumber, int expected)
     {
         //Act

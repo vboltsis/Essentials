@@ -27,6 +27,7 @@ public class OrderServiceMoqTests
 
         Assert.True(result);
         _mockInventory.Verify(inv => inv.ReduceStock("item1"), Times.Once);
+        _mockPaymentGateway.Verify(p => p.ProcessPayment(100.0), Times.Once);
     }
 
     [Fact]
@@ -49,5 +50,18 @@ public class OrderServiceMoqTests
         bool result = _orderService.ProcessOrder("item1", 100.0);
 
         Assert.False(result);
+        _mockInventory.Verify(inv => inv.ReduceStock("item1"), Times.Never);
+    }
+
+    [Fact]
+    public void ProcessOrder_WhenPaymentService_ThrowsException()
+    {
+        _mockInventory.Setup(inv => inv.IsInStock(It.IsAny<string>())).Returns(true);
+        _mockPaymentGateway.Setup(pg => pg.ProcessPayment(It.IsAny<double>())).Throws(new Exception("Payment Failed"));
+        
+        bool result = _orderService.ProcessOrder("item1", 100.0);
+        
+        Assert.False(result);
+        _mailService.Verify(m => m.SendErrorEmail(It.IsAny<Exception>()), Times.Once);
     }
 }
