@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WeatherExample;
 using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IScopedCounterService, CounterService>(); // one inst
 builder.Services.AddSingleton<ISingletonCounterService, CounterService>(); //one instance for the whole application
 builder.Services.AddTransient<IAnotherService, AnotherService>();
 
+builder.Services.AddKeyedSingleton<INotificationService, SmsNotificationService>("sms");
+builder.Services.AddKeyedSingleton<INotificationService, EmailNotificationService>("email");
 
 builder.Services.AddDbContextPool<WeatherContext>(options =>
 {
@@ -26,6 +29,16 @@ builder.Services.AddDbContextPool<WeatherContext>(options =>
 });
 
 var app = builder.Build();
+
+app.MapGet("/notify/sms/{message}", ([FromKeyedServices("sms")] INotificationService smsService, string message) =>
+{
+    return smsService.Notify(message);
+});
+
+app.MapGet("/notify/email/{message}", ([FromKeyedServices("email")] INotificationService emailService, string message) =>
+{
+    return emailService.Notify(message);
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
