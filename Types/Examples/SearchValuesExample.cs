@@ -15,11 +15,11 @@ public class VowelChecker
     public static void TestVowels()
     {
         var testInput = "aeiouAEIOU";
-        var result = AreAllCharactersVowels(testInput);
+        var result = AreAllCharactersVowels(testInput); //true
         Console.WriteLine($"Are all characters in '{testInput}' vowels? {result}");
 
         testInput = "Hello World!";
-        result = AreAllCharactersVowels(testInput);
+        result = AreAllCharactersVowels(testInput); //false
         Console.WriteLine($"Are all characters in '{testInput}' vowels? {result}");
     }
 }
