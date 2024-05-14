@@ -21,6 +21,11 @@ public class Operations
         int c = ++a; // c = 3, a = 3
 
         Console.WriteLine($"a: {a}, b: {b}, c: {c}");
+
+        int d = 3;
+        int e = d--; // e = 3, d = 2
+
+        Console.WriteLine($"d: {d}, e: {e}");
     }
 
     public void ComparisonOperators()
@@ -95,6 +100,16 @@ public class Operations
         string name = person?.Name;
 
         Console.WriteLine(name); // null
+
+        //it is the same as
+        if (person != null)
+        {
+            name = person.Name;
+        }
+        else
+        {
+            name = null;
+        }
     }
 
     public void IsOperator()
@@ -122,13 +137,28 @@ public class Operations
         }
     }
 
-    public void AsOperator()
+    public void IsOperatorSecondExample()
     {
         object[] values = { 1, "John", DateTime.Now, null };
 
         foreach (var value in values)
         {
             if (value is string text)
+            {
+                Console.WriteLine($"{text} is a string");
+            }
+        }
+    }
+
+    public void AsOperator()
+    {
+        object[] values = { 1, "John", DateTime.Now, null };
+
+        foreach (var value in values)
+        {
+            string text = value as string;
+
+            if (text != null)
             {
                 Console.WriteLine($"{text} is a string");
             }
@@ -166,7 +196,4 @@ public class Operations
 
         Console.WriteLine(result);
     }
-
-
-
 }
