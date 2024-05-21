@@ -1,6 +1,6 @@
 ﻿namespace FeatureExamples;
 
-public class Animal : IEater
+public abstract class Animal : IEater
 {
     public string Name { get; set; }
 
@@ -13,9 +13,18 @@ public class Animal : IEater
 //CLASSIC INHERITANCE
 public class Cat1 : Animal
 {
+    public string Type { get; set; }
+    
     public override void Eat()
     {
-        Console.WriteLine("Eat as a cat");
+        if (Type == "Bengal")
+        {
+            Console.WriteLine("Eating as a Bengal");
+        }
+        else
+        {
+            base.Eat();
+        }
     }
 }
 
@@ -58,6 +67,13 @@ public class CatEater : IEater
     }
 }
 
+public class BengalEater : IEater
+{
+    public void Eat()
+    {
+        Console.WriteLine("Eating as a bengal");
+    }
+}
 //---------------------------------------------------------------
 //CLASSIC INHERITANCE
 public class Shape
@@ -111,4 +127,33 @@ public class SquareCircleCombo
     public AreaProperty AreaInfo { get; set; } = new AreaProperty();
     public WidthHeightProperty Dimensions { get; set; } = new WidthHeightProperty();
     public RadiusProperty RadiusInfo { get; set; } = new RadiusProperty();
+}
+
+//Video Game
+
+public class Player
+{
+    public string Name { get; set; }
+
+    private IAttack _attackBehavior;
+
+    public Player(IAttack attackBehavior)
+    {
+        _attackBehavior = attackBehavior;
+    }
+
+    public void PerformAttack()
+    {
+        _attackBehavior.Attack();
+    }
+
+    public void ChangeAttackBehavior(IAttack behavior)
+    {
+        _attackBehavior = behavior;
+    }
+}
+
+public interface IAttack
+{
+    void Attack();
 }

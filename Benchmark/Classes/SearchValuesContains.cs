@@ -8,6 +8,7 @@ namespace Benchmark;
 | IsBase64SearchValues | sDSFGDSFW            |  1.887 ns | 0.0600 ns | 0.0561 ns |         - |
 | IsBase64Array        | sDSFGDSFW            | 19.154 ns | 0.0427 ns | 0.0356 ns |         - |
 | IsBase64Loop         | sDSFGDSFW            | 29.725 ns | 0.1367 ns | 0.1067 ns |         - |
+
 | IsBase64SearchValues | sDSFG(...)jUUi& [21] |  2.460 ns | 0.0168 ns | 0.0157 ns |         - |
 | IsBase64Array        | sDSFG(...)jUUi& [21] | 56.959 ns | 0.3779 ns | 0.3535 ns |         - |
 | IsBase64Loop         | sDSFG(...)jUUi& [21] | 35.028 ns | 0.2251 ns | 0.1879 ns |         - | 
