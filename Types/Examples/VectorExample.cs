@@ -20,6 +20,10 @@ public class VectorExample
         var v1 = new Vector<float>(new float[] { 1, 2, 3, 4, 5, 6, 7, 8 });
         var v2 = new Vector<float>(new float[] { 9, 10, 11, 12, 13, 14, 15, 16 });
 
+        var sumRes = Vector.Sum(v1);
+        var array = new int[] { 1, 2, 3, 4, 5 };
+        var arraySum = array.Sum();
+        
         // Addition
         var addResult = v1 + v2;
 
