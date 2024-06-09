@@ -8,19 +8,34 @@ namespace FeatureExamples;
 
 public class PatternMatchingExamples
 {
-    public static void Example()
+    public static void SwitchExample()
     {
-        var person = new Person("John", "Doe");
+        var person = new Person("John", "Doe", 10);
 
         var greeting = person switch
         {
-            ("John", "Doe") => "Hello, John Doe!",
-            ("Jane", "Doe") => "Hello, Jane Doe!",
+            ("John", "Doe", 10) => "Hello, John Doe!",
+            ("Jane", "Doe", 15) => "Hello, Jane Doe!",
             _ => "Hello, stranger!"
         };
 
         Console.WriteLine(greeting);
     }
+
+    public static void PropertyExample()
+    {
+        Person person = null;
+
+        // if (person != null && person.FirstName == "Test" && person.Age > 18)
+        // {
+        //     
+        // }
+
+        if (person is {FirstName: "test", Age: > 18})
+        {
+            
+        }
+    }
 }
 
-public record Person(string FirstName, string LastName);
+public record Person(string FirstName, string LastName, int Age);
