@@ -1,5 +1,5 @@
 ﻿using FeatureExamples;
 
-VectorExample.Example();
+LockingExamples.Example();
 
 Console.ReadLine();

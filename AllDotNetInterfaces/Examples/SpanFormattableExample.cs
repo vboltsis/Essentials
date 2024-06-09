@@ -46,30 +46,45 @@ public class Human : ISpanFormattable
 
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format = default, IFormatProvider provider = null)
     {
-        ReadOnlySpan<char> output;
+        int requiredLength;
+        if (format.IsEmpty || format.SequenceEqual("F".AsSpan()))
+        {
+            requiredLength = FirstName.Length + 1 + LastName.Length;
+            if (destination.Length < requiredLength)
+            {
+                charsWritten = 0;
+                return false;
+            }
 
-        if (format.IsEmpty || format == "F")
-        {
-            output = $"{FirstName} {LastName}".AsSpan();
+            FirstName.AsSpan().CopyTo(destination);
+            destination[FirstName.Length] = ' ';
+            LastName.AsSpan().CopyTo(destination.Slice(FirstName.Length + 1));
+
+            charsWritten = requiredLength;
+            return true;
         }
-        else if (format == "I")
+        else if (format.SequenceEqual("I".AsSpan()))
         {
-            output = $"{FirstName[0]}.{LastName[0]}.".AsSpan();
+            requiredLength = 4; // e.g., "J.D."
+            if (destination.Length < requiredLength)
+            {
+                charsWritten = 0;
+                return false;
+            }
+
+            // Format as "F.L."
+            destination[0] = FirstName[0];
+            destination[1] = '.';
+            destination[2] = LastName[0];
+            destination[3] = '.';
+
+            charsWritten = requiredLength;
+            return true;
         }
         else
         {
-            throw new FormatException($"The format of '{format}' is invalid.");
+            throw new FormatException($"The format of '{format.ToString()}' is invalid.");
         }
-
-        if (destination.Length < output.Length)
-        {
-            charsWritten = 0;
-            return false;
-        }
-
-        output.CopyTo(destination);
-        charsWritten = output.Length;
-        return true;
     }
 
     public string ToString(string format, IFormatProvider formatProvider)

@@ -1,13 +1,16 @@
 <Solution>
-  <Folder Name="/Tests/UnitTests/">
-    <Project Path="XUnitTests\XUnitTests.csproj" />
+  <Folder Name="/Blazor/">
+    <Project Path="BlazorHybrid\BlazorHybrid.Client\BlazorHybrid.Client.csproj" />
+    <Project Path="BlazorHybrid\BlazorHybrid\BlazorHybrid.csproj" />
+    <Project Path="BlazorServerSide\BlazorServerSide.csproj" />
+    <Project Path="BlazorWebAssembly\BlazorWebAssembly.csproj" />
   </Folder>
-  <Folder Name="/Tests/IntegrationTests/" />
-  <Folder Name="/Tests/" />
-  <Folder Name="/Playgrounds/">
-    <Project Path="CouchbasePlayground\CouchbasePlayground.csproj" />
-    <Project Path="OrleansExample\OrleansPlayground.csproj" />
-    <Project Path="RedisPlayground\RedisPlayground.csproj" />
+  <Folder Name="/Fundamentals/">
+    <Project Path="CSharpFundamentals\CSharpFundamentals.csproj" />
+  </Folder>
+  <Folder Name="/Interview/">
+    <Project Path="InterviewExample\InterviewExample.csproj" />
+    <Project Path="ProgrammingQuestions\ProgrammingQuestions.csproj" />
   </Folder>
   <Folder Name="/Notes/">
     <File Path="CommonMistakes.txt" />
@@ -15,18 +18,17 @@
     <File Path="Notes.txt" />
     <File Path="PerformanceTipstxt.txt" />
   </Folder>
-  <Folder Name="/Interview/">
-    <Project Path="InterviewExample\InterviewExample.csproj" />
-    <Project Path="ProgrammingQuestions\ProgrammingQuestions.csproj" />
+  <Folder Name="/Playgrounds/">
+    <Project Path="CouchbasePlayground\CouchbasePlayground.csproj" />
+    <Project Path="OrleansExample\OrleansPlayground.csproj" />
+    <Project Path="RedisPlayground\RedisPlayground.csproj" />
   </Folder>
-  <Folder Name="/Fundamentals/">
-    <Project Path="CSharpFundamentals\CSharpFundamentals.csproj" />
+  <Folder Name="/Tests/" />
+  <Folder Name="/Tests/IntegrationTests/">
+    <Project Path="ProductAPI\ProductAPI.csproj" Type="Classic C#" />
   </Folder>
-  <Folder Name="/Blazor/">
-    <Project Path="BlazorHybrid\BlazorHybrid.Client\BlazorHybrid.Client.csproj" />
-    <Project Path="BlazorHybrid\BlazorHybrid\BlazorHybrid.csproj" />
-    <Project Path="BlazorServerSide\BlazorServerSide.csproj" />
-    <Project Path="BlazorWebAssembly\BlazorWebAssembly.csproj" />
+  <Folder Name="/Tests/UnitTests/">
+    <Project Path="XUnitTests\XUnitTests.csproj" />
   </Folder>
   <Project Path="AllDotNetInterfaces\AllDotNetInterfaces.csproj" />
   <Project Path="Benchmark\Benchmark.csproj" />
