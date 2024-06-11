@@ -1,5 +1,5 @@
 ﻿using FeatureExamples;
 
-LockingExamples.Example();
+ManualResetEventExample.Example();
 
 Console.ReadLine();
