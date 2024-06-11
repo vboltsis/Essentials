@@ -33,7 +33,14 @@ public class PatternMatchingExamples
 
         if (person is {FirstName: "test", Age: > 18})
         {
-            
+            Console.WriteLine("nope");
+        }
+
+        person = new Person("test", "test", 19);
+        
+        if (person is {FirstName: "test", Age: > 18})
+        {
+            Console.WriteLine("hello");
         }
     }
 }
