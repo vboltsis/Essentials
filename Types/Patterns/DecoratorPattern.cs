@@ -2,7 +2,7 @@
 
 namespace FeatureExamples;
 
-public class DecoratorExample
+public class DecoratorPattern
 {
     public void StreamExample()
     {
