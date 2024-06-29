@@ -1,4 +1,4 @@
-﻿namespace XUnitTests;
+﻿namespace TestProject;
 
 public interface IInventory
 {
