@@ -25,11 +25,15 @@
   </Folder>
   <Folder Name="/Tests/" />
   <Folder Name="/Tests/IntegrationTests/">
-    <Project Path="ProductAPI\ProductAPI.csproj" Type="Classic C#" />
+    <Project Path="ProductAPI\ProductAPI.csproj" />
   </Folder>
   <Folder Name="/Tests/UnitTests/">
+    <Project Path="TestProject\TestProject.csproj" Type="C#" />
     <Project Path="XUnitTests\XUnitTests.csproj" />
   </Folder>
+  <Properties Name="Visual Studio">
+    <Property Name="OpenWith" Value="17" />
+  </Properties>
   <Project Path="AllDotNetInterfaces\AllDotNetInterfaces.csproj" />
   <Project Path="Benchmark\Benchmark.csproj" />
   <Project Path="CSharpHistory\CSharpHistory.csproj" />

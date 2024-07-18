@@ -40,6 +40,30 @@ app.MapGet("/notify/email/{message}", ([FromKeyedServices("email")] INotificatio
     return emailService.Notify(message);
 });
 
+app.MapGet("/fetchdata", async (CancellationToken cancellationToken) =>
+{
+    try
+    {
+        // Simulating a long-running task
+        var data = await FetchDataAsync(cancellationToken);
+        return Results.Ok(data);
+    }
+    catch (OperationCanceledException ex)
+    {
+        return Results.Problem($"The request was cancelled. {ex}");
+    }
+
+    static async Task<string> FetchDataAsync(CancellationToken cancellationToken)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            await Task.Delay(1000, cancellationToken); // Simulate work
+        }
+        return "Fetched data successfully!";
+    }
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

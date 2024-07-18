@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CouchbaseNetClient" Version="3.6.0" />
-  </ItemGroup>
-
 </Project>

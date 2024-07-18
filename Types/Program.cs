@@ -1,5 +1,7 @@
 ﻿using FeatureExamples;
 
-ManualResetEventExample.Example();
+CancellationTokenExample.Example();
+await CancellationTokenExample.TimeoutExample();
+await CancellationTokenExample.LinkTokensExample();
 
 Console.ReadLine();

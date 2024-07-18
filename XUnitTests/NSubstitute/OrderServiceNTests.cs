@@ -1,4 +1,5 @@
 ﻿using NSubstitute;
+using TestProject;
 
 namespace XUnitTests.NSubstitute;
 

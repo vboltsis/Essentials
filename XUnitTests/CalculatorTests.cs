@@ -1,3 +1,5 @@
+using TestProject;
+
 namespace XUnitTests;
 
 public class CalculatorTests
