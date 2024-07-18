@@ -42,6 +42,6 @@ internal class LockingExamples
             }
 
             Console.WriteLine($"Thread ID: {Environment.CurrentManagedThreadId} finished");
-        Monitor.Exit(_lock); //never exits if an exception is thrown
+        Monitor.Exit(_lock);
     }
 }
