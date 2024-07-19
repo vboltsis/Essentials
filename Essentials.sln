@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
+# 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOLID", "SOLID\SOLID.csproj", "{7036F9DC-2852-4EFF-B0F6-CDD71463AEB3}"
@@ -63,6 +63,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fundamentals", "Fundamentals", "{BAE90784-5017-41F3-B77A-E5E0E490D522}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpFundamentals", "CSharpFundamentals\CSharpFundamentals.csproj", "{D2AAFC67-8E46-4D48-8CBE-6AE1FCAB5328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Preview", "Preview\Preview.csproj", "{5B9896B6-4560-4F87-8509-9A30332A2194}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +152,10 @@ Global
 		{D2AAFC67-8E46-4D48-8CBE-6AE1FCAB5328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2AAFC67-8E46-4D48-8CBE-6AE1FCAB5328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2AAFC67-8E46-4D48-8CBE-6AE1FCAB5328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B9896B6-4560-4F87-8509-9A30332A2194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B9896B6-4560-4F87-8509-9A30332A2194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B9896B6-4560-4F87-8509-9A30332A2194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B9896B6-4560-4F87-8509-9A30332A2194}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
