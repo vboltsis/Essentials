@@ -8,7 +8,7 @@ internal class ManualResetEventExample
     {
         Console.WriteLine($"Thread ID: {Environment.CurrentManagedThreadId} writing");
         _manualResetEvent.Reset();
-        Thread.Sleep(2000);
+        Thread.Sleep(10000);
         Console.WriteLine($"Thread ID: {Environment.CurrentManagedThreadId} finished writing");
         _manualResetEvent.Set();
     }

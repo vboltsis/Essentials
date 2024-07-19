@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Orleans.Concurrency;
 using Orleans.Configuration;
+using Orleans.Runtime;
 
 using var host = new HostBuilder()
     .UseOrleans(builder => builder.UseLocalhostClustering()
@@ -22,14 +23,30 @@ await host.StartAsync();
 // Get the grain factory
 var grainFactory = host.Services.GetRequiredService<IGrainFactory>();
 
-// Get a reference to the HelloGrain grain with the key "friend"
-var friendGrain = grainFactory.GetGrain<IHelloGrain>("friend");
+var customerGrain = grainFactory.GetGrain<ICustomerGrain>(420);
 
-// Call the grain and print the result to the console
-await Task.WhenAll(friendGrain.SayHello("Good morning!").AsTask(),
-    friendGrain.GetGreeting().AsTask(), friendGrain.GetSomething().AsTask());
+Task.Run(async () =>
+{
+    var result = await customerGrain.LongRunningMethod();
+    Console.WriteLine($"Result is {result}");
+});
 
-var greeting = await friendGrain.GetGreeting();
+await Task.Delay(1000);
+
+var id = await customerGrain.GetId();
+
+Console.WriteLine($"Id is {id}");
+
+// // Get a reference to the HelloGrain grain with the key "friend"
+// var friendGrain = grainFactory.GetGrain<IHelloGrain>("friend");
+//
+// // Call the grain and print the result to the console
+// await Task.WhenAll(friendGrain.SayHello("Good morning!").AsTask(),
+//     friendGrain.GetGreeting().AsTask(), friendGrain.GetSomething().AsTask());
+//
+// var greeting = await friendGrain.GetGreeting();
+
+await Task.Delay(10_000);
 
 Console.WriteLine("Orleans is running.\nPress Enter to terminate...");
 Console.ReadLine();
@@ -78,3 +95,50 @@ public interface IHelloGrain : IGrainWithStringKey
     ValueTask<string> GetGreeting();
     ValueTask<string> GetSomething();
 }
+
+public class CustomerGrain : Grain, ICustomerGrain
+{
+    public Customer Customer { get; set; }
+    public long CustomerId { get; set; }
+
+    public override Task OnActivateAsync(CancellationToken cancellationToken)
+    {
+        CustomerId = this.GetPrimaryKeyLong();
+        Customer = new Customer {Id = CustomerId, Name = "Techsson"};
+        return base.OnActivateAsync(cancellationToken);
+    }
+    
+    public ValueTask<long> GetId()
+    {
+        return ValueTask.FromResult(CustomerId);
+    }
+
+    public ValueTask<string> GetCustomerName()
+    {
+        return ValueTask.FromResult(Customer.Name);
+    }
+
+    public async ValueTask<bool> LongRunningMethod()
+    {
+        await Task.Delay(10_000);
+        return true;
+    }
+}
+
+public interface ICustomerGrain : IGrainWithIntegerKey
+{
+    [AlwaysInterleave]
+    ValueTask<long> GetId();
+    ValueTask<string> GetCustomerName();
+    ValueTask<bool> LongRunningMethod();
+}
+
+public class Customer
+{
+    public long Id { get; set; }
+    public string Name { get; set; }
+}
+
+//1. Uniqueness. Each grain has a unique key
+//2. Solves Concurrency using a single thread for each grain instance
+//3. We have the state available in memory

@@ -22,4 +22,11 @@ public class AsNoTrackingVsNormal
 
         return blogs;
     }
+
+    [Benchmark]
+    public Task<List<Blog>> GetBlogsAsync()
+    {
+        using var context = new BlogContext();
+        return context.Blogs.ToListAsync();
+    }
 }
