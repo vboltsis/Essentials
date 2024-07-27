@@ -1,0 +1,6 @@
+@PollyExample_HostAddress = http://localhost:5122
+
+GET {{PollyExample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

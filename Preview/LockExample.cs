@@ -9,14 +9,12 @@ public class LockExample
         // Using the C# lock keyword
         lock (_lockObj)
         {
-            // Critical section associated with _lockObj
             Console.WriteLine("Lock keyword: Modifying data...");
         }
 
         // Using EnterScope with the C# using keyword
         using (_lockObj.EnterScope())
         {
-            // Critical section associated with _lockObj
             Console.WriteLine("EnterScope: Modifying data...");
         }
 
@@ -24,7 +22,6 @@ public class LockExample
         _lockObj.Enter();
         try
         {
-            // Critical section associated with _lockObj
             Console.WriteLine("Enter method: Modifying data...");
         }
         finally
@@ -32,12 +29,10 @@ public class LockExample
             _lockObj.Exit();
         }
 
-        // Using TryEnter method
         if (_lockObj.TryEnter(timeout))
         {
             try
             {
-                // Critical section associated with _lockObj
                 Console.WriteLine("TryEnter method: Modifying data...");
             }
             finally
