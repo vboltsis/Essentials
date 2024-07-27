@@ -17,7 +17,7 @@ public interface IMailService
     void SendErrorEmail(Exception exception);
 }
 
-public class OrderService
+internal class OrderService
 {
     private readonly IInventory _inventory;
     private readonly IPaymentGateway _paymentGateway;
@@ -30,7 +30,7 @@ public class OrderService
         _mailService = mailService;
     }
 
-    public bool ProcessOrder(string item, double amount)
+    internal bool ProcessOrder(string item, double amount)
     {
         try
         {

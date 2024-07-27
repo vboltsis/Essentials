@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Benchmark;
+﻿namespace Benchmark;
 
 /*
 | Method            | Mean     | Error    | StdDev   | Gen0   | Allocated |

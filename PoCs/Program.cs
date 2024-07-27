@@ -1,11 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using PoCs.BitWise;
-using PoCs.Diffing;
+﻿using PoCs.BitWise;
 
 //VALUE TYPES
 //int-datetime-decimal-long-short-bool-enum-struct-byte-sbyte-float-double-uint-ulong-ushort-char
