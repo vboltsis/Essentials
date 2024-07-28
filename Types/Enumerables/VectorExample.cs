@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace FeatureExamples;
+namespace FeatureExamples.Enumerables;
 
 /*
 The Vector<float> constructor is expecting an array of a certain size.
@@ -23,7 +23,7 @@ public class VectorExample
         var sumRes = Vector.Sum(v1);
         var array = new int[] { 1, 2, 3, 4, 5 };
         var arraySum = array.Sum();
-        
+
         // Addition
         var addResult = v1 + v2;
 

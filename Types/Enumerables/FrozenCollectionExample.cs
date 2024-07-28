@@ -1,10 +1,10 @@
 ﻿using System.Collections.Frozen;
 
-namespace FeatureExamples;
+namespace FeatureExamples.Enumerables;
 
 public class FrozenCollectionExample
 {
-    FrozenDictionary<int, string> frozenDic = 
+    FrozenDictionary<int, string> frozenDic =
         new Dictionary<int, string> { { 6, "six" }, { 9, "nine" } }.ToFrozenDictionary();
 
     FrozenSet<int> frozenSet = new HashSet<int> { 1, 2, 3, 4, 5 }.ToFrozenSet();

@@ -1,4 +1,4 @@
-﻿namespace FeatureExamples;
+﻿namespace FeatureExamples.Enumerables;
 
 public class IAsyncEnumerableExample
 {
@@ -12,7 +12,7 @@ public class IAsyncEnumerableExample
         // {
         //     Console.WriteLine(line);
         // }
-        
+
         // await foreach (var line in GetNumbersAsync())
         // {
         //     if (line == 5)
@@ -28,14 +28,14 @@ public class IAsyncEnumerableExample
             {
                 break;
             }
-            
+
             Console.WriteLine(number);
         }
 
         async IAsyncEnumerable<string> ReadLinesAsync(string filePath)
         {
             using var reader = File.OpenText(filePath);
-            string? line;
+            string line;
             while ((line = await reader.ReadLineAsync()) != null)
             {
                 yield return line;
@@ -51,7 +51,7 @@ public class IAsyncEnumerableExample
             yield return i;
         }
     }
-    
+
     public async Task<IEnumerable<int>> GetNumbersEnumerableAsync()
     {
         var list = new List<int>();

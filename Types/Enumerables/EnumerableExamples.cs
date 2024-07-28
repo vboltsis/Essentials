@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 
-namespace Types;
+namespace FeatureExamples.Enumerables;
 
 public class EnumerableExamples
 {

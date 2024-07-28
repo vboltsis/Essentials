@@ -66,6 +66,7 @@ public class HashingExample
 
 public class User
 {
+    public string Name { get; set; }
     public string Salt { get; set; }
     public string HashedPassword { get; set; }
 }
