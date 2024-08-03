@@ -79,3 +79,5 @@ var elapsedTime = Stopwatch.GetElapsedTime(startTime).TotalMilliseconds;
 TIP 10
 
 //Use .Find instead of .FirstOrDefault when dealing with List<T> (check FindVsFirstOrDefault.cs)
+//Use .FindAll instead of .Where().ToList() when dealing with List<T> (check FindAllVsWhere.cs)
+//Use .Exists instead of .Any when dealing with List<T> (check ExistsVsAny.cs)

@@ -10,6 +10,7 @@ By using interface we get these benefits:
 3. We can easily unit test the code.
 4. We instantiate the dependencies only once.
 5. The class will not be instantiated unless all the dependencies are provided.
+6. We can control the lifetime of the dependencies.
  */
 public record DependencyInversion
 {
