@@ -23,6 +23,8 @@ public class RaceConditions
             });
         }
         
+        Thread.Sleep(1000);
+
         Console.WriteLine(number);
     }
     
@@ -78,7 +80,7 @@ public class RaceConditions
         await Task.Delay(1000);
         Console.WriteLine(Test);
     }
-    
+
     public static volatile int Test;
 
     [MethodImpl(MethodImplOptions.Synchronized)]

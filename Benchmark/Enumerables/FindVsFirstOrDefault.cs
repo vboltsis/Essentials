@@ -10,20 +10,20 @@
  */
 
 [MemoryDiagnoser]
-[RankColumn]
+//[RankColumn]
 public class FindVsFirstOrDefault
 {
     private List<int> _list;
-    private List<Car> _cars;
+    //private List<Car> _cars;
 
-    [Params(10)]
-    public int Number;
+    //[Params(10)]
+    //public int Numbers;
 
     [GlobalSetup]
     public void GlobalSetup()
     {
-        _list = new List<int>(Enumerable.Range(1, Number));
-        SetupCars();
+        _list = new List<int>(Enumerable.Range(1, 10));
+        //SetupCars();
     }
 
     [Benchmark]
@@ -38,32 +38,32 @@ public class FindVsFirstOrDefault
         return _list.FirstOrDefault(i => i > 5);
     }
 
-    [Benchmark]
-    public Car FindCars()
-    {
-        return _cars.Find(c => c.Year > 2005);
-    }
+    //[Benchmark]
+    //public Car FindCars()
+    //{
+    //    return _cars.Find(c => c.Year > 2005);
+    //}
 
-    [Benchmark]
-    public Car FirstOrDefaultCars()
-    {
-        return _cars.FirstOrDefault(c => c.Year > 2005);
-    }
+    //[Benchmark]
+    //public Car FirstOrDefaultCars()
+    //{
+    //    return _cars.FirstOrDefault(c => c.Year > 2005);
+    //}
 
-    private void SetupCars()
-    {
-        _cars = new List<Car>(Number);
-        for (int i = 0; i < Number; i++)
-        {
-            _cars.Add(new Car
-            {
-                Name = $"Car{i}",
-                Year = 2000 + i,
-                Month = 1 + i,
-                Day = 1 + i
-            });
-        }
-    }
+    //private void SetupCars()
+    //{
+    //    _cars = new List<Car>(Number);
+    //    for (int i = 0; i < Number; i++)
+    //    {
+    //        _cars.Add(new Car
+    //        {
+    //            Name = $"Car{i}",
+    //            Year = 2000 + i,
+    //            Month = 1 + i,
+    //            Day = 1 + i
+    //        });
+    //    }
+    //}
 }
 
 public class Car
