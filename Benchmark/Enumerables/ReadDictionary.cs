@@ -1,12 +1,15 @@
-﻿using BenchmarkDotNet.Attributes;
-using System.Buffers;
+﻿namespace Benchmark.Classes;
 
-namespace Benchmark.Classes;
+/*
+| Method           | Mean      | Error     | StdDev    | Allocated |
+|----------------- |----------:|----------:|----------:|----------:|
+| ReadWithTryGet   |  8.324 ns | 0.1932 ns | 0.1807 ns |         - |
+| ReadWithContains | 12.791 ns | 0.2534 ns | 0.2370 ns |         - | 
+*/
 
 [MemoryDiagnoser]
 public class ReadDictionary
 {
-    private readonly ReaderWriterLockSlim _slimLock = new();
     private static Dictionary<int, string> _dictionary = new();
 
     public ReadDictionary()
@@ -17,25 +20,10 @@ public class ReadDictionary
         }
     }
 
-    //[Benchmark]
-    //public string ReadWithLock()
-    //{
-    //    var randomKey = new Random().Next(1, 10_001);
-    //    _slimLock.EnterReadLock();
-    //    try
-    //    {
-    //        return _dictionary[randomKey];
-    //    }
-    //    finally
-    //    {
-    //        _slimLock.ExitReadLock();
-    //    }
-    //}
-
     [Benchmark]
     public string ReadWithTryGet()
     {
-        var randomKey = new Random().Next(1, 10_001);
+        var randomKey = Random.Shared.Next(1, 10_001);
 
         if (_dictionary.TryGetValue(randomKey, out var value))
         {
@@ -48,7 +36,7 @@ public class ReadDictionary
     [Benchmark]
     public string ReadWithContains()
     {
-        var randomKey = new Random().Next(1, 10_001);
+        var randomKey = Random.Shared.Next(1, 10_001);
         if (_dictionary.ContainsKey(randomKey))
         {
             return _dictionary[randomKey];
@@ -56,12 +44,4 @@ public class ReadDictionary
 
         return string.Empty;
     }
-
-    //[Benchmark]
-    //public string ReadWithSequence()
-    //{
-    //    var sequenceReader = new SequenceReader<string>(_dictionary);
-    //    var randomKey = new Random().Next(1, 10_001);
-    //    return _dictionary[randomKey];
-    //}
 }
