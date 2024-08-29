@@ -1,0 +1,6 @@
+@FastVerticalSlices_HostAddress = http://localhost:5202
+
+GET {{FastVerticalSlices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
