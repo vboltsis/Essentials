@@ -8,8 +8,8 @@ class GetStudentEndpointSummary : Summary<GetStudentEndpoint>
     {
         Summary = "short summary goes here";
         Description = "long description goes here";
-        ExampleRequest = new GetStudentRequest { Age = 10, FirstName = "Takis", LastName = "Vassallo" };
-        Response(200, "ok response with body", example: new GetStudentResponse { FullName = "Takis Vassallo", IsOver18 = false });
+        ExampleRequest = new GetStudentRequest ("Takis", "Vassallo", 36);
+        Response(200, "ok response with body", example: new GetStudentResponse ("Takis Vassallo", false ));
         Response<ErrorResponse>(400, "validation failure");
         Response(404, "account not found");
     }

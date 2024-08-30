@@ -24,24 +24,37 @@ public class GetStudentEndpoint : Endpoint<GetStudentRequest, GetStudentResponse
         _studentRepository.GetStudent();
 
         var response = new GetStudentResponse
-        {
-            FullName = req.FirstName + " " + req.LastName,
-            IsOver18 = req.Age > 18
-        };
+        (
+            req.FirstName + " " + req.LastName,
+            req.Age > 18
+        );
 
-        await SendAsync(response);
+        await SendAsync(response, cancellation: ct);
     }
 }
 
-public class GetStudentResponse
+public readonly record struct GetStudentResponse
 {
-    public string FullName { get; set; }
-    public bool IsOver18 { get; set; }
+    public readonly string FullName;
+    public readonly bool IsOver18;
+
+    public GetStudentResponse(string fullName, bool isOver18)
+    {
+        FullName = fullName;
+        IsOver18 = isOver18;
+    }
 }
 
-public class GetStudentRequest
+public readonly record struct GetStudentRequest
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public int Age { get; set; }
+    public readonly string FirstName;
+    public readonly string LastName;
+    public readonly int Age;
+
+    public GetStudentRequest(string firstName, string lastName, int age)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        Age = age;
+    }
 }
