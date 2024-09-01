@@ -1,10 +1,17 @@
 using TestProject;
+using Xunit.Abstractions;
 
 namespace XUnitTests;
 
 public class CalculatorTests
 {
     private Calculator _calculator = new Calculator();
+    private readonly ITestOutputHelper _output;
+
+    public CalculatorTests(ITestOutputHelper output)
+    {
+        _output = output;
+    }
 
     [Theory]
     [InlineData(10, 2, 8)]
@@ -14,6 +21,7 @@ public class CalculatorTests
     {
         //Act
         var result = _calculator.Subtraction(firstNumber, secondNumber);
+        _output.WriteLine("subtraction run.");
 
         //Assert
         Assert.Equal(expected, result);
@@ -40,6 +48,37 @@ public class CalculatorTests
         var firstNumber = 1;
         var secondNumber = 0;
 
+        Assert.Throws<DivideByZeroException>(() => _calculator.Division(firstNumber, secondNumber));
+    }
+
+    [Theory, CombinatorialData]
+    public void AddingRandom_TwoNumbers_Fail(
+        [CombinatorialValues(1, 2, 3)] int firstNumber,
+        [CombinatorialValues(4, 5, 6)] int secondNumber,
+        [CombinatorialValues(20, 30, 40)] int expected)
+    {
+        //Act
+        var result = _calculator.Addition(firstNumber, secondNumber);
+        //Assert
+        Assert.NotEqual(expected, result);
+    }
+
+    [Theory, CombinatorialData]
+    public void AddingRandom_TwoNumbers_Fail_Range(
+        [CombinatorialRange(from :1, count: 2)] int firstNumber,
+        [CombinatorialRange(4, 2)] int secondNumber,
+        [CombinatorialRange(10, 3)] int expected)
+    {
+        //Act
+        var result = _calculator.Addition(firstNumber, secondNumber);
+        //Assert
+        Assert.NotEqual(expected, result);
+    }
+
+    [Theory, CombinatorialData]
+    public void Divide_TwoRandomNumbers_NoExceptions(int firstNumber, int secondNumber)
+    {
+        //Act
         Assert.Throws<DivideByZeroException>(() => _calculator.Division(firstNumber, secondNumber));
     }
 }

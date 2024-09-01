@@ -1,3 +1,3 @@
 ﻿using FeatureExamples;
 
-StructMagic.Example();
+ProtobufExample.Example();
