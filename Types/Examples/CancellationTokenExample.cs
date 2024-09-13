@@ -21,6 +21,12 @@ public class CancellationTokenExample
             Console.WriteLine("Press any key to cancel the operation");
             Console.ReadKey();
             cts.Cancel();
+
+            while (true)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("Hello after cancellation");
+            }
         }
         catch (OperationCanceledException ex)
         {

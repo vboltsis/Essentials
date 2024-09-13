@@ -14,8 +14,9 @@ public class GetStudentEndpoint : Endpoint<GetStudentRequest, GetStudentResponse
 
     public override void Configure()
     {
-        Post("/api/students/getstudent");
+        Get("/api/students/getstudent");
         AllowAnonymous();
+        Version(1);
     }
 
     public override async Task HandleAsync(GetStudentRequest req, CancellationToken ct)
