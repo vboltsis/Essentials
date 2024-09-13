@@ -15,8 +15,9 @@
 //};
 
 //JsonNode schemaNode = JsonSerializerOptions.Default.GetJsonSchemaAsNode(typeof(Developer), options);
-//// { "type" : "object", "properties" : { "Bugs" : { "type" : "integer", "description" : "How many bugs have been produced" } } }
-
+/* { "type" : "object", "properties" : { "Bugs" :
+    { "type" : "integer", "description" : "How many bugs have been produced" } } }
+*/
 //public class Developer
 //{
 //    [Description("How many bugs have been produced")]
