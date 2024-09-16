@@ -1,18 +1,44 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using WeatherExample;
 using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers(/*x => x.Filters.Add<ApiKeyAuthFilter>()*/);
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+    {
+        Description = "The API Key to access the API",
+        Type = SecuritySchemeType.ApiKey,
+        Name = "x-api-key",
+        In = ParameterLocation.Header,
+        Scheme = "ApiKeyScheme"
+    });
+
+    var scheme = new OpenApiSecurityScheme
+    {
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "ApiKey"
+        },
+        In = ParameterLocation.Header
+    };
+
+    var requirement = new OpenApiSecurityRequirement
+    {
+        { scheme, new List<string>() }
+    };
+
+    c.AddSecurityRequirement(requirement);
+});
+
 builder.Services.AddSingleton<IRuntimeInformationService, RuntimeInformationService>();
 builder.Services.AddSingleton<IMemoryMetricsService, MemoryMetricsService>();
-
+builder.Services.AddScoped<ApiKeyAuthFilter>();
 //EXAMPLE SERVICES
 builder.Services.AddTransient<ITransientCounterService, CounterService>(); // one instance per request per service
 builder.Services.AddScoped<IScopedCounterService, CounterService>(); // one instance per request
@@ -64,7 +90,18 @@ app.MapGet("/fetchdata", async (CancellationToken cancellationToken) =>
     }
 });
 
-// Configure the HTTP request pipeline.
+var group = app.MapGroup("Weather").AddEndpointFilter<ApiKeyEndpointFilter>();
+
+group.MapGet("weathermini", () =>
+{
+    return Results.Ok();
+}).AddEndpointFilter<ApiKeyEndpointFilter>();
+
+//app.MapGet("weathermini", () =>
+//{
+//    return Results.Ok();
+//}).AddEndpointFilter<ApiKeyEndpointFilter>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
