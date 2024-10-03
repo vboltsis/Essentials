@@ -18,7 +18,7 @@ public static class SpanFormattableExample
     public static void PrintHuman()
     {
         // Usage:
-        var person = new Human("John", "Doe");
+        var person = new Human("Takis", "Anagnostaras");
         Span<char> buffer = new char[50];
 
         if (person.TryFormat(buffer, out int charsWritten, "F".AsSpan()))
@@ -83,7 +83,9 @@ public class Human : ISpanFormattable
         }
         else
         {
-            throw new FormatException($"The format of '{format.ToString()}' is invalid.");
+            //throw new FormatException($"The format of '{format.ToString()}' is invalid.");
+            charsWritten = 0;
+            return false;
         }
     }
 

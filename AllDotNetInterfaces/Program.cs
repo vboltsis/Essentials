@@ -82,13 +82,13 @@ Console.WriteLine("Hello");
 //Console.WriteLine(consumer == clonedConsumer); //Output: false
 
 //4. ISpanFormattable Example
-//SpanFormattableExample.PrintHuman();
-//Console.WriteLine();
+SpanFormattableExample.PrintHuman();
+Console.WriteLine();
 
 //5. IDisposable Example
 
-var disposableExample = new DisposableExample();
+//var disposableExample = new DisposableExample();
 
-disposableExample.WriteToFile("Hello World");
+//disposableExample.WriteToFile("Hello World");
 
-Console.WriteLine();
+//Console.WriteLine();
