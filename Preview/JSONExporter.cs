@@ -1,25 +1,47 @@
-﻿namespace Preview;
+﻿using System.ComponentModel;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Schema;
 
-//var options = new JsonSchemaExporterOptions
-//{
-//    OnSchemaNodeGenerated = static (ctx, schema) =>
-//    {
-//        DescriptionAttribute? descriptionAttribute = ctx.PropertyInfo?.AttributeProvider?
-//            .GetCustomAttribute<DescriptionAttribute>();
+namespace Preview;
 
-//        if (descriptionAttribute != null)
-//        {
-//            schema["description"] = (JsonNode)descriptionAttribute.Description;
-//        }
-//    }
-//};
+public class JsonSchemaExample
+{
+    public void Example()
+    {
+        var options = new JsonSchemaExporterOptions
+        {
+            TransformSchemaNode = (context, node) =>
+            {
+                if (context.PropertyInfo != null)
+                {
+                    var descriptionAttribute = context.PropertyInfo.AttributeProvider
+                        .GetCustomAttributes(false)
+                        .OfType<DescriptionAttribute>().FirstOrDefault();
 
-//JsonNode schemaNode = JsonSerializerOptions.Default.GetJsonSchemaAsNode(typeof(Developer), options);
-/* { "type" : "object", "properties" : { "Bugs" :
-    { "type" : "integer", "description" : "How many bugs have been produced" } } }
-*/
-//public class Developer
-//{
-//    [Description("How many bugs have been produced")]
-//    public int Bugs { get; set; }
-//}
+                    if (descriptionAttribute != null)
+                    {
+                        if (node is JsonObject propertySchema)
+                        {
+                            propertySchema["description"] = descriptionAttribute.Description;
+                        }
+                    }
+                }
+
+                return node;
+            }
+        };
+
+        JsonNode schemaNode = JsonSerializerOptions.Default.GetJsonSchemaAsNode(typeof(Developer), options);
+        /* { "type" : "object", "properties" : { "Bugs" :
+            { "type" : "integer", "description" : "How many bugs have been produced" } } }
+        */
+    }
+}
+
+
+public class Developer
+{
+    [Description("How many bugs have been produced")]
+    public int Bugs { get; set; }
+}
