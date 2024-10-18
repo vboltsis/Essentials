@@ -2,7 +2,7 @@
 
 namespace AllDotNetInterfaces;
 
-public class AsyncDisposableExample
+public class AsyncDisposableExample : IAsyncDisposable
 {
     private readonly FileStream fileStream;
 

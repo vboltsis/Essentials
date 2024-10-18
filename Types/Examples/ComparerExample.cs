@@ -23,7 +23,7 @@ internal class ComparerExample
     }
 }
 
-public class ReverseComparer : IComparer<int>
+public sealed class ReverseComparer : IComparer<int>
 {
     private ReverseComparer() { }
 
