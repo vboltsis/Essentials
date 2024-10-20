@@ -47,6 +47,7 @@ builder.Services.AddTransient<IAnotherService, AnotherService>();
 
 builder.Services.AddKeyedSingleton<INotificationService, SmsNotificationService>("sms");
 builder.Services.AddKeyedSingleton<INotificationService, EmailNotificationService>("email");
+builder.Services.AddSingleton<IHelloService, HelloService>();
 
 builder.Services.AddDbContextPool<WeatherContext>(options =>
 {
@@ -97,10 +98,17 @@ group.MapGet("weathermini", () =>
     return Results.Ok();
 }).AddEndpointFilter<ApiKeyEndpointFilter>();
 
-//app.MapGet("weathermini", () =>
-//{
-//    return Results.Ok();
-//}).AddEndpointFilter<ApiKeyEndpointFilter>();
+app.MapGet("/parameters", ([AsParameters] SearchParameters parameters) =>
+{
+    var results = parameters.Service.SayHello(parameters.Query);
+    return Results.Ok(new
+    {
+        Query = parameters.Query,
+        Page = parameters.Page,
+        CustomHeader = parameters.CustomHeader,
+        Results = results
+    });
+});
 
 if (app.Environment.IsDevelopment())
 {

@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitecturalUnitTest", "Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomLibraries", "RandomLibraries\RandomLibraries.csproj", "{E7362746-44EC-44BF-8E20-4B03AB6D134A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperExample", "DapperExample\DapperExample.csproj", "{88244305-0CDD-4D9D-8AA8-88F9BE7C637C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{E7362746-44EC-44BF-8E20-4B03AB6D134A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7362746-44EC-44BF-8E20-4B03AB6D134A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7362746-44EC-44BF-8E20-4B03AB6D134A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88244305-0CDD-4D9D-8AA8-88F9BE7C637C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88244305-0CDD-4D9D-8AA8-88F9BE7C637C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88244305-0CDD-4D9D-8AA8-88F9BE7C637C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88244305-0CDD-4D9D-8AA8-88F9BE7C637C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,6 +178,7 @@ Global
 		{7AADEFE8-1B99-40F0-A82A-6465CC29B21F} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
 		{157BB0E2-4D33-44C7-A8F5-849584E9A3B2} = {B27E2039-695D-4144-A2F1-1655113D5011}
 		{E7362746-44EC-44BF-8E20-4B03AB6D134A} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
+		{88244305-0CDD-4D9D-8AA8-88F9BE7C637C} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1640BA4-EDBC-40AD-B6F1-64B90C8CCF41}

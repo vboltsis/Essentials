@@ -29,3 +29,18 @@ public static class EventIdConstants
     public const int InfoUserLogin = 1001;
     public const int ErrorUserLogin = 1002;
 }
+
+/*
+using var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder.AddConsole(); // Adds console logging
+    builder.SetMinimumLevel(LogLevel.Information); // Set minimum logging level
+});
+
+// Create a logger instance
+ILogger<LoggingExample> logger = loggerFactory.CreateLogger<LoggingExample>();
+
+var logging = new LoggingExample(logger);
+
+logging.Example();
+*/

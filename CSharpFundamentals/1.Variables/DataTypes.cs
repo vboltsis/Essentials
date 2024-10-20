@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 
 namespace CSharpFundamentals;
 
@@ -47,6 +48,19 @@ public class DataTypes
         object obj = new Person { Name = "John", Age = 20 };
         int[] array = new int[3] { 1, 2, 3 };
         List<int> list = new List<int> { 1, 2, 3 };
+        Dictionary<int, string> dictionary = new Dictionary<int, string> { { 1, "One" }, { 2, "Two" } };
+        HashSet<int> hashSet = new HashSet<int> { 1, 2, 3 };
+        Queue<int> queue = new Queue<int>();
+        Stack<int> stack = new Stack<int>();
+        LinkedList<int> linkedList = new LinkedList<int>();
+        SortedList<int, string> sortedList = new SortedList<int, string>();
+        SortedSet<int> sortedSet = new SortedSet<int>();
+        SortedDictionary<int, string> sortedDictionary = new SortedDictionary<int, string>();
+        ConcurrentDictionary<int, string> concurrentDictionary = new ConcurrentDictionary<int, string>();
+        ConcurrentQueue<int> concurrentQueue = new ConcurrentQueue<int>();
+        ConcurrentStack<int> concurrentStack = new ConcurrentStack<int>();
+        ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
+        BlockingCollection<int> blockingCollection = new BlockingCollection<int>();
     }
 }
 
