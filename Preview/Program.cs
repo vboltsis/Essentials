@@ -1,5 +1,4 @@
 ﻿using Preview;
 
-var schema = new JsonSchemaExample();
+MathHelper.Calculate(); // Integer overload called with value: 10
 
-schema.Example();

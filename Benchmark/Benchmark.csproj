@@ -17,14 +17,14 @@
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
     <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.14.0" />
-    <PackageReference Include="MessagePack" Version="2.5.172" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.8" />
+    <PackageReference Include="MessagePack" Version="2.5.187" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SpanJson" Version="4.2.0" />
+    <PackageReference Include="SpanJson" Version="4.2.1" />
   </ItemGroup>
 
 </Project>
