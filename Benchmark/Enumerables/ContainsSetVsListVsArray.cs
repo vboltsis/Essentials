@@ -1,22 +1,26 @@
 ﻿namespace Benchmark.Classes;
 /*
-|        Method | Number |       Mean |     Error |    StdDev |     Median | Allocated |
-|-------------- |------- |-----------:|----------:|----------:|-----------:|----------:|
-|   ContainsSet |     10 |   1.968 ns | 0.0337 ns | 0.0388 ns |   1.964 ns |         - |
-|  ContainsList |     10 |   3.943 ns | 0.0363 ns | 0.0340 ns |   3.948 ns |         - |
-| ContainsArray |     10 |   4.802 ns | 0.0446 ns | 0.0348 ns |   4.796 ns |         - |
+| Method        | Number | Mean       | Error     | StdDev    | Allocated |
+|-------------- |------- |-----------:|----------:|----------:|----------:|
+| ContainsSet   | 3      |   3.213 ns | 0.0893 ns | 0.0993 ns |         - |
+| ContainsList  | 3      |   2.543 ns | 0.0769 ns | 0.0682 ns |         - |
+| ContainsArray | 3      |   3.142 ns | 0.0884 ns | 0.2083 ns |         - |
 
-|   ContainsSet |    100 |   1.957 ns | 0.0197 ns | 0.0175 ns |   1.958 ns |         - |
-|  ContainsList |    100 |   6.149 ns | 0.1086 ns | 0.1016 ns |   6.104 ns |         - |
-| ContainsArray |    100 |   6.989 ns | 0.0693 ns | 0.0648 ns |   6.989 ns |         - |
+| ContainsSet   | 10     |   3.272 ns | 0.0933 ns | 0.1111 ns |         - |
+| ContainsList  | 10     |   3.066 ns | 0.0828 ns | 0.0953 ns |         - |
+| ContainsArray | 10     |   3.514 ns | 0.0950 ns | 0.1478 ns |         - |
 
-|   ContainsSet |   1000 |   1.960 ns | 0.0239 ns | 0.0224 ns |   1.962 ns |         - |
-|  ContainsList |   1000 |  35.446 ns | 1.0005 ns | 2.9499 ns |  36.405 ns |         - |
-| ContainsArray |   1000 |  36.994 ns | 0.5227 ns | 0.4634 ns |  36.978 ns |         - |
+| ContainsSet   | 100    |   3.242 ns | 0.0609 ns | 0.0540 ns |         - |
+| ContainsList  | 100    |   5.518 ns | 0.0990 ns | 0.0926 ns |         - |
+| ContainsArray | 100    |   5.840 ns | 0.0685 ns | 0.0572 ns |         - |
 
-|   ContainsSet |  10000 |   2.044 ns | 0.0651 ns | 0.0975 ns |   1.992 ns |         - |
-|  ContainsList |  10000 | 273.910 ns | 1.8131 ns | 1.6073 ns | 273.193 ns |         - |
-| ContainsArray |  10000 | 247.535 ns | 4.2564 ns | 5.6822 ns | 244.387 ns |         - |
+| ContainsSet   | 1000   |   3.529 ns | 0.0323 ns | 0.0286 ns |         - |
+| ContainsList  | 1000   |  25.878 ns | 0.5458 ns | 0.7651 ns |         - |
+| ContainsArray | 1000   |  26.283 ns | 0.5379 ns | 0.5031 ns |         - |
+
+| ContainsSet   | 10000  |   3.399 ns | 0.0953 ns | 0.1097 ns |         - |
+| ContainsList  | 10000  | 224.015 ns | 4.1378 ns | 3.4552 ns |         - |
+| ContainsArray | 10000  | 197.988 ns | 3.9709 ns | 4.5729 ns |         - |
  */
 
 [MemoryDiagnoser]
@@ -26,7 +30,7 @@ public class ContainsSetVsListVsArray
     private List<int> _list;
     private int[] _array;
 
-    [Params(10, 100, 1000, 10000)]
+    [Params(3, 10, 100, 1000, 10000)]
     public int Number;
 
     public int ContainedNumber => Number / 2;
