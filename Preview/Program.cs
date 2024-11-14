@@ -1,4 +1,6 @@
 ﻿using Preview;
 
-MathHelper.Calculate(); // Integer overload called with value: 10
+var result = AlternateLookupExample.ReturnWordFrequency();
+
+Console.WriteLine(result);
 
