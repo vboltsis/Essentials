@@ -1,9 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using Point = (int x, int y);
 
-namespace CSharpHistory.Versions;
+namespace CSharpHistory;
 
 internal class Version12_0
 {
@@ -22,7 +21,7 @@ internal class Version12_0
         int[] nums = [1, 2, 3];
         Span<int> span = [4, 5, 6];
 
-        int[] merge = [..nums, ..span]; // [1, 2, 3, 4, 5, 6]
+        int[] merge = [.. nums, .. span]; // [1, 2, 3, 4, 5, 6]
         //ALIAS ANY TYPE
         var point = new Point(1, 2);
 
@@ -42,11 +41,11 @@ internal class Version12_0
     {
         var numbers = new int[] { 1, 2, 6 };
 
-        var span = new Span<int>(new int[] { 9, 4, 5 });
+        var span = new Span<int>([9, 4, 5]);
 
         var combined = numbers.Concat(span.ToArray()).ToArray();
 
-        var list = new List<Cat> { new Cat("John"), new Cat("Snow") };
+        var list = new List<Cat> { new("John"), new("Snow") };
     }
 }
 
@@ -83,27 +82,27 @@ public class TestClass
 {
 }
 
-    //public static class Interceptor
-    //{
-    //    [InterceptsLocation(
-    //        filePath: "path",
-    //        line: 120,
-    //        character: 300
-    //        )]
-    //    public static void InterceptMethod1(
-    //        this Example example)
-    //    {
-    //        Console.WriteLine("Intercepted Method1");
-    //    }
-    //}
+//public static class Interceptor
+//{
+//    [InterceptsLocation(
+//        filePath: "path",
+//        line: 120,
+//        character: 300
+//        )]
+//    public static void InterceptMethod1(
+//        this Example example)
+//    {
+//        Console.WriteLine("Intercepted Method1");
+//    }
+//}
 
-    //public class Example
-    //{
-    //    public void Method1()
-    //    {
-    //        Console.WriteLine("Method1");
-    //    }
-    //}
+//public class Example
+//{
+//    public void Method1()
+//    {
+//        Console.WriteLine("Method1");
+//    }
+//}
 
 //class RefReadonlyExample
 //{
