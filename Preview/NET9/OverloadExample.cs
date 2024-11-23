@@ -16,3 +16,12 @@ public static class MathHelper
         Console.WriteLine("Integer overload called with value: " + number);
     }
 }
+
+public class Formatter
+{
+    [OverloadResolutionPriority(1)]
+    public void Format(string text) => Console.WriteLine("string overload called");
+
+    [OverloadResolutionPriority(2)]
+    public void Format(ReadOnlySpan<char> chars) => Console.WriteLine("Span overload called");
+}

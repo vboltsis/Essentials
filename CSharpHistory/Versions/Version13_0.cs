@@ -22,6 +22,29 @@ public class Version13_0
     }
 }
 
+class Numbers
+{
+    public int[] Values { get; set; } = new int[10];
+    public void IndexFromEnd()
+    {
+        var x = new Numbers
+        {
+            Values =
+            {
+                [1] = 420,
+                [^1] = 69
+            }
+        };
+    }
+}
+
+ref struct MyRefStruct : IComparable<MyRefStruct>
+{
+    private int _value;
+    public int CompareTo(MyRefStruct other) => _value.CompareTo(other._value);
+}
+
+
 //ref partial struct MyFile
 //{
 //    public partial Span<byte> Map { get; private set; }
