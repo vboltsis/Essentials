@@ -1,13 +1,11 @@
 ﻿using FeatureExamples;
 
-string input = "12,34,56,78,90";
+string filePath = @"C:\Temp\example.txt";
+Console.WriteLine("Waiting for the file to be created...");
 
-Span<int> numbers = stackalloc int[10];
+FileInfo createdFile = await new FileCreatedAwaitable(filePath);
 
-var count = StackallocExample.ParseNumbers(input, numbers);
-
-Console.WriteLine("Parsed Numbers:");
-for (int i = 0; i < count; i++)
-{
-    Console.WriteLine(numbers[i]);
-}
+Console.WriteLine("File has been created!");
+Console.WriteLine($"File Name: {createdFile.Name}");
+Console.WriteLine($"File Size: {createdFile.Length} bytes");
+Console.WriteLine($"Created On: {createdFile.CreationTime}");
