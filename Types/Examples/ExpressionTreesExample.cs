@@ -4,7 +4,7 @@ namespace FeatureExamples;
 
 public class ExpressionTreesExample
 {
-    public static void ExpressionTreeAdd()
+    public static void ExpressionTreeAdd(int a, int b)
     {
         var paramA = Expression.Parameter(typeof(int), "a");
         var paramB = Expression.Parameter(typeof(int), "b");
@@ -12,7 +12,7 @@ public class ExpressionTreesExample
         var addExpression = Expression.Lambda<Func<int, int, int>>(body, paramA, paramB);
         Func<int, int, int> compiled = addExpression.Compile();
 
-        Console.WriteLine(compiled(1, 2));  // Outputs: 3
+        Console.WriteLine(compiled(a, b));  // Outputs the sum of a and b
     }
 
     public static void LinqExample()
@@ -21,7 +21,8 @@ public class ExpressionTreesExample
         {
             new Product { Name = "Laptop", Price = 1000M },
             new Product { Name = "Mouse", Price = 20M },
-            new Product { Name = "Keyboard", Price = 50M }
+            new Product { Name = "Keyboard", Price = 50M },
+            new Product { Name = "Laptop", Price = 300M }
         };
 
         // Dynamic filter criteria

@@ -22,4 +22,12 @@ public class SpanExamples
 
         return date;
     }
+
+    //the input is of the form "123:text"
+    public static int ExtractNumberWithSpan(string text)
+    {
+        var span = text.AsSpan();
+        ReadOnlySpan<char> number = span[..span.IndexOf(':')];
+        return int.Parse(number);
+    }
 }

@@ -24,6 +24,9 @@ public class ParameterReplacer : ExpressionVisitor
     {
         // Usage:
         Expression<Func<int, int>> expr = x => x + 1;
+        //read the expression as x => x + 1 and print it as a string
+        Console.WriteLine(expr);  // Outputs: x => (x + 1)
+
         var replacer = new ParameterReplacer(expr.Parameters[0], Expression.Constant(68));
         var newExpr = replacer.Visit(expr.Body) as BinaryExpression;
 

@@ -21,7 +21,7 @@ public class CompiledQueryVsNormal
 {
     private readonly BlogContext _context;
 
-    private static readonly Func<BlogContext, int, Task<Blog>> GetBlog
+    private static readonly Func<BlogContext, int, Task<Blog>> GetBlogByIdAsync
         = EF.CompileAsyncQuery(
             (BlogContext context, int id) => 
             context.Blogs.AsNoTracking().FirstOrDefault(b => b.BlogId == id));
@@ -34,7 +34,7 @@ public class CompiledQueryVsNormal
     [Benchmark]
     public async Task<Blog> GetBlogsAsync()
     {
-        return await GetBlog(_context, 4000);
+        return await GetBlogByIdAsync(_context, 4000);
     }
 
     [Benchmark]
