@@ -2,10 +2,10 @@ using Microsoft.Extensions.Logging;
 
 public static partial class LoggerMessageDefinitions
 {
-    [LoggerMessage(EventId = EventIdConstants.InfoUserLogin, Level = LogLevel.Information, Message = "User {UserId} has logged in.")]
-    public static partial void LogUserLogin(this ILogger logger, int userId);
+    [LoggerMessage(EventId = EventIdConstants.InfoUserLogin, Level = LogLevel.Information, Message = "User {userId} has logged in {brandId} and jur {jurisdictionId}.", SkipEnabledCheck = true)]
+    public static partial void LogUserLogin(this ILogger logger, Guid userId, int brandId, int jurisdictionId);
 
-    [LoggerMessage(EventId = EventIdConstants.ErrorUserLogin, Level = LogLevel.Error, Message = "Error occurred while processing request.")]
+    [LoggerMessage(EventId = EventIdConstants.ErrorUserLogin, SkipEnabledCheck = true, Level = LogLevel.Error, Message = "Error occurred while processing request.")]
     public static partial void LogError(this ILogger logger);
 }
 
@@ -20,7 +20,7 @@ public class LoggingExample
 
     public void Example()
     {
-        _logger.LogUserLogin(1);
+        _logger.LogUserLogin(Guid.NewGuid(),2, 420);
         _logger.LogError();
     }
 }
