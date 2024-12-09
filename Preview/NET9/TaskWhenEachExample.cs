@@ -4,7 +4,7 @@ internal class TaskWhenEachExample
 {
     public static async Task Example()
     {
-        List<Task<int>> tasks = Enumerable.Range(1, 5).Select(Calculate).ToList();
+        List<Task<int>> tasks = Enumerable.Range(1, 100).Select(Calculate).ToList();
 
         await foreach (var task in Task.WhenEach(tasks))
         {
@@ -13,9 +13,22 @@ internal class TaskWhenEachExample
 
         async Task<int> Calculate(int order)
         {
-            var number = Random.Shared.Next(1, 100);
-            await Task.Delay(number);
-            return order;
+            try
+            {
+                var number = Random.Shared.Next(1, 11);
+                if (number > 5)
+                {
+                    throw new Exception("Hello PAM");
+                }
+            
+                await Task.Delay(number);
+                return order;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return -99;
+            }
         }
     }
 }

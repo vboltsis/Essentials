@@ -4,7 +4,7 @@ public class ApiKeyAuthMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
-
+    private static string _cachedKey = null;
     public ApiKeyAuthMiddleware(RequestDelegate next, IConfiguration configuration)
     {
         _next = next;
@@ -19,8 +19,9 @@ public class ApiKeyAuthMiddleware
             await context.Response.WriteAsync("API Key is missing");
             return;
         }
-
-        var apiKey = _configuration.GetValue<string>(AuthConstants.ApiKeySectionName);
+        
+        _cachedKey ??= _configuration.GetValue<string>(AuthConstants.ApiKeySectionName);
+        var apiKey = _cachedKey;
 
         if (!apiKey.Equals(requestApiKey))
         {
