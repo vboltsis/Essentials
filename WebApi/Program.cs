@@ -116,6 +116,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.MapFallback(async (context) =>
+{
+    var unmatchedPath = context.Request.Path.Value;
+    Console.WriteLine(unmatchedPath);
+    
+    await context.Response.WriteAsync("Path Not Found");
+});
+
 app.UseHttpsRedirection();
 
 app.UseMiddleware<ApiKeyAuthMiddleware>();
