@@ -41,14 +41,14 @@ members = await database.SetMembersAsync("test1");
 
 //var watch = new Stopwatch();
 //watch.Start();
-//List<Task<bool>> list = new(1_000_000);
+List<Task<bool>> list = new(1_000_000);
 
-//for (int i = 0; i < 1_000_000; i++)
-//{
-//    list.Add(database.SetAddAsync("test", i));
-//}
+for (int i = 0; i < 1_000_000; i++)
+{
+    list.Add(database.SetAddAsync("test", i));
+}
 
-//Task.WhenAll(list);
+await Task.WhenAll(list);
 
 //watch.Stop();
 //Console.WriteLine(watch.Elapsed);

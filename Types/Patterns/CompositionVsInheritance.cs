@@ -1,159 +1,149 @@
 ﻿namespace FeatureExamples;
 
-public abstract class Animal : IEater
+public abstract class Animal1
 {
-    public string Name { get; set; }
-
-    public virtual void Eat()
+    public virtual void Move()
     {
-        Console.WriteLine("Eating");
+        Console.WriteLine("The animal moves.");
+    }
+
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("The animal makes a sound.");
     }
 }
 
-//CLASSIC INHERITANCE
-public class Cat1 : Animal
+public class Dog : Animal1
 {
-    public string Type { get; set; }
-    
-    public override void Eat()
+    public override void Move()
     {
-        if (Type == "Bengal")
-        {
-            Console.WriteLine("Eating as a Bengal");
-        }
-        else
-        {
-            base.Eat();
-        }
+        Console.WriteLine("The dog runs.");
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("The dog barks.");
     }
 }
 
-public class Dog1 : Animal
+public class Bird : Animal1
 {
-    public override void Eat()
+    public override void Move()
     {
-        Console.WriteLine("Eat as a dog");
+        Console.WriteLine("The bird flies.");
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("The bird chirps.");
     }
 }
 
-//COMPOSITION
-public interface IEater
+public class Fish : Animal1
 {
-    void Eat();
-}
-
-public class Cat
-{
-    public string Claws { get; set; }
-
-    private readonly IEater _eater;
-
-    public Cat(IEater eater)
+    public override void Move()
     {
-        _eater = eater;
+        Console.WriteLine("The fish swims.");
     }
 
-    public void Eat()
+    public override void MakeSound()
     {
-        _eater.Eat();
+        Console.WriteLine("The fish bubbles.");
     }
 }
 
-public class CatEater : IEater
+
+public interface IMoveBehavior
 {
-    public void Eat()
+    void Move();
+}
+
+public interface ISoundBehavior
+{
+    void MakeSound();
+}
+
+// Movement Behaviors
+public class RunBehavior : IMoveBehavior
+{
+    public void Move()
     {
-        Console.WriteLine("Eat as a cat");
+        Console.WriteLine("Runs swiftly.");
     }
 }
 
-public class BengalEater : IEater
+public class FlyBehavior : IMoveBehavior
 {
-    public void Eat()
+    public void Move()
     {
-        Console.WriteLine("Eating as a bengal");
-    }
-}
-//---------------------------------------------------------------
-//CLASSIC INHERITANCE
-public class Shape
-{
-    public double Area { get; set; }
-}
-
-public class Rectangle : Shape
-{
-    public double Width { get; set; }
-    public double Height { get; set; }
-}
-
-public class Circle : Shape
-{
-    public double Radius { get; set; }
-}
-
-
-//COMPOSITION
-public class AreaProperty
-{
-    public double Area { get; set; }
-}
-
-public class WidthHeightProperty
-{
-    public double Width { get; set; }
-    public double Height { get; set; }
-}
-
-public class RadiusProperty
-{
-    public double Radius { get; set; }
-}
-
-public class Rectangle1
-{
-    public AreaProperty AreaInfo { get; set; } = new AreaProperty();
-    public WidthHeightProperty Dimensions { get; set; } = new WidthHeightProperty();
-}
-
-public class Circle1
-{
-    public AreaProperty AreaInfo { get; set; } = new AreaProperty();
-    public RadiusProperty RadiusInfo { get; set; } = new RadiusProperty();
-}
-
-public class SquareCircleCombo
-{
-    public AreaProperty AreaInfo { get; set; } = new AreaProperty();
-    public WidthHeightProperty Dimensions { get; set; } = new WidthHeightProperty();
-    public RadiusProperty RadiusInfo { get; set; } = new RadiusProperty();
-}
-
-//Video Game
-
-public class Player
-{
-    public string Name { get; set; }
-
-    private IAttack _attackBehavior;
-
-    public Player(IAttack attackBehavior)
-    {
-        _attackBehavior = attackBehavior;
-    }
-
-    public void PerformAttack()
-    {
-        _attackBehavior.Attack();
-    }
-
-    public void ChangeAttackBehavior(IAttack behavior)
-    {
-        _attackBehavior = behavior;
+        Console.WriteLine("Flies gracefully.");
     }
 }
 
-public interface IAttack
+public class SwimBehavior : IMoveBehavior
 {
-    void Attack();
+    public void Move()
+    {
+        Console.WriteLine("Swims smoothly.");
+    }
 }
+
+// Sound Behaviors
+public class BarkBehavior : ISoundBehavior
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Barks loudly.");
+    }
+}
+
+public class ChirpBehavior : ISoundBehavior
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Chirps melodiously.");
+    }
+}
+
+public class BubbleBehavior : ISoundBehavior
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Makes bubbling sounds.");
+    }
+}
+
+public class Animal
+{
+    private IMoveBehavior _moveBehavior;
+    private ISoundBehavior _soundBehavior;
+
+    public Animal(IMoveBehavior moveBehavior, ISoundBehavior soundBehavior)
+    {
+        _moveBehavior = moveBehavior;
+        _soundBehavior = soundBehavior;
+    }
+
+    public void PerformMove()
+    {
+        _moveBehavior.Move();
+    }
+
+    public void PerformSound()
+    {
+        _soundBehavior.MakeSound();
+    }
+
+    // Methods to change behaviors at runtime
+    public void SetMoveBehavior(IMoveBehavior moveBehavior)
+    {
+        _moveBehavior = moveBehavior;
+    }
+
+    public void SetSoundBehavior(ISoundBehavior soundBehavior)
+    {
+        _soundBehavior = soundBehavior;
+    }
+}
+
+
