@@ -1,4 +1,4 @@
-﻿[MemoryDiagnoser]
+﻿[MemoryDiagnoser] 
 public class CachedTaskBenchmark
 {
     private static readonly object _cachedObject = new();

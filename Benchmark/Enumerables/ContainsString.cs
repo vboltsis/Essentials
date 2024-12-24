@@ -10,7 +10,8 @@ namespace Benchmark;
 | ContainsArray     | 9.547 ns | 0.1257 ns | 0.1176 ns |         - | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class ContainsString
 {
     public static readonly HashSet<string> Statuses = 

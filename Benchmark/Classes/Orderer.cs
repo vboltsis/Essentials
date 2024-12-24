@@ -1,7 +1,8 @@
 ﻿namespace Benchmark.Classes;
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class Orderer
 {
     private static readonly List<SelectionWithScore> _selections = new List<SelectionWithScore>

@@ -7,7 +7,8 @@
 | AnySet     | 10     | 8.501 ns | 0.1858 ns | 0.1988 ns | 0.0048 |      40 B |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class ExistsVsAny
 {
     private List<int> _list;

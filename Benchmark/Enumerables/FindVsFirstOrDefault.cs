@@ -9,7 +9,8 @@
 | FirstOrDefaultCars | 10     | 46.180 ns | 0.3461 ns | 0.2890 ns |    4 | 0.0032 |      40 B |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 //[RankColumn]
 public class FindVsFirstOrDefault
 {

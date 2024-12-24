@@ -21,14 +21,14 @@ namespace Benchmark;
 | GetFixedDictionary |    92.15 ns |  1.898 ns |  2.783 ns |   3.30 |    0.12 | 0.0842 | 0.0004 |     704 B |          NA |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class EnumerablesClassVsStruct
 {
     readonly static ArrayPool<Coordinates> _intPool = ArrayPool<Coordinates>.Create(1000, 5);
     const int number = 10;
 
-    private Coordinates[] Numbers { get; set; } = new Coordinates[]
-    {
+    private Coordinates[] Numbers { get; set; } =
+    [
         new Coordinates
         {
             X = 1.3M,
@@ -79,7 +79,7 @@ public class EnumerablesClassVsStruct
             X = 10.3M,
             Y = 10.3M
         }
-    };
+    ];
 
     [Benchmark(Baseline = true)]
     public void ArrayPooling()

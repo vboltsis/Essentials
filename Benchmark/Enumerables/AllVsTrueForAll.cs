@@ -7,7 +7,8 @@
 | TrueForAllSet |     10 | 17.47 ns | 0.258 ns | 0.242 ns |      - |         - |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class AllVsTrueForAll
 {
     private List<int> _list;

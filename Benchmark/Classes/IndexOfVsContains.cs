@@ -7,7 +7,8 @@
 | GetPermissionsContains |  10000 | 83.39 us | 1.041 us | 0.974 us |  1.09 |    0.04 | 5.1270 | 0.9766 |  64.33 KB |        1.00 |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class IndexOfVsContains
 {
     [Params(10000)]

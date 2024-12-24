@@ -18,7 +18,7 @@ namespace Benchmark.Classes;
 | LogFileOfferStringBuilderPool | 100     |  1,998.10 ns |  19.598 ns |  16.365 ns |  0.08 | 0.1221 |    1552 B |        0.03 |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class StringVsStringBuilder
 {
     [Params(1, 10, 100)]

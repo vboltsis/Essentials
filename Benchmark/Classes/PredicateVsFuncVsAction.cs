@@ -9,7 +9,7 @@
 */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class PredicateVsFuncVsAction
 {
     private Func<int, int, int> divideFunc = (a, b) => a % b;

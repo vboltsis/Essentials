@@ -9,7 +9,8 @@ namespace Benchmark;
 | FrozenSetContains | 1000 | 2.292 ns | 0.0199 ns | 0.0177 ns |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class FrozenSetVsHashSet
 {
     private Random _random = null!;

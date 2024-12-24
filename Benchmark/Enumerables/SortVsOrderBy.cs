@@ -9,7 +9,7 @@
 | OrderByArray | 170.29 ns | 3.333 ns | 4.334 ns | 0.0408 |     512 B |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class SortVsOrderBy
 {
     private readonly List<Comparable> _list = new List<Comparable>(10);

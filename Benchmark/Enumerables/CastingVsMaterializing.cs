@@ -7,7 +7,8 @@
 | Materializing | 21.152 ns | 0.5754 ns | 1.6875 ns |  9.81 |    0.58 | 0.0057 |      48 B |          NA | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class CastingVsMaterializing
 {
     private static IEnumerable<int> _list = new int[] { 1, 2, 3, 4, 5 };

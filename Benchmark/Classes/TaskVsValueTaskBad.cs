@@ -7,7 +7,7 @@
 | GetWeatherValueTask | 284.0 ms | 5.63 ms |  8.76 ms |  45.84 KB |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class TaskVsValueTaskBad
 {
     [Benchmark]

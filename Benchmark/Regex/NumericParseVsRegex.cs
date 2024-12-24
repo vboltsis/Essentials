@@ -9,7 +9,8 @@ namespace Benchmark;
 | UseRegexMethod | 111.59 ns | 1.072 ns | 0.950 ns | 0.0331 |     416 B | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class NumericParseVsRegex
 {
     private static readonly string Input = "abc123";

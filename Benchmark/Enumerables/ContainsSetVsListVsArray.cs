@@ -23,7 +23,8 @@
 | ContainsArray | 10000  | 197.988 ns | 3.9709 ns | 4.5729 ns |         - |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class ContainsSetVsListVsArray
 {
     private HashSet<int> _set;

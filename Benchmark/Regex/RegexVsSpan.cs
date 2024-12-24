@@ -16,7 +16,7 @@ namespace Benchmark;
 | ParseHashV2 | 1Y54(...)2#58 [174]  |   593.65 ns |  4.036 ns |  3.775 ns | 0.0992 |      - |    1248 B |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class RegexVsSpan
 {
     private static readonly Regex _hashReaderRegex = new Regex(@"(?<hash>[a-zA-Z0-9\+\/\=]+)\.(?<timestampSeconds>\d+)\|(?<randomValues>[\d\:\.\,]*)\#(?<id>[\d]+)", RegexOptions.Compiled);

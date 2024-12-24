@@ -15,7 +15,7 @@ namespace Benchmark;
 |      TranslateRegex |   |Test| |vs| |Test| | 772.61 ns | 14.367 ns | 30.616 ns | 760.41 ns | 0.1564 |    1968 B | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class RegexVsMemoryT
 {
     private static Regex _pipesMatchRegex = new Regex(@"\|([^\|]+)\|", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));

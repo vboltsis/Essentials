@@ -9,7 +9,8 @@ namespace Benchmark;
 | FormatComposite | 130.4 ns | 1.85 ns | 1.81 ns |  0.89 | 0.0124 |     104 B |        0.68 | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class CompositeFormatVsStringFormat
 {
     private static readonly CompositeFormat s_format = CompositeFormat.Parse(SR.CurrentTime);

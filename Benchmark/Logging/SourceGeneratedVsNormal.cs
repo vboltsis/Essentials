@@ -16,7 +16,8 @@ namespace Benchmark;
 | LoggerMessage_SourceGen_WithoutIf_WithParams | 23.74 ns | 0.099 ns | 0.088 ns |      - |         - | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class SourceGeneratedVsNormal
 {
     private const string LogMessageWithParameters =

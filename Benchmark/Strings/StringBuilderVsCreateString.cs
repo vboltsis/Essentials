@@ -8,7 +8,8 @@
 | UsingStringFormat | 55.15 ns | 0.640 ns | 0.598 ns | 0.0105 |      88 B |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class StringBuilderVsCreateString
 {
     private string name = "John";

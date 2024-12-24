@@ -7,7 +7,8 @@
 | List       | 109.26 ns | 1.618 ns | 1.435 ns | 0.0545 |     456 B | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class StackallocVsList
 {
     [Benchmark]

@@ -1,7 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
-
-namespace Benchmark.Classes;
+﻿namespace Benchmark.Classes;
 
 /*
 |             Method |      Job |  Runtime |     Mean |    Error |   StdDev |   Gen0 | Allocated |
@@ -12,16 +9,16 @@ namespace Benchmark.Classes;
 |           GetTuple | .NET 7.0 | .NET 7.0 | 16.10 ns | 0.202 ns | 0.189 ns | 0.0162 |     136 B |
  */
 
-[SimpleJob(RuntimeMoniker.Net60)]
-[SimpleJob(RuntimeMoniker.Net70)]
+[SimpleJob(RuntimeMoniker.Net80)]
+[SimpleJob(RuntimeMoniker.Net90)]
 [MemoryDiagnoser]
 public class ClassVsTuple
 {
     [Benchmark]
     public PersonAddress[] GetPersonAddresses()
     {
-        return new PersonAddress[]
-        {
+        return
+        [
             new PersonAddress
             {
                 Address = new Address
@@ -37,7 +34,7 @@ public class ClassVsTuple
                     LastName= "c"
                 }
             }
-        };
+        ];
     }
 
     [Benchmark(Baseline = true)]

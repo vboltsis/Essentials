@@ -7,7 +7,8 @@
 | ValueTuple      |   942.9 ns | 15.04 ns | 13.33 ns | 0.3071 | 0.0019 |   2.52 KB |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class AnonymousObjectVsValueTuple
 {
     private static readonly Movie[] Movies =

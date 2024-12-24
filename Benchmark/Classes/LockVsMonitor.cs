@@ -1,6 +1,7 @@
 namespace Benchmark.Classes;
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class LockVsMonitor
 {
     private static object _lock = new object();

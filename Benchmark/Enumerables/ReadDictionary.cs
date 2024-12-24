@@ -7,7 +7,7 @@
 | ReadWithContains | 12.791 ns | 0.2534 ns | 0.2370 ns |         - | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class ReadDictionary
 {
     private static Dictionary<int, string> _dictionary = new();

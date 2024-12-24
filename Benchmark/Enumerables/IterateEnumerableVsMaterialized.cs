@@ -9,7 +9,8 @@
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class IterateEnumerableVsMaterialized
 {
     private static EnumerableTest _testValues = new EnumerableTest

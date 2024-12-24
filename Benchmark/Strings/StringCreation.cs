@@ -11,7 +11,8 @@ namespace Benchmark;
 */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class StringCreation
 {
     [Benchmark(Baseline = true)]

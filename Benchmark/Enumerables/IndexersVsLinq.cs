@@ -8,7 +8,7 @@
 | IndexerLast  | 0.2603 ns | 0.0234 ns | 0.0219 ns |         - |
 | LinqLast     | 7.0455 ns | 0.1621 ns | 0.2709 ns |         - | 
 */
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class IndexersVsLinq
 {
     private static List<int> numbers = Enumerable.Range(0, 100_000).ToList();

@@ -22,7 +22,7 @@ namespace Benchmark;
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public partial class RegexVsManualVsSourceV2
 {
     [Params("America(Clubs)", "U.S.A.", "Canoe/Kayak Sprint")]

@@ -9,7 +9,7 @@ namespace Benchmark;
 | GetBlogsNoChecksAsync | 228.2 us | 4.51 us | 9.30 us | 0.9766 |   10.2 KB |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class ThreadSafetyDisabledVsNormal
 {
     private readonly BlogContext _context;

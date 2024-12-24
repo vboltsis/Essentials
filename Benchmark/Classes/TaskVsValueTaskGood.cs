@@ -8,7 +8,7 @@
 | GetTestValueTask | 19.87 ns | 0.072 ns | 0.064 ns |      - |         - |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class TaskVsValueTaskGood
 {
     private static Test _test = new Test();

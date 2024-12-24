@@ -9,7 +9,8 @@ namespace Benchmark;
 | SimdVector   | 2.138 us | 0.0045 us | 0.0042 us |         - | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class VectorBenchmark
 {
     private int[] array1;

@@ -6,7 +6,8 @@
 | CheckIfFruitExistsClass | 15.857 ns | 0.2194 ns | 0.2052 ns |         - |
 | CheckIfFruitExistsBit   |  2.902 ns | 0.0039 ns | 0.0035 ns |         - |
 */
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class BitVsClass
 {
     private HashSet<Fruit> _fruits;

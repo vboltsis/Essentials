@@ -9,7 +9,7 @@ namespace Benchmark;
 | ManualMapping |  4.403 ns | 0.0866 ns | 0.0723 ns | 0.0038 |      32 B | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class AutoMapperVsManualMapping
 {
     private readonly IMapper _mapper;

@@ -47,7 +47,7 @@ namespace Benchmark;
  */
 
 [CsvExporter(separator: CsvSeparator.Semicolon)]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class Enumerables
 {
     readonly static ArrayPool<int> _intPool = ArrayPool<int>.Create(1000, 5);

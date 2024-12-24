@@ -10,7 +10,8 @@ namespace Benchmark;
 | ReturnWordFrequencyFast |  2.970 ms | 0.0096 ms | 0.0089 ms |   27.3438 |   27.3438 |  27.3438 |  311.17 KB | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class WordFrequency
 {
     public static string Text = File

@@ -9,7 +9,8 @@ namespace Benchmark;
 | ArrayPoolNotCleared | 12.130 us | 0.0404 us | 0.0378 us | 12.145 us |      - |         - | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class ArrayPoolVsArray
 {
     private const int ArraySize = 10_000;

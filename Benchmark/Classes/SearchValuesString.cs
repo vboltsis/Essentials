@@ -1,40 +1,43 @@
 ﻿using System.Buffers;
 
 namespace Benchmark;
-//TODO in .NET 9
-//[MemoryDiagnoser]
-//internal class SearchValuesString
-//{
-//    private static readonly string Haystack =
-//    new HttpClient().GetStringAsync("https://www.gutenberg.org/cache/epub/1661/pg1661.txt").Result;
 
-//    private static readonly string[] NeedleArray = ["Wriggled ", "Headstrong", "Wow"];
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
+public class SearchValuesString
+{
+    private static readonly string Haystack =
+    new HttpClient().GetStringAsync("https://www.gutenberg.org/cache/epub/1661/pg1661.txt").Result;
 
-//    private static readonly SearchValues<string> searchValues =
-//        SearchValues.Create(NeedleArray, StringComparison.OrdinalIgnoreCase);
+    private static readonly string[] NeedleArray = ["Wriggled ", "Headstrong", "Wow"];
 
-//    public int IndexOfFirstArray()
-//    {
-//        ReadOnlySpan<char> haystack = Haystack;
+    private static readonly SearchValues<string> searchValues =
+        SearchValues.Create(NeedleArray, StringComparison.OrdinalIgnoreCase);
 
-//        for (int i = 0; i < haystack.Length; i++)
-//        {
-//            foreach (var needle in NeedleArray)
-//            {
-//                if (haystack[i..].StartsWith(needle, StringComparison.OrdinalIgnoreCase))
-//                {
-//                    return i;
-//                }
-//            }
-//        }
+    [Benchmark]
+    public int IndexOfFirstArray()
+    {
+        ReadOnlySpan<char> haystack = Haystack;
 
-//        return -1;
-//    }
+        for (int i = 0; i < haystack.Length; i++)
+        {
+            foreach (var needle in NeedleArray)
+            {
+                if (haystack[i..].StartsWith(needle, StringComparison.OrdinalIgnoreCase))
+                {
+                    return i;
+                }
+            }
+        }
 
-//    public int IndexOfFirstSearchValues()
-//    {
-//        ReadOnlySpan<char> haystack = Haystack;
+        return -1;
+    }
 
-//        return haystack.IndexOfAny(searchValues);
-//    }
-//}
+    [Benchmark]
+    public int IndexOfFirstSearchValues()
+    {
+        ReadOnlySpan<char> haystack = Haystack;
+
+        return haystack.IndexOfAny(searchValues);
+    }
+}

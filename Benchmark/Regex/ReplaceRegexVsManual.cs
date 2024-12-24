@@ -11,7 +11,7 @@ namespace Benchmark;
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class ReplaceRegexVsManual
 {
     private const string Pattern = @"\|([^\|]+)\|";

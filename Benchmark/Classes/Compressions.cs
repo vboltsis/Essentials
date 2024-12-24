@@ -17,7 +17,7 @@ namespace Benchmark.Classes;
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 //[DisassemblyDiagnoser]
 public class Compressions
 {

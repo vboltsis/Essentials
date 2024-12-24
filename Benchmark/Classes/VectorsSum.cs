@@ -22,7 +22,7 @@ namespace Benchmark.Classes;
 |  SumFor | 10000 | 2,499.4205 ns | 13.8628 ns | 12.9672 ns | 2,493.9159 ns | 18,183.27 | 1,074.83 |         - |          NA |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class VectorsSum
 {
     [Params(10, 100, 1000, 10000)]

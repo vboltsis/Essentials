@@ -11,7 +11,8 @@ namespace Benchmark;
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public partial class RegexVsManualVsSource
 {
     private const char _pipe = '|';
@@ -49,7 +50,7 @@ public partial class RegexVsManualVsSource
             if (end == -1)
                 break;
 
-            wordsWithin.Add(Input.Substring(start + 1, end - start - 1));
+            wordsWithin.Add(Input.Substring(start, end - start + 1));
             index = end + 1;
         }
 

@@ -1,6 +1,6 @@
 namespace Benchmark;
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class ClassVsStruct
 {
     [Benchmark]

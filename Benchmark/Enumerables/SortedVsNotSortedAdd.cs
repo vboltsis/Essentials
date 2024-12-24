@@ -13,7 +13,7 @@
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class SortedVsNotSortedAdd {
 
     [Params(100_000, 1_000_000)]

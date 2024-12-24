@@ -9,7 +9,8 @@
 | GetOccurencesWithLoopAndSpan2 | Testa(...)hvhgv [25] | 11.71 ns | 0.225 ns | 0.211 ns |      - |         - |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class OccurrencesOfCharacter
 {
     [Params("Testashfasfwweasdfaghvhgv")]

@@ -1,7 +1,8 @@
 ﻿namespace Benchmark;
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class BitwiseOperations
 {
     private static int _number = 123;

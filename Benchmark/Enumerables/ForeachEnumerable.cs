@@ -8,7 +8,8 @@
 | ForeachOnEnumerable | 20.292 ns | 0.4241 ns | 0.3967 ns | 20.252 ns | 0.0048 |      40 B | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class ForeachEnumerable
 {
     private static List<int> list = Enumerable.Range(0, 10).ToList();

@@ -9,7 +9,7 @@ namespace Benchmark.Classes;
 |   GetTimestamp | 228.6 us | 0.63 us | 0.49 us |         - |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class StopwatchVsGetTimestamp
 {
     private const int Million = 1_000_000;

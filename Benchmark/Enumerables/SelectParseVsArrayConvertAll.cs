@@ -13,7 +13,8 @@ namespace Benchmark.Classes;
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class SelectParseVsArrayConvertAll
 {
     private static RedisValueCopy[] _values = new RedisValueCopy[]

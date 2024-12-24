@@ -7,7 +7,8 @@
 | Select     | 6.706 us | 0.1328 us | 0.3589 us | 3.6469 | 0.4044 |  29.84 KB |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class ListConvertAll
 {
     private List<int> _list;

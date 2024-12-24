@@ -1,6 +1,6 @@
 ﻿namespace Benchmark.Classes;
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class CheckIfNumberIsOdd
 {
     [Params(100_000, 1_000_000)]

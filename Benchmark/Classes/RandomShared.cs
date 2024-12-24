@@ -8,7 +8,8 @@
 | RandomSharedInstance               |  9.683 us | 0.0238 us | 0.0223 us | 0.5493 |      - |   4.46 KB |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class RandomShared
 {
     private static readonly Random singleRandom = new();

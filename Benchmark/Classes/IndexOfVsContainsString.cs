@@ -13,7 +13,7 @@
 |   ContainsCaseSensitive |  10000 | 100.897 us | 0.1521 us | 0.1188 us |      48 B |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class IndexOfVsContainsString {
 
     [Params(1000, 10_000)]

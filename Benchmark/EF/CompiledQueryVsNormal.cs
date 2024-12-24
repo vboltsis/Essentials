@@ -16,7 +16,7 @@ namespace Benchmark;
 | GetBlogsNormalAsync | 216.4 us | 0.54 us | 0.42 us | 1.2207 |  10.09 KB |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class CompiledQueryVsNormal
 {
     private readonly BlogContext _context;

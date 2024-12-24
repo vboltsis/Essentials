@@ -12,7 +12,7 @@ namespace Benchmark;
 | EmptyEnumerable | 0.0135 ns | 0.0160 ns | 0.0150 ns | 0.0084 ns |      - |         - |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class EmptyVsNew
 {
     [Benchmark]

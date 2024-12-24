@@ -14,7 +14,8 @@
 |       HashSet |     10 | 910.5 ns | 17.02 ns | 18.21 ns | 0.1669 | 0.0010 |    2104 B |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class DistinctArrayVsHashSet
 {
     private List<int> Numbers;

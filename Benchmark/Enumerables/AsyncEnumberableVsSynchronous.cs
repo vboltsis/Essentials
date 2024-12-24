@@ -7,7 +7,7 @@
 | ReadFromFile      | 26.09 us | 0.169 us | 0.150 us | 1.4954 | 0.0610 |  12.24 KB |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class AsyncEnumberableVsSynchronous
 {
     private static readonly string parentDirectory = Path.GetFullPath("C:\\Users\\Evangelos\\Desktop\\Code\\Essentials\\notes.txt");

@@ -13,7 +13,7 @@ namespace Benchmark;
 | SpanJsonDeserialize       |  89.37 ns |  0.950 ns |  0.842 ns | 0.0172 |      - |     144 B |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class SystemJsonVsNewtonsoft
 {
     private static readonly Person person = new Person

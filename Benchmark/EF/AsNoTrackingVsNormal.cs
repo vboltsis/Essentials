@@ -2,7 +2,7 @@
 
 namespace Benchmark;
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 public class AsNoTrackingVsNormal
 {
     [Benchmark]
@@ -24,9 +24,9 @@ public class AsNoTrackingVsNormal
     }
 
     [Benchmark]
-    public Task<List<Blog>> GetBlogsAsync()
+    public async Task<List<Blog>> GetBlogsAsync()
     {
         using var context = new BlogContext();
-        return context.Blogs.ToListAsync();
+        return await context.Blogs.ToListAsync();
     }
 }

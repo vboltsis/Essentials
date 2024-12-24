@@ -3,13 +3,14 @@
 namespace Benchmark;
 
 /*
-|             Method |      Mean |    Error |   StdDev |   Gen0 | Allocated |
-|------------------- |----------:|---------:|---------:|-------:|----------:|
-|              Split |  37.49 ns | 0.451 ns | 0.377 ns | 0.0095 |     120 B |
-| RegexSplitCompiled | 634.94 ns | 3.677 ns | 3.439 ns | 0.0916 |    1160 B |
+| Method             | Mean     | Error    | StdDev   | Gen0   | Allocated |
+|------------------- |---------:|---------:|---------:|-------:|----------:|
+| Split              | 43.50 ns | 0.853 ns | 0.838 ns | 0.0143 |     120 B |
+| RegexSplitCompiled | 90.09 ns | 1.159 ns | 1.084 ns | 0.0248 |     208 B |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class SplitVsRegexSplit
 {
     private static string _text = "Takis |vs| Makis";
@@ -23,6 +24,6 @@ public class SplitVsRegexSplit
     [Benchmark]
     public string[] RegexSplitCompiled()
     {
-        return Regex.Split(_text, "|vs|", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        return Regex.Split(_text, @"\|vs\|", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     }
 }

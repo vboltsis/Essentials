@@ -1,6 +1,7 @@
 ﻿namespace Benchmark;
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class StringContainsCharacter
 {
     [Params("This is Spart5", "22Tasrwuegfudvfjybv5jsdn", "e5rvvs")]

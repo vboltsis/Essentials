@@ -8,7 +8,8 @@ namespace Benchmark;
 | ParallelWriteAndReadChannel | 47.87 us | 0.941 us | 1.465 us | 0.0610 |     600 B |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class ChannelsUnbounded
 {
     private Channel<int> _channel = Channel.CreateUnbounded<int>();

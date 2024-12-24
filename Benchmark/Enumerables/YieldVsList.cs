@@ -10,7 +10,8 @@
 */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class YieldVsList
 {
     [Benchmark(Baseline = true)]

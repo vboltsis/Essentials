@@ -20,7 +20,7 @@
 | WhereCarsArray | 1000   | 5,259.60 ns | 103.787 ns | 244.639 ns | 5,206.34 ns |   12 | 1.9608 |      - |   16440 B |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
 [RankColumn]
 public class FindAllVsWhere
 {
@@ -33,7 +33,7 @@ public class FindAllVsWhere
     [GlobalSetup]
     public void GlobalSetup()
     {
-        _list = new List<int>(Enumerable.Range(1, Number));
+        _list = [.. Enumerable.Range(1, Number)];
         SetupCars();
     }
 

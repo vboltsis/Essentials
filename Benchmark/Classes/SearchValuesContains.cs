@@ -14,7 +14,8 @@ namespace Benchmark;
 | IsBase64Loop         | sDSFG(...)jUUi& [21] | 35.028 ns | 0.2251 ns | 0.1879 ns |         - | 
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class SearchValuesContains
 {
     private const string Base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";

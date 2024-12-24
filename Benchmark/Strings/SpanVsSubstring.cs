@@ -12,7 +12,8 @@ namespace Benchmark;
 | SubString | 22Tas(...)vjsdn [23] | 13.543 ns | 0.0370 ns | 0.0328 ns |  1.68 | 0.0038 |      32 B |          NA |
  */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class SpanVsSubstring
 {
     [Params("11", "22Tasrwuegfudvfjybvjsdn")]

@@ -7,7 +7,8 @@
 | UsingStringConversion | 7.995 ns | 0.1054 ns | 0.0935 ns | 0.0048 |      40 B |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class DigitCounter
 {
     private int number = 123456789;

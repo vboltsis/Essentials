@@ -7,7 +7,8 @@
 | EnumToStringUsingEnumToString | 0.2602 ns | 0.0520 ns | 0.0557 ns |      - |         - |
 */
 
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class EnumToString
 {
     private Enumerate _enumerate = Enumerate.Fifth;

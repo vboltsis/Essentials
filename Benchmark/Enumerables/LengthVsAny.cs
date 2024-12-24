@@ -8,7 +8,8 @@
  */
 
 [RankColumn]
-[MemoryDiagnoser]
+[MemoryDiagnoser] 
+[ReturnValueValidator(true)]
 public class LengthVsAny
 {
     private readonly int[] _array = [1, 2, 3, 4];
