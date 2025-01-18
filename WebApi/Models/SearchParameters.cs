@@ -2,7 +2,7 @@
 
 namespace WeatherExample;
 
-public readonly struct SearchParameters
+public readonly record struct SearchParameters
 {
     [FromQuery(Name = "q")]
     public string Query { get; init; }
