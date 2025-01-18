@@ -1,11 +1,25 @@
-﻿using FeatureExamples;
+﻿using System;
+using System.Runtime.CompilerServices;
 
-string filePath = @"C:\Temp\example.txt";
-Console.WriteLine("Waiting for the file to be created...");
+public class Logger
+{
+    public void Log(string message, [CallerMemberName] string callerName = "")
+    {
+        Console.WriteLine($"[{callerName}] {message}");
+    }
+}
 
-FileInfo createdFile = await new FileCreatedAwaitable(filePath);
+class Program
+{
+    static void Main()
+    {
+        var logger = new Logger();
+        logger.Log("Hello, world!");
+        MyMethod(logger);
+    }
 
-Console.WriteLine("File has been created!");
-Console.WriteLine($"File Name: {createdFile.Name}");
-Console.WriteLine($"File Size: {createdFile.Length} bytes");
-Console.WriteLine($"Created On: {createdFile.CreationTime}");
+    static void MyMethod(Logger logger)
+    {
+        logger.Log("Inside MyMethod");
+    }
+}

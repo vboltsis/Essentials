@@ -18,7 +18,7 @@ public class Derived : Base { }
 
 public class RunContravariant
 {
-    public static void Main()
+    public static void Method()
     {
         IContravariant<Derived> contravariantInstance = new SampleContravariant();
 
