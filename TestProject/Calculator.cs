@@ -2,17 +2,17 @@
 
 public class Calculator
 {
-    public int Addition(params int[] numbers)
+    public int Add(params int[] numbers)
     {
         return numbers.Sum();
     }
 
-    public int Subtraction(int firstNumber, int secondNumber)
+    public int Subtract(int firstNumber, int secondNumber)
     {
         return firstNumber - secondNumber;
     }
 
-    public int Division(int firstNumber, int secondNumber)
+    public int Divide(int firstNumber, int secondNumber)
     {
         return firstNumber / secondNumber;
     }

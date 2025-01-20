@@ -20,7 +20,7 @@ public class CalculatorTests
     public void Subtract_TwoNumbers_Success(int firstNumber, int secondNumber, int expected)
     {
         //Act
-        var result = _calculator.Subtraction(firstNumber, secondNumber);
+        var result = _calculator.Subtract(firstNumber, secondNumber);
         _output.WriteLine("subtraction run.");
 
         //Assert
@@ -36,7 +36,7 @@ public class CalculatorTests
         var expected = 4;
 
         //Act
-        var result = _calculator.Subtraction(firstNumber, secondNumber);
+        var result = _calculator.Subtract(firstNumber, secondNumber);
 
         //Assert
         Assert.NotEqual(expected, result);
@@ -48,7 +48,7 @@ public class CalculatorTests
         var firstNumber = 1;
         var secondNumber = 0;
 
-        Assert.Throws<DivideByZeroException>(() => _calculator.Division(firstNumber, secondNumber));
+        Assert.Throws<DivideByZeroException>(() => _calculator.Divide(firstNumber, secondNumber));
     }
 
     [Theory, CombinatorialData]
@@ -58,7 +58,7 @@ public class CalculatorTests
         [CombinatorialValues(20, 30, 40)] int expected)
     {
         //Act
-        var result = _calculator.Addition(firstNumber, secondNumber);
+        var result = _calculator.Add(firstNumber, secondNumber);
         //Assert
         Assert.NotEqual(expected, result);
     }
@@ -70,7 +70,7 @@ public class CalculatorTests
         [CombinatorialRange(10, 3)] int expected)
     {
         //Act
-        var result = _calculator.Addition(firstNumber, secondNumber);
+        var result = _calculator.Add(firstNumber, secondNumber);
         //Assert
         Assert.NotEqual(expected, result);
     }
@@ -79,6 +79,6 @@ public class CalculatorTests
     public void Divide_TwoRandomNumbers_NoExceptions(int firstNumber, int secondNumber)
     {
         //Act
-        Assert.Throws<DivideByZeroException>(() => _calculator.Division(firstNumber, secondNumber));
+        Assert.Throws<DivideByZeroException>(() => _calculator.Divide(firstNumber, secondNumber));
     }
 }
