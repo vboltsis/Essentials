@@ -1,0 +1,7 @@
+RabbitMQ vs Kafka
+Exchange---Topic
+Queue---Partition
+Binding---Subscription
+Routing Key---Key-based partitioning
+Message Acknowledgment---Consumer Offset
+Dead-letter queue (DLQ)---Log retention

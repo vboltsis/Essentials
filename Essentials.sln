@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{4B20E6CB
 	ProjectSection(SolutionItems) = preProject
 		CommonMistakes.txt = CommonMistakes.txt
 		GC-notes.txt = GC-notes.txt
+		Messaging.txt = Messaging.txt
 		PerformanceTipstxt.txt = PerformanceTipstxt.txt
 	EndProjectSection
 EndProject
