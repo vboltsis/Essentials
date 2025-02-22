@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmark", "Benchmark\Benc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherExample", "WebApi\WeatherExample.csproj", "{F1EC717F-E779-4098-BE38-3424C507EA21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeatureExamples", "Types\FeatureExamples.csproj", "{379E1E63-A542-4A31-94F1-E83DA01F6648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeatureExamples", "FeatureExamples\FeatureExamples.csproj", "{379E1E63-A542-4A31-94F1-E83DA01F6648}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{51660938-2A41-4D02-ACC1-5630E9643D20}"
 EndProject
@@ -75,6 +75,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSPlayground", "AWSPlayground\AWSPlayground.csproj", "{CC817138-997F-4686-A0E7-D18A21967BE6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUnit.Tests", "TUnit.Tests\TUnit.Tests.csproj", "{E6713559-85EF-4B82-A10E-FAAC0D9FF127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KafkaPlayground", "KafkaPlayground\KafkaPlayground.csproj", "{C465FCD0-BC94-4A8F-A2E0-7F6DEA997817}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,6 +180,10 @@ Global
 		{E6713559-85EF-4B82-A10E-FAAC0D9FF127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6713559-85EF-4B82-A10E-FAAC0D9FF127}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6713559-85EF-4B82-A10E-FAAC0D9FF127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C465FCD0-BC94-4A8F-A2E0-7F6DEA997817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C465FCD0-BC94-4A8F-A2E0-7F6DEA997817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C465FCD0-BC94-4A8F-A2E0-7F6DEA997817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C465FCD0-BC94-4A8F-A2E0-7F6DEA997817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -201,6 +207,7 @@ Global
 		{82F4E37B-9C52-4B3D-A793-8D536CDD5982} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
 		{CC817138-997F-4686-A0E7-D18A21967BE6} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
 		{E6713559-85EF-4B82-A10E-FAAC0D9FF127} = {B27E2039-695D-4144-A2F1-1655113D5011}
+		{C465FCD0-BC94-4A8F-A2E0-7F6DEA997817} = {1464008C-B2A5-4C6F-8F59-EB491F4658C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1640BA4-EDBC-40AD-B6F1-64B90C8CCF41}
