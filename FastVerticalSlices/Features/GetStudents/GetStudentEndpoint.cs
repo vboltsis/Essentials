@@ -14,7 +14,7 @@ public class GetStudentEndpoint : Endpoint<GetStudentRequest, GetStudentResponse
 
     public override void Configure()
     {
-        Get("/api/students/getstudent");
+        Get("/api/students");
         AllowAnonymous();
         Version(1);
     }
