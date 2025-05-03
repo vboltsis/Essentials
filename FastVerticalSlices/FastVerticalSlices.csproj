@@ -8,16 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\CreateStudent\**" />
+    <Content Remove="Features\CreateStudent\**" />
+    <EmbeddedResource Remove="Features\CreateStudent\**" />
+    <None Remove="Features\CreateStudent\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FastEndpoints" Version="5.33.0" />
     <PackageReference Include="FastEndpoints.Attributes" Version="5.33.0" />
     <PackageReference Include="FastEndpoints.Swagger" Version="5.33.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\CreateStudent\" />
-    <Folder Include="Features\NewFolder\" />
   </ItemGroup>
 
 </Project>

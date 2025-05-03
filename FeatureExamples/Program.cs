@@ -1,3 +1,5 @@
-﻿using FeatureExamples;
+﻿using FeatureExamples.Asynchronous;
 
-await SemaphoreExample.Example();
+DeadlockExample.Example();
+
+Console.WriteLine("done");

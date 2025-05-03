@@ -42,7 +42,7 @@ public class MyEndpoint : Endpoint<MyRequest>
 {
     public override void Configure()
     {
-        Post("/api/user/create");
+        Post("/api/users");
         AllowAnonymous();
         Description(b => b
             .Accepts<MyRequest>("application/json")
