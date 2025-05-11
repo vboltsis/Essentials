@@ -1,0 +1,33 @@
+### Get all items
+GET http://localhost:5223/items
+Accept: application/json
+
+###
+
+### Get item with ID 1
+GET http://localhost:5223/items/1
+Accept: application/json
+
+### Search items by name
+GET http://localhost:5223/search?name=Widget
+Accept: application/json
+
+### Add a brand-new item
+POST http://localhost:5223/items
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Whatever",
+  "description": "An interesting thingamajig"
+}
+
+### Update an existing item (ID 1)
+PUT http://localhost:5223/items/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Renamed Widget",
+  "description": "Updated description"
+}
