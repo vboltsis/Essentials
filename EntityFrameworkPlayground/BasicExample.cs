@@ -1,4 +1,6 @@
-﻿namespace EntityFrameworkPlayground;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace EntityFrameworkPlayground;
 
 public class BasicExample
 {
@@ -6,6 +8,11 @@ public class BasicExample
     {
         using var db = new AppDbContext();
 
+        var products = await db.Products
+            .AsNoTrackingWithIdentityResolution()
+            .Where(p => p.Price > 100)
+            .ToListAsync();
+        
         // Create a new product instance
         var newProduct = new Product { Name = "Banana", Price = 0.30m };
 

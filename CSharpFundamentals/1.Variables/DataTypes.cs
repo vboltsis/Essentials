@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace CSharpFundamentals;
@@ -29,27 +30,29 @@ public class DataTypes
         ushort shortUnsignedNumber = 1; //0 to 65,535
         ulong bigUnsignedNumber = 1; //0 to 18,446,744,073,709,551,615
         float floatNumber = 1.99f; //-3.402823E+38 to 3.402823E+38
-        double price = 1.99; //-1.7976931348623157E+308 to 1.7976931348623157E+308
+        double notPrice = 1.99; //-1.7976931348623157E+308 to 1.7976931348623157E+308
         decimal amount = 1.99M; //-79228162514264337593543950335M to 79228162514264337593543950335M
         byte byteValue = 255; //0-255
         sbyte sbyteNumber = 1; //-128 to 127
         bool isWorking = true;
         char character = 'A';
-        DateTime date = DateTime.Now;
-        DateTimeOffset dateTimeOffset = DateTimeOffset.Now;
+        DateTime date = DateTime.UtcNow;
+        DateTimeOffset dateTimeOffset = DateTimeOffset.UtcNow;
         DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
         TimeOnly timeOnly = TimeOnly.FromDateTime(DateTime.Now);
-        Guid guid = Guid.NewGuid();
+        Guid guid = Guid.CreateVersion7();
         Point point = new Point(10, 20);
+        Animal animal = Animal.Elephant;
 
         // Reference types
-        string name = "John";
+        String name = "John";
         Person person = new Person { Name = "John", Age = 20 };
         object obj = new Person { Name = "John", Age = 20 };
         int[] array = new int[3] { 1, 2, 3 };
         List<int> list = new List<int> { 1, 2, 3 };
         Dictionary<int, string> dictionary = new Dictionary<int, string> { { 1, "One" }, { 2, "Two" } };
         HashSet<int> hashSet = new HashSet<int> { 1, 2, 3 };
+        Collection<int> collection = new Collection<int> { 1, 2, 3 };
         Queue<int> queue = new Queue<int>();
         Stack<int> stack = new Stack<int>();
         LinkedList<int> linkedList = new LinkedList<int>();
@@ -71,14 +74,19 @@ class Person
     public int Age { get; set; }
 }
 
-struct Point
+readonly struct Point
 {
-    public int X;
-    public int Y;
+    public readonly int X;
+    public readonly int Y;
 
     public Point(int x, int y)
     {
         X = x;
         Y = y;
     }
+}
+
+enum Animal{
+ Horse = 1,
+ Elephant = 2
 }
