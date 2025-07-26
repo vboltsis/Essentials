@@ -98,3 +98,37 @@ console.log((bananaAppleOrange & Fruits.Apple) != 0);
 
 bananaApple &= Fruits.Banana;
 */
+
+/* blog post code
+ UserFlags flags = UserFlags.HasSubscription;
+
+// Set flags
+flags |= UserFlags.IsAdmin;
+flags |= UserFlags.IsVerified;
+
+// Check if IsAdmin is set
+bool isAdmin = (flags & UserFlags.IsAdmin) != 0;
+
+Console.WriteLine(isAdmin);
+
+// Unset a flag
+flags &= ~UserFlags.IsAdmin;
+
+Console.WriteLine(isAdmin);
+Console.WriteLine(flags);
+
+[Flags]
+public enum UserFlags : byte
+{
+    IsAdmin = 1 << 0,
+    IsVerified = 1 << 1,
+    HasSubscription = 1 << 2,
+    IsOnTrial = 1 << 3,
+    IsBanned = 1 << 4,
+    IsDeleted = 1 << 5,
+    IsEmailConfirmed = 1 << 6,
+    IsPhoneConfirmed = 1 << 7
+}
+
+ 
+ */
