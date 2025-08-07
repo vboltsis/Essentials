@@ -58,7 +58,7 @@ public class MyEndpoint : Endpoint<MyRequest>
             IsOver18 = req.Age > 18
         };
 
-        await SendAsync(response);
+        await Send.OkAsync(response, ct);
     }
 }
 

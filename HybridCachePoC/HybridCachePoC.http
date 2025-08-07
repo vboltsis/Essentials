@@ -1,0 +1,84 @@
+### HybridCache PoC API Tests
+### Health Checks
+GET {{baseUrl}}/health
+GET {{baseUrl}}/health/ready
+GET {{baseUrl}}/api/health
+GET {{baseUrl}}/api/health/detailed
+
+### Customer Management
+# Get all customers
+GET {{baseUrl}}/api/customers
+
+# Get specific customer (replace {id} with actual GUID)
+GET {{baseUrl}}/api/customers/{id}
+
+# Create new customer
+POST {{baseUrl}}/api/customers
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "phoneNumber": "+1-555-0101",
+  "company": "Tech Corp",
+  "address": "123 Main St",
+  "city": "New York",
+  "state": "NY",
+  "postalCode": "10001",
+  "country": "USA",
+  "notes": "Premium customer"
+}
+
+# Update customer (replace {id} with actual GUID)
+PUT {{baseUrl}}/api/customers/{id}
+Content-Type: application/json
+
+{
+  "firstName": "John Updated",
+  "email": "john.updated@example.com",
+  "notes": "Updated customer information"
+}
+
+# Delete customer (replace {id} with actual GUID)
+DELETE {{baseUrl}}/api/customers/{id}
+
+### Cache Management
+# Get cache info for customer (replace {id} with actual GUID)
+GET {{baseUrl}}/api/customers/{id}/cache-info
+
+# Get all cache statistics
+GET {{baseUrl}}/api/customers/cache-statistics
+
+# Clear all cache entries
+POST {{baseUrl}}/api/customers/clear-cache
+
+# Warm cache by pre-loading all customers
+POST {{baseUrl}}/api/customers/warm-cache
+
+### Performance Testing
+# Test cache hit/miss scenarios
+# 1. First request (cache miss)
+GET {{baseUrl}}/api/customers/{id}
+
+# 2. Second request (cache hit)
+GET {{baseUrl}}/api/customers/{id}
+
+# 3. Check cache statistics
+GET {{baseUrl}}/api/customers/cache-statistics
+
+### Cache Invalidation Test
+# 1. Update customer to invalidate cache
+PUT {{baseUrl}}/api/customers/{id}
+Content-Type: application/json
+
+{
+  "firstName": "Invalidated",
+  "notes": "Cache should be invalidated"
+}
+
+# 2. Verify cache was invalidated
+GET {{baseUrl}}/api/customers/{id}/cache-info
+
+### Variables
+@baseUrl = http://localhost:5000

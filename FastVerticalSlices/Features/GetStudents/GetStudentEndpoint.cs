@@ -30,7 +30,7 @@ public class GetStudentEndpoint : Endpoint<GetStudentRequest, GetStudentResponse
             req.Age > 18
         );
 
-        await SendAsync(response, cancellation: ct);
+        await Send.OkAsync(response, ct);
     }
 }
 

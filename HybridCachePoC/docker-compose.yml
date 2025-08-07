@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: hybrid-cache-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - hybrid-cache-network
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: hybrid-cache-redis-commander
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    depends_on:
+      - redis
+    networks:
+      - hybrid-cache-network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: hybrid-cache-postgres
+    environment:
+      POSTGRES_DB: hybridcache
+      POSTGRES_USER: hybridcache
+      POSTGRES_PASSWORD: hybridcache123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - hybrid-cache-network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: hybrid-cache-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@hybridcache.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    networks:
+      - hybrid-cache-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hybrid-cache-api
+    ports:
+      - "5050:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__PostgreSQL=Host=postgres;Database=hybridcache;Username=hybridcache;Password=hybridcache123
+      - ConnectionStrings__Redis=redis:6379
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - hybrid-cache-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: hybrid-cache-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - hybrid-cache-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: hybrid-cache-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/dashboards/hybridcache.yaml:/etc/grafana/provisioning/dashboards/hybridcache.yaml
+      - ./grafana/datasource.json:/etc/grafana/provisioning/datasources/datasource.json
+    depends_on:
+      - redis
+    networks:
+      - hybrid-cache-network
+
+volumes:
+  redis_data:
+  postgres_data:
+  grafana_data:
+
+networks:
+  hybrid-cache-network:
+    driver: bridge 

@@ -1,0 +1,29 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: minimalredisapi-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  minimalredisapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: minimalredisapi-app
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - REDIS_CONNECTION=redis:6379
+      - DOTNET_RUNNING_IN_CONTAINER=true
+    restart: unless-stopped 

@@ -1,0 +1,44 @@
+### Test HybridCache API
+
+### Health Check
+GET http://localhost:5000/health
+
+### Get Product by ID (HybridCache)
+GET http://localhost:5000/hybrid/products/1
+
+### Get All Products (HybridCache)
+GET http://localhost:5000/hybrid/products
+
+### Create New Product (HybridCache)
+POST http://localhost:5000/hybrid/products
+Content-Type: application/json
+
+{
+  "name": "New Product",
+  "description": "A new product created via API",
+  "price": 149.99,
+  "isActive": true
+}
+
+### Invalidate Product Cache
+DELETE http://localhost:5000/hybrid/products/1/cache
+
+### Traditional Cache Comparison
+
+### Get Product by ID (Traditional Cache)
+GET http://localhost:5000/traditional/products/1
+
+### Get All Products (Traditional Cache)
+GET http://localhost:5000/traditional/products
+
+### Test Cache Stampede Prevention
+### Run these requests simultaneously to see HybridCache in action
+
+### Request 1
+GET http://localhost:5000/hybrid/products/2
+
+### Request 2
+GET http://localhost:5000/hybrid/products/2
+
+### Request 3
+GET http://localhost:5000/hybrid/products/2 
