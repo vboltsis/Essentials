@@ -31,6 +31,8 @@ public class DataTypes
         ulong bigUnsignedNumber = 1; //0 to 18,446,744,073,709,551,615
         float floatNumber = 1.99f; //-3.402823E+38 to 3.402823E+38
         double notPrice = 1.99; //-1.7976931348623157E+308 to 1.7976931348623157E+308
+        
+        //used for money
         decimal amount = 1.99M; //-79228162514264337593543950335M to 79228162514264337593543950335M
         byte byteValue = 255; //0-255
         sbyte sbyteNumber = 1; //-128 to 127
@@ -45,7 +47,7 @@ public class DataTypes
         Animal animal = Animal.Elephant;
 
         // Reference types
-        String name = "John";
+        string name = "John";
         Person person = new Person { Name = "John", Age = 20 };
         object obj = new Person { Name = "John", Age = 20 };
         int[] array = new int[3] { 1, 2, 3 };

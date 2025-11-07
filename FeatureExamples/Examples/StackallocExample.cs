@@ -2,6 +2,11 @@
 
 public class StackallocExample
 {
+    public static void Example()
+    {
+        Span<int> array = stackalloc int[5];
+    }
+    
     public static int ParseNumbers(ReadOnlySpan<char> input, Span<int> output)
     {
         var count = 0;

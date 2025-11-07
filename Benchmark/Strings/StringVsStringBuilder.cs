@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.ObjectPool;
 using System.Text;
 
-namespace Benchmark.Classes;
+namespace Benchmark;
 /*
 | Method                        | _number | Mean         | Error      | StdDev     | Ratio | Gen0   | Allocated | Alloc Ratio |
 |------------------------------ |-------- |-------------:|-----------:|-----------:|------:|-------:|----------:|------------:|

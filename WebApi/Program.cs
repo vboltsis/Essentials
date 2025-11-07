@@ -36,6 +36,12 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(requirement);
 });
 
+builder.Services.AddHttpClient("agify", client =>
+{
+    client.BaseAddress = new Uri("https://api.agify.io/");
+    client.Timeout = TimeSpan.FromSeconds(5);
+});
+
 builder.Services.AddSingleton<IRuntimeInformationService, RuntimeInformationService>();
 builder.Services.AddSingleton<IMemoryMetricsService, MemoryMetricsService>();
 builder.Services.AddScoped<ApiKeyAuthFilter>();

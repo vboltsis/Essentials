@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FeatureExamples;
+﻿namespace FeatureExamples;
 
 public class PatternMatchingExamples
 {
@@ -46,3 +40,8 @@ public class PatternMatchingExamples
 }
 
 public record Person(string FirstName, string LastName, int Age);
+
+public record NotImmutable
+{
+    public string FirstName { get; set; }
+}

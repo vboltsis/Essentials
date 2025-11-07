@@ -83,9 +83,9 @@ struct HumanStruct
 
 readonly record struct HumanStructReadOnly
 {
-    public readonly string FirstName;
-    public readonly string LastName;
-    public readonly int Age;
+    public readonly string FirstName { get; init; }
+    public readonly string LastName { get; init; }
+    public readonly int Age { get; init; }
 
     public HumanStructReadOnly(string firstName, string lastName, int age)
     {
