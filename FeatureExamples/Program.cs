@@ -1,4 +1,18 @@
-﻿int number = 1;
+﻿
+await Task.Delay(1);
+
+Task.Run(() =>
+{
+    Thread.Sleep(10000);
+    Console.WriteLine("Hello!");
+}); //Hello or Press any key?
+
+Console.WriteLine("Press any key to exit...");
+
+Console.ReadLine();
+
+
+int number = 1;
 User user = new User { Name = "John" };
 
 Modify(number, user);
