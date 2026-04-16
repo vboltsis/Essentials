@@ -42,7 +42,7 @@ public class EnumerableExamples
         ConcurrentQueue<int> concurrentQueue = new ConcurrentQueue<int>();
         ConcurrentStack<int> concurrentStack = new ConcurrentStack<int>();
         ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
-
+        
         queue.Enqueue(1);
         queue.Enqueue(2);
 

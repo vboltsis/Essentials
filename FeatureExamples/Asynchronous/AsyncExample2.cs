@@ -123,6 +123,21 @@ public class AsyncExample2
         var t2 = File.WriteAllTextAsync(b, content);
         await Task.WhenAll(t1, t2);
     }
+    
+    //9
+    public static Task TaskHandling1()
+    {
+        Console.WriteLine("TaskHandling1 " + DateTime.Now );
+        Task.Delay(5000);
+        Console.WriteLine("TaskHandling1 " + DateTime.Now );
+        return Task.CompletedTask;
+    }
 
+    public static async Task TaskHandling2()
+    {
+        Console.WriteLine("TaskHandling2 " + DateTime.Now );
+        await Task.Delay(5000);
+        Console.WriteLine("TaskHandling2 " + DateTime.Now);
+    }
 
 }

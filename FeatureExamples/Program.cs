@@ -1,18 +1,4 @@
-﻿
-await Task.Delay(1);
-
-Task.Run(() =>
-{
-    Thread.Sleep(10000);
-    Console.WriteLine("Hello!");
-}); //Hello or Press any key?
-
-Console.WriteLine("Press any key to exit...");
-
-Console.ReadLine();
-
-
-int number = 1;
+﻿int number = 1;
 User user = new User { Name = "John" };
 
 Modify(number, user);
@@ -20,6 +6,7 @@ Modify(number, user);
 Console.WriteLine(user.Name); //John or Nick?
 Console.WriteLine(number); // 1 or 2?
 
+//Do I pass by value or by reference
 void Modify(int number, User user)
 {
     user = new User();
@@ -30,7 +17,15 @@ void Modify(int number, User user)
 class User
 {
     public string Name { get; set; }
-    
+}
+
+public record Whatever
+{
+    public string Text { get; set; }
+}
+
+public static class Extensions
+{
     //a re-usable method to call external apis with retries
     public static TResult Indefinitely<TResult>(Func<TResult> attemptUnsafely, Action<Exception> errorHandler, int minWaitTimeMillis,
         int maxWaitTimeMillis)
@@ -65,7 +60,17 @@ class Test
     {
         Console.WriteLine(text);
     }
+    
+    static Lock obj = new Lock();
+    void Example()
+    {
+        lock (obj)
+        {
+            Console.WriteLine("Name");
+        }
+    }
 }
+
 
 // interface IInterface
 // {
@@ -118,3 +123,15 @@ class Test
        }
    }
 */
+
+// await Task.Delay(1);
+//
+// Task.Run(() =>
+// {
+//     Thread.Sleep(4000);
+//     Console.WriteLine("Hello!");
+// }); //Hello or Press any key?
+//
+// Console.WriteLine("Press any key to exit...");
+//
+// Console.ReadLine();

@@ -13,6 +13,12 @@ public class StructMagic
             Console.WriteLine(sizeof(Test3));
             Console.WriteLine(sizeof(Test4));
         }
+        
+        //40
+        // 24
+        // 19
+        // 40
+        // 
     }
 }
 
